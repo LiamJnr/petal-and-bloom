@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A beautiful digital florist shop featuring flowers, bouquets, and special event packages." />
+  <title>Petal & Bloom — Digital Florist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="#" class="logo">Petal <span>&</span> Bloom</a>
+
+      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-links">
+        <a href="#collection">Collection</a>
+        <a href="#events">Special Events</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-petal petal-one"></div>
+      <div class="hero-petal petal-two"></div>
+
+      <div class="hero-content container">
+        <p class="eyebrow">DIGITAL FLORAL COLLECTION</p>
+        <h1>Flowers made to<br><em>make moments bloom.</em></h1>
+        <p class="hero-copy">
+          Discover thoughtfully designed digital flower arrangements for
+          birthdays, celebrations, gifts, and everyday beautiful moments.
+        </p>
+        <a href="#collection" class="button button-dark">Explore the flowers</a>
+      </div>
+    </section>
+
+    <section class="intro container">
+      <p class="eyebrow">A LITTLE SOMETHING SPECIAL</p>
+      <h2>Beautiful blooms for every occasion.</h2>
+      <p>
+        Whether you're celebrating someone special or simply want to send a
+        little beauty their way, our curated digital floral designs are ready
+        to make the moment memorable.
+      </p>
+    </section>
+
+    <section id="collection" class="products-section container">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">THE COLLECTION</p>
+          <h2>Freshly picked favorites</h2>
+        </div>
+        <div class="filter-buttons" role="group" aria-label="Filter products">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="bouquet">Bouquets</button>
+          <button class="filter-btn" data-filter="gift">Gifts</button>
+        </div>
+      </div>
+
+      <div class="product-grid">
+        <!-- PRODUCT 1 -->
+        <article class="product-card" data-category="bouquet">
+          <div class="product-image">
+            <img src="images/roses.jpg" alt="Rose bouquet" />
+            <span class="tag">Bestseller</span>
+          </div>
+          <div class="product-info">
+            <p class="product-type">ROMANTIC BOUQUET</p>
+            <h3>Rose Garden</h3>
+            <p>A timeless arrangement of soft, romantic roses.</p>
+            <div class="product-bottom">
+              <strong>$11</strong>
+              <!-- REPLACE # WITH YOUR LEMON SQUEEZY CHECKOUT URL -->
+              <a class="order-btn" href="https://roxyanne.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6" target="_blank" rel="noopener">Order</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PRODUCT 2 -->
+        <article class="product-card" data-category="bouquet">
+          <div class="product-image">
+            <img src="images/tulip.jpg" alt="Spring tulips" />
+          </div>
+          <div class="product-info">
+            <p class="product-type">SPRING COLLECTION</p>
+            <h3>Sunday Tulips</h3>
+            <p>Fresh, cheerful tulips with a soft springtime feeling.</p>
+            <div class="product-bottom">
+              <strong>$13</strong>
+              <!-- REPLACE # WITH YOUR LEMON SQUEEZY CHECKOUT URL -->
+              <a class="order-btn" href="https://roxyanne.lemonsqueezy.com/checkout/buy/b765dc63-9ead-4d94-aa5c-2d3f8b2dedbc" target="_blank" rel="noopener">Order</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PRODUCT 3 -->
+        <article class="product-card" data-category="bouquet">
+          <div class="product-image">
+            <img src="images/peonies.jpg" alt="Pink peony bouquet" />
+            <span class="tag">New</span>
+          </div>
+          <div class="product-info">
+            <p class="product-type">SIGNATURE BOUQUET</p>
+            <h3>Blush Peonies</h3>
+            <p>Full, delicate blooms designed for an effortlessly elegant feel.</p>
+            <div class="product-bottom">
+              <strong>$18</strong>
+              <!-- REPLACE # WITH YOUR LEMON SQUEEZY CHECKOUT URL -->
+              <a class="order-btn" href="https://roxyanne.lemonsqueezy.com/checkout/buy/40b41c5e-b7c8-4897-92f9-e43d50c9fdab" target="_blank" rel="noopener">Order</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PRODUCT 4 -->
+        <article class="product-card" data-category="gift">
+          <div class="product-image">
+            <img src="images/daisies.jpg" alt="Daisy arrangement" />
+          </div>
+          <div class="product-info">
+            <p class="product-type">EVERYDAY GIFT</p>
+            <h3>Little Daisy</h3>
+            <p>A sweet little floral gesture for an ordinary day made special.</p>
+            <div class="product-bottom">
+              <strong>$9.99</strong>
+              <!-- REPLACE # WITH YOUR LEMON SQUEEZY CHECKOUT URL -->
+              <a class="order-btn" href="https://roxyanne.lemonsqueezy.com/checkout/buy/25914755-bf53-4d1c-86d2-28276b7600a5" target="_blank" rel="noopener">Order</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PRODUCT 5 -->
+        <article class="product-card" data-category="gift">
+          <div class="product-image">
+            <img src="images/sweetheart.jpg" alt="Sweetheart flowers" />
+          </div>
+          <div class="product-info">
+            <p class="product-type">LOVE NOTE</p>
+            <h3>Sweetheart</h3>
+            <p>A romantic floral design made for someone you adore.</p>
+            <div class="product-bottom">
+              <strong>$15</strong>
+              <!-- REPLACE # WITH YOUR LEMON SQUEEZY CHECKOUT URL -->
+              <a class="order-btn" href="https://roxyanne.lemonsqueezy.com/checkout/buy/0474ced0-e00c-4205-b8cd-0094f3aa9bb7" target="_blank" rel="noopener">Order</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PRODUCT 6 -->
+        <article class="product-card" data-category="bouquet">
+          <div class="product-image">
+            <img src="images/wildflower.jpg" alt="Wildflower arrangement" />
+          </div>
+          <div class="product-info">
+            <p class="product-type">MEADOW COLLECTION</p>
+            <h3>Wildflower Muse</h3>
+            <p>Loose, whimsical blooms inspired by a sunlit meadow.</p>
+            <div class="product-bottom">
+              <strong>$13</strong>
+              <!-- REPLACE # WITH YOUR LEMON SQUEEZY CHECKOUT URL -->
+              <a class="order-btn" href="https://roxyanne.lemonsqueezy.com/checkout/buy/3de4c4ec-274d-42e1-9983-aa9c1fb29bc1" target="_blank" rel="noopener">Order</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="events" class="events-section">
+      <div class="event-inner container">
+        <div class="event-copy">
+          <p class="eyebrow">SPECIAL EVENT PACKAGE</p>
+          <h2>Make their birthday<br><em>extra blooming.</em></h2>
+          <p>
+            A complete digital birthday flower package created for the big
+            moment — beautiful blooms, a celebratory card, and coordinated
+            floral designs ready to gift.
+          </p>
+          <ul>
+            <li>Birthday bouquet design</li>
+            <li>Matching digital birthday card</li>
+            <li>Celebration floral graphics</li>
+            <li>Instant digital delivery</li>
+          </ul>
+          <!-- REPLACE # WITH YOUR BIRTHDAY PACKAGE LEMON SQUEEZY CHECKOUT URL -->
+          <a href="https://roxyanne.lemonsqueezy.com/checkout/buy/f8f48919-b03b-42af-b8e7-e7a15b67fba8" class="button button-light" target="_blank" rel="noopener">
+            Order the Birthday Package
+          </a>
+        </div>
+
+        <div class="event-card">
+          <div class="event-card-flower">✿</div>
+          <p>FOR THEIR SPECIAL DAY</p>
+          <h3>Birthday<br>Bloom Box</h3>
+          <span>$24.99</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about-section container">
+      <div class="about-image">
+        <img src="./images/flower-shop.jpg" alt="">
+      </div>
+      <div class="about-copy">
+        <p class="eyebrow">OUR LITTLE FLOWER SHOP</p>
+        <h2>Thoughtful flowers,<br>without the waiting.</h2>
+        <p>
+          Petal & Bloom is a digital florist created for people who love
+          beautiful little gestures. Choose a design, click order, and
+          complete your purchase securely through Lemon Squeezy.
+        </p>
+        <p>
+          Every arrangement is designed with a soft, feminine aesthetic and
+          made to be easy to purchase and enjoy digitally.
+        </p>
+      </div>
+    </section>
+
+    <section class="cta-section" id="contact">
+      <div class="container">
+        <p class="eyebrow">A NOTE FROM US</p>
+        <h2>Send a little beauty<br><em>today.</em></h2>
+        <a href="#collection" class="button button-dark">Shop the collection</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a href="#" class="logo">Petal <span>&</span> Bloom</a>
+      <p>© <span id="year"></span> Petal & Bloom. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#collection">Shop</a>
+        <a href="#events">Events</a>
+        <a href="#about">About</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
