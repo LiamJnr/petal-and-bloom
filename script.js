@@ -53,3 +53,47 @@ document.querySelectorAll('a[href="#"]').forEach(link => {
     });
   }
 });
+
+// ── Lemon Squeezy Overlay Checkout ──────────────────────────
+// Listen for checkout events from the lemon.js overlay.
+// This is for UI feedback only — never use this for order fulfillment.
+function setupLemonSqueezy() {
+  if (typeof window.LemonSqueezy === "undefined") return;
+
+  window.LemonSqueezy.Setup({
+    eventHandler: (event) => {
+      if (event.event === "Checkout.Success") {
+        showCheckoutToast("Thank you! Your order is confirmed. 🌸");
+      }
+    },
+  });
+}
+
+// Show a confirmation toast after a successful checkout.
+function showCheckoutToast(message) {
+  // Remove any existing toast first
+  const existing = document.querySelector(".checkout-toast");
+  if (existing) existing.remove();
+
+  const toast = document.createElement("div");
+  toast.className = "checkout-toast";
+  toast.textContent = message;
+  document.body.appendChild(toast);
+
+  // Trigger entrance animation
+  requestAnimationFrame(() => toast.classList.add("visible"));
+
+  // Auto-dismiss after 5 seconds
+  setTimeout(() => {
+    toast.classList.remove("visible");
+    toast.addEventListener("transitionend", () => toast.remove());
+  }, 5000);
+}
+
+// Initialize once lemon.js has loaded (it uses defer, so it runs after DOM).
+// We wait a tick to ensure the LemonSqueezy global is available.
+if (document.readyState === "complete") {
+  setupLemonSqueezy();
+} else {
+  window.addEventListener("load", setupLemonSqueezy);
+}

@@ -633,3 +633,40 @@ h2 em {
     text-align: center;
   }
 }
+
+/* Checkout Toast */
+
+.checkout-toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 100;
+  background: var(--white);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 18px 28px;
+  border-radius: 14px;
+  border-left: 4px solid var(--rose);
+  box-shadow: 0 14px 40px rgba(45, 41, 39, 0.15);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  pointer-events: none;
+}
+
+.checkout-toast.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+@media (max-width: 580px) {
+  .checkout-toast {
+    left: 14px;
+    right: 14px;
+    bottom: 16px;
+    text-align: center;
+  }
+}
