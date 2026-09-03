@@ -1,0 +1,512 @@
+/* ==========================================================================
+   PRODUCT DETAIL PAGE (PDP) COMPONENT
+   ========================================================================== */
+
+.pdp-container {
+  padding-top: 32px;
+  padding-bottom: 100px;
+}
+
+/* Breadcrumb Navigation */
+.pdp-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+
+.pdp-breadcrumb a {
+  color: var(--muted);
+  transition: color var(--transition-fast);
+}
+
+.pdp-breadcrumb a:hover {
+  color: var(--rose-dark);
+}
+
+.pdp-breadcrumb span {
+  opacity: 0.5;
+}
+
+.pdp-breadcrumb-current {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Main PDP Layout Grid */
+.pdp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+/* Left: Gallery Column */
+.pdp-gallery {
+  position: sticky;
+  top: calc(var(--header-height) + 24px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pdp-main-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 540px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--cream-200);
+  box-shadow: var(--shadow-md);
+}
+
+.pdp-main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s var(--ease-smooth);
+}
+
+.pdp-main-image-wrapper:hover .pdp-main-image {
+  transform: scale(1.04);
+}
+
+.pdp-badge-tag {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 2;
+}
+
+.pdp-thumbnails {
+  display: flex;
+  gap: 12px;
+}
+
+.pdp-thumb-btn {
+  width: 86px;
+  height: 86px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 2px solid transparent;
+  cursor: pointer;
+  background-color: var(--cream-200);
+  transition: all var(--transition-fast);
+  padding: 0;
+  opacity: 0.7;
+}
+
+.pdp-thumb-btn.active,
+.pdp-thumb-btn:hover {
+  border-color: var(--rose);
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.pdp-thumb-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Right: Product Customizer & Details */
+.pdp-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.pdp-header-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.pdp-category-eyebrow {
+  color: var(--rose-dark);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.pdp-title {
+  font-size: clamp(2.4rem, 4vw, 3.2rem);
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+.pdp-subtitle {
+  color: var(--muted);
+  font-size: 1.05rem;
+  margin-bottom: 16px;
+}
+
+.pdp-reviews-summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.pdp-reviews-link {
+  font-size: 0.84rem;
+  color: var(--muted);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.pdp-reviews-link:hover {
+  color: var(--rose-dark);
+}
+
+/* Price Box */
+.pdp-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.pdp-current-price {
+  font-family: var(--serif);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.pdp-price-note {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.pdp-desc {
+  color: var(--ink-light);
+  font-size: 0.94rem;
+  line-height: 1.65;
+  margin-bottom: 28px;
+}
+
+/* Customizer Section Blocks */
+.pdp-option-section {
+  margin-bottom: 26px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.pdp-option-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.84rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.pdp-option-selected-text {
+  font-weight: 600;
+  color: var(--rose-dark);
+  text-transform: none;
+}
+
+/* Size Tier Options */
+.pdp-size-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.pdp-size-card {
+  border: 1.5px solid var(--border);
+  background-color: var(--white);
+  border-radius: var(--radius-md);
+  padding: 14px 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pdp-size-card:hover {
+  border-color: var(--rose);
+  background-color: var(--cream-50);
+}
+
+.pdp-size-card.active {
+  border-color: var(--ink);
+  background-color: var(--ink);
+  color: var(--white);
+  box-shadow: var(--shadow-sm);
+}
+
+.pdp-size-name {
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.pdp-size-stems {
+  font-size: 0.72rem;
+  opacity: 0.75;
+}
+
+.pdp-size-price {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+/* Vase Add-on Options */
+.pdp-vase-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pdp-vase-radio {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background-color: var(--white);
+  cursor: pointer;
+  font-size: 0.86rem;
+  transition: all var(--transition-fast);
+}
+
+.pdp-vase-radio:hover {
+  border-color: var(--rose);
+}
+
+.pdp-vase-radio.active {
+  border-color: var(--rose-dark);
+  background-color: var(--rose-50);
+}
+
+.pdp-vase-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pdp-vase-radio input {
+  accent-color: var(--rose-dark);
+}
+
+.pdp-vase-price {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* Complimentary Gift Message Composer */
+.pdp-gift-note {
+  background-color: var(--white);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  padding: 16px;
+}
+
+.pdp-gift-note textarea {
+  width: 100%;
+  height: 72px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px;
+  font-size: 0.85rem;
+  resize: none;
+  background: var(--cream-50);
+  outline: none;
+  color: var(--ink);
+}
+
+.pdp-gift-note textarea:focus {
+  border-color: var(--rose);
+  background: var(--white);
+}
+
+.pdp-gift-note-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+/* Florist Delivery Date Picker */
+.pdp-delivery-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+}
+
+.pdp-delivery-input {
+  border: none;
+  background: transparent;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ink);
+  outline: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* Action Buttons (Add to Cart + Instant Buy) */
+.pdp-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.btn-pdp-cart {
+  width: 100%;
+  padding: 16px;
+  font-size: 0.95rem;
+  border-radius: var(--radius-full);
+}
+
+.btn-pdp-buy-now {
+  width: 100%;
+  padding: 15px;
+  font-size: 0.92rem;
+  border-radius: var(--radius-full);
+}
+
+/* Stems Breakdown List & Care Accordions */
+.pdp-details-tabs {
+  margin-top: 48px;
+  border-top: 1px solid var(--border);
+}
+
+.pdp-accordion-item {
+  border-bottom: 1px solid var(--border);
+}
+
+.pdp-accordion-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+  font-family: var(--sans);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--ink);
+  text-align: left;
+}
+
+.pdp-accordion-trigger span:last-child {
+  font-size: 1.2rem;
+  transition: transform 0.25s ease;
+}
+
+.pdp-accordion-item.open .pdp-accordion-trigger span:last-child {
+  transform: rotate(45deg);
+}
+
+.pdp-accordion-content {
+  display: none;
+  padding-bottom: 22px;
+  font-size: 0.88rem;
+  color: var(--ink-light);
+  line-height: 1.65;
+}
+
+.pdp-accordion-item.open .pdp-accordion-content {
+  display: block;
+}
+
+/* Stem Pill List */
+.stem-tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.stem-tag {
+  background-color: var(--cream-200);
+  color: var(--ink);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.care-tips-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.care-tips-list li {
+  position: relative;
+  padding-left: 20px;
+}
+
+.care-tips-list li::before {
+  content: "💧";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 0.8rem;
+}
+
+/* Related Recommendations */
+.pdp-related-section {
+  margin-top: 90px;
+  padding-top: 60px;
+  border-top: 1px solid var(--border);
+}
+
+.pdp-related-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.pdp-related-header h3 {
+  font-size: 2.2rem;
+}
+
+/* Responsive PDP */
+@media (max-width: 900px) {
+  .pdp-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .pdp-gallery {
+    position: static;
+  }
+
+  .pdp-main-image-wrapper {
+    height: 420px;
+  }
+}
+
+@media (max-width: 580px) {
+  .pdp-main-image-wrapper {
+    height: 340px;
+  }
+
+  .pdp-size-grid {
+    grid-template-columns: 1fr;
+  }
+}

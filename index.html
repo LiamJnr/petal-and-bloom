@@ -3,249 +3,285 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="A beautiful digital florist shop featuring flowers, bouquets, and special event packages." />
-  <title>Petal & Bloom — Florist</title>
+  <meta name="description" content="Petal & Bloom — Artisan digital floral boutique featuring curated seasonal bouquets, luxury vases, celebration gift sets, and same-day delivery." />
+  <title>Petal & Bloom — Artisan Florist & Botanical Boutique</title>
+  
+  <!-- Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Playfair+Display:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+  
+  <!-- Master Modular Stylesheet -->
+  <link rel="stylesheet" href="css/main.css" />
+  
+  <!-- Lemon Squeezy Overlay JS -->
   <script src="https://app.lemonsqueezy.com/js/lemon.js" defer></script>
 </head>
 <body>
+
+  <!-- Top Announcement Bar -->
+  <div class="announcement-bar">
+    🌸 <strong>Spring Florals Arrived:</strong> Complimentary handwritten note card & luxury craft wrap on all orders.
+  </div>
+
+  <!-- Main Site Header -->
   <header class="site-header">
     <nav class="nav container">
-      <a href="#" class="logo">Petal <span>&</span> Bloom</a>
-
-      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+      <a href="#" class="logo" id="nav-logo">Petal <span>&</span> Bloom</a>
 
       <div class="nav-links">
-        <a href="#collection">Collection</a>
-        <a href="#events">Special Events</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+        <a href="#collection" class="nav-link">Shop Flowers</a>
+        <a href="#events" class="nav-link">Celebrations</a>
+        <a href="#reviews" class="nav-link">Client Reviews</a>
+        <a href="#about" class="nav-link">Our Story</a>
+      </div>
+
+      <!-- Action Controls -->
+      <div class="header-actions">
+        <!-- Search Toggle -->
+        <div class="search-container">
+          <button class="icon-btn search-toggle-btn" aria-label="Search flower arrangements" title="Search">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+            </svg>
+          </button>
+          
+          <div class="search-input-wrapper">
+            <input type="search" class="search-input" placeholder="Search roses, peonies, gifts..." aria-label="Search catalog" />
+            <button type="button" class="search-clear-btn" aria-label="Clear search">&times;</button>
+          </div>
+        </div>
+
+        <!-- Cart Bag Trigger -->
+        <button class="icon-btn cart-trigger" id="cart-trigger" aria-label="Open shopping bag" title="Shopping Bag">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+          </svg>
+          <span class="cart-count-badge" id="cart-badge">0</span>
+        </button>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="menu-toggle" aria-label="Open mobile menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </nav>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="hero-petal petal-one"></div>
-      <div class="hero-petal petal-two"></div>
+  <!-- Main Storefront Application Root -->
+  <main id="app-root">
 
-      <div class="hero-content container">
-        <p class="eyebrow">FLORAL COLLECTION</p>
-        <h1>Flowers made to<br><em>make moments bloom.</em></h1>
-        <p class="hero-copy">
-          Discover thoughtfully designed flower arrangements for
-          birthdays, celebrations, gifts, and everyday beautiful moments.
-        </p>
-        <a href="#collection" class="button button-dark">Explore the flowers</a>
-      </div>
-    </section>
+    <!-- Storefront Home View Container -->
+    <div id="home-view">
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="hero-petal petal-one"></div>
+        <div class="hero-petal petal-two"></div>
 
-    <section class="intro container">
-      <p class="eyebrow">A LITTLE SOMETHING SPECIAL</p>
-      <h2>Beautiful blooms for every occasion.</h2>
-      <p>
-        Whether you're celebrating someone special or simply want to send a
-        little beauty their way, our curated digital floral designs are ready
-        to make the moment memorable.
-      </p>
-    </section>
-
-    <section id="collection" class="products-section container">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">THE COLLECTION</p>
-          <h2>Freshly picked favorites</h2>
-        </div>
-        <div class="filter-buttons" role="group" aria-label="Filter products">
-          <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="bouquet">Bouquets</button>
-          <button class="filter-btn" data-filter="gift">Gifts</button>
-        </div>
-      </div>
-
-      <div class="product-grid">
-        <!-- PRODUCT 1 -->
-        <article class="product-card" data-category="bouquet">
-          <div class="product-image">
-            <img src="images/roses.jpg" alt="Rose bouquet" />
-            <span class="tag">Bestseller</span>
-          </div>
-          <div class="product-info">
-            <p class="product-type">ROMANTIC BOUQUET</p>
-            <h3>Rose Garden</h3>
-            <p>A timeless arrangement of soft, romantic roses.</p>
-            <div class="product-bottom">
-              <strong>$22</strong>
-              <!-- REPLACE # WITH YOUR LEMON SQUEEZY CHECKOUT URL -->
-              <a class="order-btn lemonsqueezy-button" href="https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6">Order</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- PRODUCT 2 -->
-        <article class="product-card" data-category="bouquet">
-          <div class="product-image">
-            <img src="images/tulip.jpg" alt="Spring tulips" />
-          </div>
-          <div class="product-info">
-            <p class="product-type">SPRING COLLECTION</p>
-            <h3>Sunday Tulips</h3>
-            <p>Fresh, cheerful tulips with a soft springtime feeling.</p>
-            <div class="product-bottom">
-              <strong>$26</strong>
-              <!-- REPLACE # WITH YOUR LEMON SQUEEZY CHECKOUT URL -->
-              <a class="order-btn lemonsqueezy-button" href="https://petal-bloom.lemonsqueezy.com/checkout/buy/b765dc63-9ead-4d94-aa5c-2d3f8b2dedbc">Order</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- PRODUCT 3 -->
-        <article class="product-card" data-category="bouquet">
-          <div class="product-image">
-            <img src="images/peonies.jpg" alt="Pink peony bouquet" />
-            <span class="tag">New</span>
-          </div>
-          <div class="product-info">
-            <p class="product-type">SIGNATURE BOUQUET</p>
-            <h3>Blush Peonies</h3>
-            <p>Full, delicate blooms designed for an effortlessly elegant feel.</p>
-            <div class="product-bottom">
-              <strong>$38</strong>
-              <!-- REPLACE # WITH YOUR LEMON SQUEEZY CHECKOUT URL -->
-              <a class="order-btn lemonsqueezy-button" href="https://petal-bloom.lemonsqueezy.com/checkout/buy/40b41c5e-b7c8-4897-92f9-e43d50c9fdab">Order</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- PRODUCT 4 -->
-        <article class="product-card" data-category="gift">
-          <div class="product-image">
-            <img src="images/daisies.jpg" alt="Daisy arrangement" />
-          </div>
-          <div class="product-info">
-            <p class="product-type">EVERYDAY GIFT</p>
-            <h3>Little Daisy</h3>
-            <p>A sweet little floral gesture for an ordinary day made special.</p>
-            <div class="product-bottom">
-              <strong>$18</strong>
-              <!-- REPLACE # WITH YOUR LEMON SQUEEZY CHECKOUT URL -->
-              <a class="order-btn lemonsqueezy-button" href="https://petal-bloom.lemonsqueezy.com/checkout/buy/25914755-bf53-4d1c-86d2-28276b7600a5">Order</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- PRODUCT 5 -->
-        <article class="product-card" data-category="gift">
-          <div class="product-image">
-            <img src="images/sweetheart.jpg" alt="Sweetheart flowers" />
-          </div>
-          <div class="product-info">
-            <p class="product-type">LOVE NOTE</p>
-            <h3>Sweetheart</h3>
-            <p>A romantic floral design made for someone you adore.</p>
-            <div class="product-bottom">
-              <strong>$24</strong>
-              <!-- REPLACE # WITH YOUR LEMON SQUEEZY CHECKOUT URL -->
-              <a class="order-btn lemonsqueezy-button" href="https://petal-bloom.lemonsqueezy.com/checkout/buy/0474ced0-e00c-4205-b8cd-0094f3aa9bb7">Order</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- PRODUCT 6 -->
-        <article class="product-card" data-category="bouquet">
-          <div class="product-image">
-            <img src="images/wildflower.jpg" alt="Wildflower arrangement" />
-          </div>
-          <div class="product-info">
-            <p class="product-type">MEADOW COLLECTION</p>
-            <h3>Wildflower Muse</h3>
-            <p>Loose, whimsical blooms inspired by a sunlit meadow.</p>
-            <div class="product-bottom">
-              <strong>$20</strong>
-              <!-- REPLACE # WITH YOUR LEMON SQUEEZY CHECKOUT URL -->
-              <a class="order-btn lemonsqueezy-button" href="https://petal-bloom.lemonsqueezy.com/checkout/buy/3de4c4ec-274d-42e1-9983-aa9c1fb29bc1">Order</a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section id="events" class="events-section">
-      <div class="event-inner container">
-        <div class="event-copy">
-          <p class="eyebrow">SPECIAL EVENT PACKAGE</p>
-          <h2>Make their birthday<br><em>extra blooming.</em></h2>
-          <p>
-            A complete digital birthday flower package created for the big
-            moment — beautiful blooms, a celebratory card, and coordinated
-            floral designs ready to gift.
+        <div class="hero-content container">
+          <span class="eyebrow">CURATED BOTANICAL ARTISTRY</span>
+          <h1>Flowers designed to<br><em>make moments bloom.</em></h1>
+          <p class="hero-copy">
+            Discover thoughtfully hand-crafted arrangements for anniversaries, birthdays, heartfelt gestures, and everyday living spaces.
           </p>
-          <ul>
-            <li>Birthday bouquet design</li>
-            <li>Matching digital birthday card</li>
-            <li>Celebration floral graphics</li>
-            <li>Instant digital delivery</li>
-          </ul>
-          <!-- REPLACE # WITH YOUR BIRTHDAY PACKAGE LEMON SQUEEZY CHECKOUT URL -->
-          <a href="https://petal-bloom.lemonsqueezy.com/checkout/buy/f8f48919-b03b-42af-b8e7-e7a15b67fba8" class="button button-light lemonsqueezy-button">
-            Order the Birthday Package
-          </a>
+          <div class="hero-actions">
+            <a href="#collection" class="button button-dark">Explore the Collection</a>
+            <a href="#events" class="button button-light">Celebration Gift Sets</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Trust Pillars / Highlights Strip -->
+      <section class="trust-strip">
+        <div class="container trust-grid">
+          <div class="trust-item">
+            <div class="trust-icon">🌿</div>
+            <div class="trust-text">
+              <h4>7-Day Freshness Guarantee</h4>
+              <p>Direct from top-tier growers at peak bud</p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon">✂️</div>
+            <div class="trust-text">
+              <h4>Hand-Tied by Artisans</h4>
+              <p>Arranged by passionate local florists</p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon">💌</div>
+            <div class="trust-text">
+              <h4>Complimentary Letterpress Card</h4>
+              <p>Personalized message on luxury stationery</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Products Catalog Section -->
+      <section id="collection" class="products-section container">
+        <div class="catalog-header">
+          <div class="catalog-header-top">
+            <div>
+              <span class="eyebrow">THE SPRING COLLECTION</span>
+              <h2>Freshly Picked Favorites</h2>
+            </div>
+            <span id="catalog-count" class="badge badge-rose">Loading flowers...</span>
+          </div>
+
+          <!-- Filter Pills & Sorting -->
+          <div class="catalog-toolbar">
+            <div class="filter-pills" role="tablist" aria-label="Filter products by category">
+              <button class="filter-pill active" data-filter="all">All Blooms</button>
+              <button class="filter-pill" data-filter="bouquet">Bouquets</button>
+              <button class="filter-pill" data-filter="luxury">Luxury Stems</button>
+              <button class="filter-pill" data-filter="gift">Gifts & Petite</button>
+              <button class="filter-pill" data-filter="celebration">Celebrations</button>
+            </div>
+
+            <div class="catalog-sort">
+              <label for="catalog-sort" class="sort-label">Sort By:</label>
+              <select id="catalog-sort" class="sort-select">
+                <option value="bestseller">Featured & Bestselling</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="rating">Highest Customer Rating</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="filter-status" class="filter-status"></div>
         </div>
 
-        <div class="event-card">
-          <div class="event-card-flower">✿</div>
-          <p>FOR THEIR SPECIAL DAY</p>
-          <h3>Birthday<br>Bloom Box</h3>
-          <span>$45.99</span>
+        <!-- Dynamic Product Grid -->
+        <div class="product-grid" id="product-grid">
+          <!-- Populated dynamically via catalog.js -->
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="about" class="about-section container">
-      <div class="about-image">
-        <img src="./images/flower-shop.jpg" alt="">
-      </div>
-      <div class="about-copy">
-        <p class="eyebrow">OUR LITTLE FLOWER SHOP</p>
-        <h2>Thoughtful flowers,<br>without the waiting.</h2>
-        <p>
-          Petal & Bloom is a florist created for people who love
-          beautiful little gestures. Choose a design, click order, and
-          complete your purchase securely through Lemon Squeezy.
-        </p>
-        <p>
-          Every arrangement is designed with a soft, feminine aesthetic and
-          made to be easy to purchase and enjoy.
-        </p>
-      </div>
-    </section>
+      <!-- Celebrations Package Banner -->
+      <section id="events" class="events-section">
+        <div class="event-inner container">
+          <div class="event-copy">
+            <span class="eyebrow">SPECIAL CELEBRATION PACKAGE</span>
+            <h2>Make their milestone<br><em>extra blooming.</em></h2>
+            <p>
+              A complete floral celebration package curated for the moments that matter most—freshly cut seasonal blooms, a personalized gold-foil letterpress card, and keepsake vase packaging.
+            </p>
+            <ul>
+              <li>Artisan celebration bouquet design</li>
+              <li>Handwritten letterpress card included</li>
+              <li>Signature protective hydration packaging</li>
+              <li>Guaranteed peak delivery timing</li>
+            </ul>
+            <button class="button button-light" id="btn-view-birthday-bundle" data-slug="birthday-bloom-box">
+              View Birthday Bloom Box &rarr;
+            </button>
+          </div>
 
-    <section class="cta-section" id="contact">
-      <div class="container">
-        <p class="eyebrow">A NOTE FROM US</p>
-        <h2>Send a little beauty<br><em>today.</em></h2>
-        <a href="#collection" class="button button-dark">Shop the collection</a>
-      </div>
-    </section>
+          <div class="event-card">
+            <div class="event-card-flower">✿</div>
+            <p>FOR MILESTONES & BIRTHDAYS</p>
+            <h3>Birthday<br>Bloom Box</h3>
+            <span>From $54.00</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Client Reviews Placeholder Container (Wired in Chunk 4) -->
+      <section id="reviews" class="reviews-section container section-spacing">
+        <div class="reviews-header text-center">
+          <span class="eyebrow">REAL EXPERIENCES</span>
+          <h2>Loved by Flower Enthusiasts</h2>
+          <p class="section-subtext">Over 1,500+ happy recipients and blooming spaces nationwide.</p>
+        </div>
+        <div id="reviews-container">
+          <!-- Reviews list populated dynamically in Chunk 4 -->
+        </div>
+      </section>
+
+      <!-- About / Story Section -->
+      <section id="about" class="about-section container">
+        <div class="about-image">
+          <img src="./images/flower-shop.jpg" alt="Petal and Bloom Florist Workshop" loading="lazy">
+        </div>
+        <div class="about-copy">
+          <span class="eyebrow">OUR FLOWER PHILOSOPHY</span>
+          <h2>Thoughtful blooms,<br>crafted with intention.</h2>
+          <p>
+            Petal & Bloom began with a simple belief: flower delivery should be as delightful and effortless as receiving a bouquet in person.
+          </p>
+          <p>
+            We bypass middlemen and source directly from ethical growers who harvest at peak bud. Every stem is inspected, conditioned, and hand-tied by seasoned floral designers in our studio before reaching your hands.
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <!-- Dedicated Dynamic Product Detail Page (PDP) View Container (Wired in Chunk 3) -->
+    <div id="pdp-view" style="display: none;">
+      <!-- Populated dynamically via pdp.js -->
+    </div>
+
   </main>
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <a href="#" class="logo">Petal <span>&</span> Bloom</a>
-      <p>© <span id="year"></span> Petal & Bloom. All rights reserved.</p>
-      <div class="footer-links">
-        <a href="#collection">Shop</a>
-        <a href="#events">Events</a>
-        <a href="#about">About</a>
+  <!-- Slide-out Cart Drawer Container (Wired in Chunk 5) -->
+  <div id="cart-drawer-container"></div>
+
+  <!-- Toast Notifications Container -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <a href="#" class="logo">Petal <span>&</span> Bloom</a>
+        <p>A digital floral studio dedicated to curated seasonal arrangements, elegant botanical gifts, and elevated living.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#collection">Seasonal Bouquets</a></li>
+          <li><a href="#collection">Luxury Vases</a></li>
+          <li><a href="#events">Birthday Bloom Boxes</a></li>
+          <li><a href="#reviews">Customer Reviews</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Customer Care</h4>
+        <ul>
+          <li><a href="#about">Flower Care Guide</a></li>
+          <li><a href="#about">Freshness Guarantee</a></li>
+          <li><a href="#about">Delivery FAQs</a></li>
+          <li><a href="#about">Contact Our Florists</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Stay in Bloom</h4>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing! 🌸');">
+          <p>Get 10% off your first arrangement and seasonal flower care tips.</p>
+          <div class="newsletter-input-group">
+            <input type="email" class="newsletter-input" placeholder="Enter your email" required />
+            <button type="submit" class="newsletter-btn">Join</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>© <span id="year"></span> Petal & Bloom Studio. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Shipping & Returns</a>
       </div>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <!-- App Entrypoint Script (ES Modules) -->
+  <script type="module" src="js/app.js"></script>
 </body>
 </html>

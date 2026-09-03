@@ -1,0 +1,18 @@
+/* ==========================================================================
+   PETAL & BLOOM — MASTER STYLESHEET MANIFEST
+   ========================================================================== */
+
+/* 1. Base Styles & Design Tokens */
+@import url("base/variables.css");
+@import url("base/reset.css");
+@import url("layout/grid.css");
+
+/* 2. Component Styles (Loaded progressively) */
+@import url("components/header.css");
+@import url("components/hero.css");
+@import url("components/product-card.css");
+@import url("components/product-detail.css");
+@import url("components/reviews.css");
+@import url("components/cart-drawer.css");
+@import url("components/toast.css");
+@import url("components/footer.css");
