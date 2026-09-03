@@ -367,7 +367,7 @@ export function renderPDP(slug) {
                 <div class="pdp-review-user-row">
                   <div class="pdp-review-user-info">
                     <div class="pdp-review-avatar">
-                      <img src="images/sweetheart.png" alt="Kristin Watson" />
+                      <img src="images/sweetheart.webp" alt="Kristin Watson" />
                     </div>
                     <div class="pdp-review-user-name">
                       Kristin Watson <span>(Verified)</span>
@@ -383,9 +383,9 @@ export function renderPDP(slug) {
                   ★★★★★ <span>5.0</span>
                 </div>
                 <div class="pdp-review-photos">
-                  <div class="pdp-review-photo"><img src="images/roses.png" alt="Review photo 1" /></div>
-                  <div class="pdp-review-photo"><img src="images/tulips.png" alt="Review photo 2" /></div>
-                  <div class="pdp-review-photo"><img src="images/peonies.png" alt="Review photo 3" /></div>
+                  <div class="pdp-review-photo"><img src="images/roses.webp" alt="Review photo 1" /></div>
+                  <div class="pdp-review-photo"><img src="images/tulips.webp" alt="Review photo 2" /></div>
+                  <div class="pdp-review-photo"><img src="images/peonies.webp" alt="Review photo 3" /></div>
                 </div>
               </article>
 
@@ -394,7 +394,7 @@ export function renderPDP(slug) {
                 <div class="pdp-review-user-row">
                   <div class="pdp-review-user-info">
                     <div class="pdp-review-avatar">
-                      <img src="images/daisies.png" alt="Jenny Wilson" />
+                      <img src="images/daisies.webp" alt="Jenny Wilson" />
                     </div>
                     <div class="pdp-review-user-name">
                       Jenny Wilson <span>(Verified)</span>

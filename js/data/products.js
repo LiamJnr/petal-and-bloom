@@ -15,12 +15,12 @@ export const PRODUCTS = [
     rating: 4.9,
     reviewCount: 245,
     images: {
-      primary: "images/hyacinth.png",
+      primary: "images/hyacinth.webp",
       gallery: [
-        "images/hyacinth.png",
-        "images/tulips.png",
-        "images/roses.png",
-        "images/sweetheart.png"
+        "images/hyacinth.webp",
+        "images/tulips.webp",
+        "images/roses.webp",
+        "images/sweetheart.webp"
       ]
     },
     shortDescription: "A serene harmony of fragrant royal blue hyacinths and crisp white Dutch tulips, tied with signature gingham ribbon.",
@@ -62,12 +62,12 @@ export const PRODUCTS = [
     rating: 4.9,
     reviewCount: 88,
     images: {
-      primary: "images/roses.png",
+      primary: "images/roses.webp",
       gallery: [
-        "images/roses.png",
-        "images/sweetheart.png",
-        "images/peonies.png",
-        "images/hyacinth.png"
+        "images/roses.webp",
+        "images/sweetheart.webp",
+        "images/peonies.webp",
+        "images/hyacinth.webp"
       ]
     },
     shortDescription: "A timeless arrangement of velvety Ecuadorian red roses and delicate blush garden spray roses.",
@@ -110,12 +110,12 @@ export const PRODUCTS = [
     rating: 5.0,
     reviewCount: 64,
     images: {
-      primary: "images/lilies.png",
+      primary: "images/lilies.webp",
       gallery: [
-        "images/lilies.png",
-        "images/orchids.png",
-        "images/spires.png",
-        "images/hydrangea.png"
+        "images/lilies.webp",
+        "images/orchids.webp",
+        "images/spires.webp",
+        "images/hydrangea.webp"
       ]
     },
     shortDescription: "Dramatic, intoxicatingly fragrant pure white Oriental lilies paired with emerald Italian ruscus.",
@@ -157,12 +157,12 @@ export const PRODUCTS = [
     rating: 4.9,
     reviewCount: 52,
     images: {
-      primary: "images/orchids.png",
+      primary: "images/orchids.webp",
       gallery: [
-        "images/orchids.png",
-        "images/lilies.png",
-        "images/peonies.png",
-        "images/spires.png"
+        "images/orchids.webp",
+        "images/lilies.webp",
+        "images/peonies.webp",
+        "images/spires.webp"
       ]
     },
     shortDescription: "A living sculptural masterpiece featuring two cascading stems of moth orchids in a fluted ceramic vessel.",
@@ -203,12 +203,12 @@ export const PRODUCTS = [
     rating: 4.8,
     reviewCount: 110,
     images: {
-      primary: "images/hydrangea.png",
+      primary: "images/hydrangea.webp",
       gallery: [
-        "images/hydrangea.png",
-        "images/hyacinth.png",
-        "images/sweetheart.png",
-        "images/tulips.png"
+        "images/hydrangea.webp",
+        "images/hyacinth.webp",
+        "images/sweetheart.webp",
+        "images/tulips.webp"
       ]
     },
     shortDescription: "Lush, pillowy cloud-like hydrangeas in pastel blue and lavender nestled with blush spray roses.",
@@ -251,12 +251,12 @@ export const PRODUCTS = [
     rating: 4.9,
     reviewCount: 76,
     images: {
-      primary: "images/sunburst.png",
+      primary: "images/sunburst.webp",
       gallery: [
-        "images/sunburst.png",
-        "images/birthday.png",
-        "images/wildflower.png",
-        "images/roses.png"
+        "images/sunburst.webp",
+        "images/birthday.webp",
+        "images/wildflower.webp",
+        "images/roses.webp"
       ]
     },
     shortDescription: "Joyful golden mini sunflowers, creamy Café au Lait dahlias, and vibrant red hypericum berries.",
@@ -299,12 +299,12 @@ export const PRODUCTS = [
     rating: 4.8,
     reviewCount: 43,
     images: {
-      primary: "images/spires.png",
+      primary: "images/spires.webp",
       gallery: [
-        "images/spires.png",
-        "images/hyacinth.png",
-        "images/tulips.png",
-        "images/wildflower.png"
+        "images/spires.webp",
+        "images/hyacinth.webp",
+        "images/tulips.webp",
+        "images/wildflower.webp"
       ]
     },
     shortDescription: "A tall, airy editorial arrangement of pastel snapdragons, sweet Matthiola stock, and layered eucalyptus.",
@@ -347,12 +347,12 @@ export const PRODUCTS = [
     rating: 5.0,
     reviewCount: 156,
     images: {
-      primary: "images/peonies.png",
+      primary: "images/peonies.webp",
       gallery: [
-        "images/peonies.png",
-        "images/sweetheart.png",
-        "images/roses.png",
-        "images/orchids.png"
+        "images/peonies.webp",
+        "images/sweetheart.webp",
+        "images/roses.webp",
+        "images/orchids.webp"
       ]
     },
     shortDescription: "Sumptuous Sarah Bernhardt blush and cream peonies hand-tied with velvet champagne ribbon.",
@@ -395,12 +395,12 @@ export const PRODUCTS = [
     rating: 4.8,
     reviewCount: 68,
     images: {
-      primary: "images/tulips.png",
+      primary: "images/tulips.webp",
       gallery: [
-        "images/tulips.png",
-        "images/hyacinth.png",
-        "images/sweetheart.png",
-        "images/spires.png"
+        "images/tulips.webp",
+        "images/hyacinth.webp",
+        "images/sweetheart.webp",
+        "images/spires.webp"
       ]
     },
     shortDescription: "A modern monochrome bouquet of fresh Dutch tulips in soft blush, peach, and ivory.",
@@ -442,12 +442,12 @@ export const PRODUCTS = [
     rating: 4.9,
     reviewCount: 94,
     images: {
-      primary: "images/sweetheart.png",
+      primary: "images/sweetheart.webp",
       gallery: [
-        "images/sweetheart.png",
-        "images/roses.png",
-        "images/peonies.png",
-        "images/tulips.png"
+        "images/sweetheart.webp",
+        "images/roses.webp",
+        "images/peonies.webp",
+        "images/tulips.webp"
       ]
     },
     shortDescription: "A romantic confection of ruffled white lisianthus, pale peach ranunculus, and pastel pink roses.",
@@ -490,12 +490,12 @@ export const PRODUCTS = [
     rating: 4.9,
     reviewCount: 57,
     images: {
-      primary: "images/wildflower.png",
+      primary: "images/wildflower.webp",
       gallery: [
-        "images/wildflower.png",
-        "images/daisies.png",
-        "images/spires.png",
-        "images/sunburst.png"
+        "images/wildflower.webp",
+        "images/daisies.webp",
+        "images/spires.webp",
+        "images/sunburst.webp"
       ]
     },
     shortDescription: "A rustic woven rattan basket filled with sunny chamomile daisies, English lavender, and sweet peas.",
@@ -536,12 +536,12 @@ export const PRODUCTS = [
     rating: 5.0,
     reviewCount: 120,
     images: {
-      primary: "images/birthday.png",
+      primary: "images/birthday.webp",
       gallery: [
-        "images/birthday.png",
-        "images/sunburst.png",
-        "images/peonies.png",
-        "images/sweetheart.png"
+        "images/birthday.webp",
+        "images/sunburst.webp",
+        "images/peonies.webp",
+        "images/sweetheart.webp"
       ]
     },
     shortDescription: "A luxury round keepsake hat box densely packed with pastel roses and mini hydrangeas, with a letterpress card.",
