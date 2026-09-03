@@ -1,350 +1,605 @@
 /**
  * Petal & Bloom — Product Catalog Data Store
- * Structured with rich florist metadata, variant pricing, stem counts, and Lemon Squeezy endpoints.
+ * Comprehensive luxury collection balancing focal staples, voluminous mass, statement luxury, and textural fillers.
  */
 
 export const PRODUCTS = [
   {
-    id: "rose-garden",
-    slug: "rose-garden",
-    name: "Rose Garden",
-    subtitle: "Timeless Romantic Bouquet",
+    id: "blue-white-bouquets",
+    slug: "blue-white-bouquets",
+    name: "Blue White Bouquets",
+    subtitle: "Serene Hyacinths & Spring White Tulips",
     category: "bouquet",
-    occasion: "Romantic",
+    occasion: "Birthday & Anniversaries",
     tag: "Bestseller",
     rating: 4.9,
-    reviewCount: 42,
+    reviewCount: 245,
     images: {
-      primary: "images/roses.jpg",
+      primary: "images/hyacinth.png",
       gallery: [
-        "images/roses.jpg",
-        "images/sweetheart.jpg",
-        "images/flower-shop.jpg"
+        "images/hyacinth.png",
+        "images/tulips.png",
+        "images/roses.png",
+        "images/sweetheart.png"
       ]
     },
-    shortDescription: "A timeless arrangement of soft, velvety roses hand-tied with fragrant garden foliage.",
-    description: "Our signature Rose Garden bouquet brings classic romance into modern floristry. Curated with premium garden roses, spray roses, and silver dollar eucalyptus, each stem is selected at peak bloom to guarantee over a week of breathtaking elegance in your home.",
+    shortDescription: "A serene harmony of fragrant royal blue hyacinths and crisp white Dutch tulips, tied with signature gingham ribbon.",
+    description: "Our signature Blue White Bouquet captures the crisp elegance of spring botanical gardens. Hand-tied with sweet-scented blue hyacinths, pure white Dutch tulips, and silver dollar eucalyptus, this arrangement brings calming sophistication and gentle fragrance to any room.",
     stems: [
-      { name: "Premium Ecuadorian Roses", count: 12 },
-      { name: "Blush Spray Roses", count: 6 },
-      { name: "Silver Dollar Eucalyptus", count: 4 },
-      { name: "Waxflower Accent", count: 3 }
+      { name: "Royal Blue Hyacinths", count: 10 },
+      { name: "Crisp White Dutch Tulips", count: 12 },
+      { name: "Silver Dollar Eucalyptus", count: 5 }
     ],
     careGuide: [
-      "Trim stems at a 45-degree angle under cool running water before placing in vase.",
-      "Replace vase water every 2 days with cold, fresh water and flower food.",
-      "Keep away from direct sunlight, drafts, and ripening fruit to extend longevity."
+      "Trim stems at a 45-degree angle under cool running water before placing in a clean vase.",
+      "Hyacinths and tulips drink lots of water; refresh with cold water daily.",
+      "Keep away from direct sunlight, drafts, and ripening fruit to maximize bloom lifespan."
     ],
     sizes: [
-      { id: "classic", name: "Classic", stems: "18-20 stems", price: 48, default: false },
-      { id: "deluxe", name: "Deluxe", stems: "28-30 stems", price: 68, default: true },
-      { id: "grand", name: "Grand Luxe", stems: "40-42 stems", price: 92, default: false }
+      { id: "standard", name: "Standard", stems: "18-20 stems", price: 45, default: true },
+      { id: "deluxe", name: "Deluxe", stems: "28-30 stems", price: 60, default: false },
+      { id: "premium", name: "Premium", stems: "40-42 stems", price: 90, default: false }
     ],
     vases: [
-      { id: "none", name: "Florist Craft Paper Wrap", price: 0 },
+      { id: "none", name: "Gingham Check Wrap", price: 0 },
       { id: "glass", name: "Fluted Clear Glass Vase", price: 14 },
       { id: "ceramic", name: "Artisan Matte Ceramic Pot", price: 24 }
     ],
     checkoutUrls: {
-      classic: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
+      standard: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
       deluxe: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
-      grand: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6"
+      premium: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6"
+    }
+  },
+  {
+    id: "rose-garden",
+    slug: "rose-garden",
+    name: "Rose Garden",
+    subtitle: "Timeless Crimson & Velvet Garden Roses",
+    category: "bouquet",
+    occasion: "Romantic",
+    tag: "Classic Romance",
+    rating: 4.9,
+    reviewCount: 88,
+    images: {
+      primary: "images/roses.png",
+      gallery: [
+        "images/roses.png",
+        "images/sweetheart.png",
+        "images/peonies.png",
+        "images/hyacinth.png"
+      ]
+    },
+    shortDescription: "A timeless arrangement of velvety Ecuadorian red roses and delicate blush garden spray roses.",
+    description: "Our signature Rose Garden bouquet brings classic romance into modern floristry. Curated with premium garden roses, blush spray roses, and seeded eucalyptus, each stem is selected at peak bud to guarantee over a week of breathtaking elegance in your home.",
+    stems: [
+      { name: "Premium Ecuadorian Red Roses", count: 12 },
+      { name: "Blush Garden Spray Roses", count: 6 },
+      { name: "Seeded Eucalyptus", count: 4 },
+      { name: "White Waxflower Accents", count: 3 }
+    ],
+    careGuide: [
+      "Trim stems at a 45-degree angle under cool running water before placing in vase.",
+      "Replace vase water every 2 days with cold, fresh water and flower food.",
+      "Remove any guard petals gently for full opening."
+    ],
+    sizes: [
+      { id: "standard", name: "Standard", stems: "18-20 stems", price: 48, default: true },
+      { id: "deluxe", name: "Deluxe", stems: "28-30 stems", price: 68, default: false },
+      { id: "premium", name: "Premium", stems: "40-42 stems", price: 95, default: false }
+    ],
+    vases: [
+      { id: "none", name: "Luxury Matte Taupe Wrap", price: 0 },
+      { id: "glass", name: "Fluted Clear Glass Vase", price: 14 },
+      { id: "ceramic", name: "Artisan Matte Ceramic Pot", price: 24 }
+    ],
+    checkoutUrls: {
+      standard: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
+      deluxe: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
+      premium: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6"
+    }
+  },
+  {
+    id: "casablanca-lilies",
+    slug: "casablanca-lilies",
+    name: "Casablanca Imperial Lilies",
+    subtitle: "Grand White Oriental Lilies & Italian Ruscus",
+    category: "luxury",
+    occasion: "Celebrations",
+    tag: "Statement Scale",
+    rating: 5.0,
+    reviewCount: 64,
+    images: {
+      primary: "images/lilies.png",
+      gallery: [
+        "images/lilies.png",
+        "images/orchids.png",
+        "images/spires.png",
+        "images/hydrangea.png"
+      ]
+    },
+    shortDescription: "Dramatic, intoxicatingly fragrant pure white Oriental lilies paired with emerald Italian ruscus.",
+    description: "An awe-inspiring statement of pure elegance. Casablanca lilies are renowned for their dramatic scale, sculptural star-shaped petals, and intoxicating sweet perfume. Hand-arranged with Italian ruscus and silver dollar eucalyptus in a champagne silk ribbon wrap.",
+    stems: [
+      { name: "Grand Casablanca Oriental Lilies", count: 8 },
+      { name: "Italian Ruscus Spires", count: 6 },
+      { name: "Silver Dollar Eucalyptus", count: 4 }
+    ],
+    careGuide: [
+      "Gently remove pollen anthers as blooms open to prevent petal staining.",
+      "Recut 1 inch off bottom of stems every 3 days in cold fresh water.",
+      "Keep in a cool room away from direct heaters and air conditioning."
+    ],
+    sizes: [
+      { id: "standard", name: "Standard", stems: "16-18 blooms", price: 65, default: true },
+      { id: "deluxe", name: "Deluxe", stems: "24-26 blooms", price: 85, default: false },
+      { id: "premium", name: "Premium", stems: "34-36 blooms", price: 120, default: false }
+    ],
+    vases: [
+      { id: "none", name: "Beige Kraft Wrap & Silk Ribbon", price: 0 },
+      { id: "glass", name: "Fluted Clear Glass Vase", price: 14 },
+      { id: "ceramic", name: "Artisan Matte Ceramic Pot", price: 24 }
+    ],
+    checkoutUrls: {
+      standard: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
+      deluxe: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
+      premium: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6"
+    }
+  },
+  {
+    id: "royal-orchid",
+    slug: "royal-orchid",
+    name: "Royal Phalaenopsis Orchid",
+    subtitle: "Double-Stem Cascading White Orchid Plant",
+    category: "luxury",
+    occasion: "Milestones & Corporate",
+    tag: "Luxury Potted",
+    rating: 4.9,
+    reviewCount: 52,
+    images: {
+      primary: "images/orchids.png",
+      gallery: [
+        "images/orchids.png",
+        "images/lilies.png",
+        "images/peonies.png",
+        "images/spires.png"
+      ]
+    },
+    shortDescription: "A living sculptural masterpiece featuring two cascading stems of moth orchids in a fluted ceramic vessel.",
+    description: "The epitome of architectural luxury and longevity. Our Royal Phalaenopsis Orchid arrives potted in an artisan matte cream fluted ceramic container with preserved forest moss. With proper care, these majestic blooms remain in vibrant flower for 2 to 3 months.",
+    stems: [
+      { name: "Cascading White Orchid Stems", count: 2 },
+      { name: "Preserved Forest Moss Layer", count: 1 },
+      { name: "Artisan Ceramic Pot", count: 1 }
+    ],
+    careGuide: [
+      "Place in bright, indirect sunlight; avoid direct midday heat.",
+      "Water with 3 ice cubes or 1/4 cup of room-temperature water once weekly.",
+      "Allow soil mix to dry slightly between waterings; avoid standing water in saucer."
+    ],
+    sizes: [
+      { id: "standard", name: "Classic Double Stem", stems: "12-14 blooms", price: 75, default: true },
+      { id: "deluxe", name: "Triple Cascade Stem", stems: "18-20 blooms", price: 95, default: false },
+      { id: "premium", name: "Grand Quadruple Stem", stems: "26-28 blooms", price: 135, default: false }
+    ],
+    vases: [
+      { id: "ceramic", name: "Artisan Matte Cream Ceramic Pot (Included)", price: 0 },
+      { id: "gold", name: "Hand-Hammered Brass Planter", price: 25 }
+    ],
+    checkoutUrls: {
+      standard: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
+      deluxe: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
+      premium: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6"
+    }
+  },
+  {
+    id: "hydrangea-cloud",
+    slug: "hydrangea-cloud",
+    name: "Hydrangea Cloud Bouquet",
+    subtitle: "Powder Blue & Vintage Lavender Hydrangeas",
+    category: "bouquet",
+    occasion: "Housewarming & Everyday",
+    tag: "Voluminous Mass",
+    rating: 4.8,
+    reviewCount: 110,
+    images: {
+      primary: "images/hydrangea.png",
+      gallery: [
+        "images/hydrangea.png",
+        "images/hyacinth.png",
+        "images/sweetheart.png",
+        "images/tulips.png"
+      ]
+    },
+    shortDescription: "Lush, pillowy cloud-like hydrangeas in pastel blue and lavender nestled with blush spray roses.",
+    description: "An opulent, rounded centerpiece arrangement boasting voluminous heads of Dutch hydrangeas in soft periwinkle blue and smoky lavender. Accented with ruffled white lisianthus and seeded eucalyptus, this bouquet fills rooms with effortless botanical grandeur.",
+    stems: [
+      { name: "Large Powder Blue Hydrangeas", count: 4 },
+      { name: "Vintage Lavender Hydrangeas", count: 3 },
+      { name: "Blush Spray Roses", count: 6 },
+      { name: "White Lisianthus Stems", count: 4 }
+    ],
+    careGuide: [
+      "Hydrangeas love water: submerge stems deep in a clean, full vase of cold water.",
+      "If a head wilts, submerge the entire bloom head in cool water for 20 minutes to revive.",
+      "Mist petals lightly with fresh water every morning."
+    ],
+    sizes: [
+      { id: "standard", name: "Standard", stems: "16-18 stems", price: 52, default: true },
+      { id: "deluxe", name: "Deluxe", stems: "24-26 stems", price: 72, default: false },
+      { id: "premium", name: "Premium", stems: "34-36 stems", price: 98, default: false }
+    ],
+    vases: [
+      { id: "none", name: "Vellum Wrap & Lavender Ribbon", price: 0 },
+      { id: "glass", name: "Fluted Clear Glass Vase", price: 14 },
+      { id: "ceramic", name: "Artisan Matte Ceramic Pot", price: 24 }
+    ],
+    checkoutUrls: {
+      standard: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
+      deluxe: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
+      premium: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6"
+    }
+  },
+  {
+    id: "golden-sunburst",
+    slug: "golden-sunburst",
+    name: "Golden Sunburst & Dahlias",
+    subtitle: "Mini Sunflowers & Café au Lait Dahlias",
+    category: "celebration",
+    occasion: "Get Well & Cheer",
+    tag: "Seasonal Warmth",
+    rating: 4.9,
+    reviewCount: 76,
+    images: {
+      primary: "images/sunburst.png",
+      gallery: [
+        "images/sunburst.png",
+        "images/birthday.png",
+        "images/wildflower.png",
+        "images/roses.png"
+      ]
+    },
+    shortDescription: "Joyful golden mini sunflowers, creamy Café au Lait dahlias, and vibrant red hypericum berries.",
+    description: "An instant mood-lifter crafted to celebrate milestones, express gratitude, or deliver golden cheer. Featuring velvety brown-eyed sunflowers, dinner-plate Café au Lait dahlias, apricot garden roses, and clusters of polished hypericum berries.",
+    stems: [
+      { name: "Golden Mini Sunflowers", count: 6 },
+      { name: "Café au Lait Dahlias", count: 4 },
+      { name: "Apricot Garden Roses", count: 4 },
+      { name: "Red Hypericum Berries", count: 5 }
+    ],
+    careGuide: [
+      "Trim stems at an angle and remove any leaves below the waterline.",
+      "Sunflowers are thirsty stems: check and refill water daily.",
+      "Display in moderate temperatures to preserve dahlia petal firmness."
+    ],
+    sizes: [
+      { id: "standard", name: "Standard", stems: "18-20 stems", price: 46, default: true },
+      { id: "deluxe", name: "Deluxe", stems: "26-28 stems", price: 64, default: false },
+      { id: "premium", name: "Premium", stems: "38-40 stems", price: 88, default: false }
+    ],
+    vases: [
+      { id: "none", name: "Terracotta Linen Ribbon Wrap", price: 0 },
+      { id: "glass", name: "Fluted Clear Glass Vase", price: 14 },
+      { id: "ceramic", name: "Artisan Matte Ceramic Pot", price: 24 }
+    ],
+    checkoutUrls: {
+      standard: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
+      deluxe: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
+      premium: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6"
+    }
+  },
+  {
+    id: "meadow-spires",
+    slug: "meadow-spires",
+    name: "Meadow Spires & Wild Greens",
+    subtitle: "Peach Snapdragons & Lavender Stock Spires",
+    category: "bouquet",
+    occasion: "Everyday",
+    tag: "Textural Line",
+    rating: 4.8,
+    reviewCount: 43,
+    images: {
+      primary: "images/spires.png",
+      gallery: [
+        "images/spires.png",
+        "images/hyacinth.png",
+        "images/tulips.png",
+        "images/wildflower.png"
+      ]
+    },
+    shortDescription: "A tall, airy editorial arrangement of pastel snapdragons, sweet Matthiola stock, and layered eucalyptus.",
+    description: "Designed with botanical movement and vertical depth. Tall, graceful peach snapdragons combine with honey-scented lavender stock, ruffled white ranunculus, and wisps of green bell thlaspi for an organic meadow silhouette.",
+    stems: [
+      { name: "Peach Snapdragon Spires", count: 6 },
+      { name: "Lavender Matthiola Stock", count: 6 },
+      { name: "White Ranunculus", count: 4 },
+      { name: "Silver Dollar & Seeded Eucalyptus", count: 5 }
+    ],
+    careGuide: [
+      "Snapdragons naturally reach toward the light; turn vase every couple of days.",
+      "Remove faded bottom blossoms along the spires to encourage top buds to bloom.",
+      "Keep water fresh and cool for long-lasting fragrance."
+    ],
+    sizes: [
+      { id: "standard", name: "Standard", stems: "18-20 stems", price: 42, default: true },
+      { id: "deluxe", name: "Deluxe", stems: "26-28 stems", price: 58, default: false },
+      { id: "premium", name: "Premium", stems: "38-40 stems", price: 82, default: false }
+    ],
+    vases: [
+      { id: "none", name: "Sage Cotton Ribbon Wrap", price: 0 },
+      { id: "glass", name: "Fluted Clear Glass Vase", price: 14 },
+      { id: "ceramic", name: "Artisan Matte Ceramic Pot", price: 24 }
+    ],
+    checkoutUrls: {
+      standard: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
+      deluxe: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
+      premium: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6"
+    }
+  },
+  {
+    id: "pastel-peonies",
+    slug: "pastel-peonies",
+    name: "Pastel Peonies",
+    subtitle: "Lush Sarah Bernhardt Blush Peonies",
+    category: "luxury",
+    occasion: "Romantic",
+    tag: "Coveted Luxury",
+    rating: 5.0,
+    reviewCount: 156,
+    images: {
+      primary: "images/peonies.png",
+      gallery: [
+        "images/peonies.png",
+        "images/sweetheart.png",
+        "images/roses.png",
+        "images/orchids.png"
+      ]
+    },
+    shortDescription: "Sumptuous Sarah Bernhardt blush and cream peonies hand-tied with velvet champagne ribbon.",
+    description: "The crown jewel of seasonal floristry. Pillow-soft Sarah Bernhardt peonies arrive in tight bud and unfurl into massive ruffled blooms over several days. Accented with dark emerald peony foliage and delicate white lilacs.",
+    stems: [
+      { name: "Sarah Bernhardt Blush Peonies", count: 10 },
+      { name: "Cream White Peonies", count: 5 },
+      { name: "White Lilac Sprigs", count: 4 },
+      { name: "Lush Peony Greens", count: 4 }
+    ],
+    careGuide: [
+      "To speed opening, place in slightly warm water in a warm room.",
+      "Once open, move to a cool spot to prolong bloom beauty for up to 8-10 days.",
+      "Gently rinse any natural sweet sap from tight buds with lukewarm water."
+    ],
+    sizes: [
+      { id: "standard", name: "Standard", stems: "15-18 stems", price: 58, default: true },
+      { id: "deluxe", name: "Deluxe", stems: "22-25 stems", price: 78, default: false },
+      { id: "premium", name: "Premium", stems: "32-35 stems", price: 110, default: false }
+    ],
+    vases: [
+      { id: "none", name: "Heavy Cream Wrap & Velvet Ribbon", price: 0 },
+      { id: "glass", name: "Fluted Clear Glass Vase", price: 14 },
+      { id: "ceramic", name: "Artisan Matte Ceramic Pot", price: 24 }
+    ],
+    checkoutUrls: {
+      standard: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
+      deluxe: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
+      premium: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6"
     }
   },
   {
     id: "sunday-tulips",
     slug: "sunday-tulips",
     name: "Sunday Tulips",
-    subtitle: "Fresh Spring Whispers",
+    subtitle: "Fresh Spring Whispers in Pastel",
     category: "bouquet",
     occasion: "Everyday",
-    tag: "Fresh Seasonal",
+    tag: "Spring Fresh",
     rating: 4.8,
-    reviewCount: 31,
+    reviewCount: 68,
     images: {
-      primary: "images/tulip.jpg",
+      primary: "images/tulips.png",
       gallery: [
-        "images/tulip.jpg",
-        "images/wildflower.jpg",
-        "images/flower-shop.jpg"
+        "images/tulips.png",
+        "images/hyacinth.png",
+        "images/sweetheart.png",
+        "images/spires.png"
       ]
     },
-    shortDescription: "Fresh, cheerful Dutch tulips with vibrant color transitions that continue opening gently in vase.",
-    description: "Evoking lazy Sunday mornings in spring, this cheerful bouquet features a harmonic gradient of pastel and crisp sunset tulips. Tulips continue to grow and dance toward the light, making this a dynamic living centerpiece.",
+    shortDescription: "A modern monochrome bouquet of fresh Dutch tulips in soft blush, peach, and ivory.",
+    description: "Crisp, graceful, and understated. Sunday Tulips celebrate the simple perfection of springtime. Grown in cold-climate greenhouses and harvested at first color, these stems continue to grow and dance toward natural light in your vase.",
     stems: [
-      { name: "Dutch Parrot Tulips", count: 14 },
-      { name: "French Single Late Tulips", count: 8 },
-      { name: "Ruscus Foliage", count: 4 }
+      { name: "Blush Dutch Tulips", count: 10 },
+      { name: "Soft Peach Tulips", count: 8 },
+      { name: "Cream White Tulips", count: 6 }
     ],
     careGuide: [
-      "Tulips love ice-cold water; drop an ice cube in daily.",
-      "Prick stem 1/4 inch below flower head with a clean pin to keep stems standing tall.",
-      "Trim 1 cm off stems every other day."
+      "Tulips continue growing 1-2 inches in the vase: recut stems every 2 days.",
+      "Keep water shallow (2-3 inches) and cold to keep stems upright.",
+      "Avoid placing next to daffodils or fruit."
     ],
     sizes: [
-      { id: "classic", name: "Classic", stems: "16-18 stems", price: 38, default: false },
-      { id: "deluxe", name: "Deluxe", stems: "24-26 stems", price: 54, default: true },
-      { id: "grand", name: "Grand Luxe", stems: "34-36 stems", price: 76, default: false }
+      { id: "standard", name: "Standard", stems: "20-22 stems", price: 38, default: true },
+      { id: "deluxe", name: "Deluxe", stems: "30-32 stems", price: 52, default: false },
+      { id: "premium", name: "Premium", stems: "44-46 stems", price: 74, default: false }
     ],
     vases: [
-      { id: "none", name: "Florist Craft Paper Wrap", price: 0 },
+      { id: "none", name: "Parchment Craft Wrap", price: 0 },
       { id: "glass", name: "Fluted Clear Glass Vase", price: 14 },
       { id: "ceramic", name: "Artisan Matte Ceramic Pot", price: 24 }
     ],
     checkoutUrls: {
-      classic: "https://petal-bloom.lemonsqueezy.com/checkout/buy/b765dc63-9ead-4d94-aa5c-2d3f8b2dedbc",
-      deluxe: "https://petal-bloom.lemonsqueezy.com/checkout/buy/b765dc63-9ead-4d94-aa5c-2d3f8b2dedbc",
-      grand: "https://petal-bloom.lemonsqueezy.com/checkout/buy/b765dc63-9ead-4d94-aa5c-2d3f8b2dedbc"
+      standard: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
+      deluxe: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
+      premium: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6"
     }
   },
   {
-    id: "blush-peonies",
-    slug: "blush-peonies",
-    name: "Blush Peonies",
-    subtitle: "Signature Luxury Blooms",
-    category: "luxury",
-    occasion: "Celebration",
-    tag: "Florist Favorite",
-    rating: 5.0,
-    reviewCount: 56,
-    images: {
-      primary: "images/peonies.jpg",
-      gallery: [
-        "images/peonies.jpg",
-        "images/roses.jpg",
-        "images/hero2.jpg"
-      ]
-    },
-    shortDescription: "Full, cloud-like ruffled peonies arranged for an effortlessly opulent and fragrant statement.",
-    description: "The crown jewel of seasonal floristry. Our Blush Peonies arrangement features voluptuous, fragrant Sarah Bernhardt blooms paired with delicate white astilbe and Italian ruscus. Their layered petals unfurl luxuriously over 5 to 7 days.",
-    stems: [
-      { name: "Sarah Bernhardt Peonies", count: 10 },
-      { name: "White Ranunculus", count: 6 },
-      { name: "Astilbe Pink Feathers", count: 5 },
-      { name: "Italian Ruscus", count: 4 }
-    ],
-    careGuide: [
-      "To encourage tight buds to open faster, place in lukewarm water in a bright room.",
-      "Mist petals lightly with fine water spray in the morning.",
-      "Remove any outer guard petals that naturally brown as the blossom opens."
-    ],
-    sizes: [
-      { id: "classic", name: "Classic", stems: "12-14 stems", price: 58, default: false },
-      { id: "deluxe", name: "Deluxe", stems: "20-22 stems", price: 82, default: true },
-      { id: "grand", name: "Grand Luxe", stems: "30-32 stems", price: 118, default: false }
-    ],
-    vases: [
-      { id: "none", name: "Florist Craft Paper Wrap", price: 0 },
-      { id: "glass", name: "Fluted Clear Glass Vase", price: 14 },
-      { id: "ceramic", name: "Artisan Matte Ceramic Pot", price: 24 }
-    ],
-    checkoutUrls: {
-      classic: "https://petal-bloom.lemonsqueezy.com/checkout/buy/40b41c5e-b7c8-4897-92f9-e43d50c9fdab",
-      deluxe: "https://petal-bloom.lemonsqueezy.com/checkout/buy/40b41c5e-b7c8-4897-92f9-e43d50c9fdab",
-      grand: "https://petal-bloom.lemonsqueezy.com/checkout/buy/40b41c5e-b7c8-4897-92f9-e43d50c9fdab"
-    }
-  },
-  {
-    id: "little-daisy",
-    slug: "little-daisy",
-    name: "Little Daisy",
-    subtitle: "Everyday Sunshine Gesture",
-    category: "gift",
-    occasion: "Thank You",
-    tag: "Gift Pick",
-    rating: 4.7,
-    reviewCount: 28,
-    images: {
-      primary: "images/daisies.jpg",
-      gallery: [
-        "images/daisies.jpg",
-        "images/wildflower.jpg",
-        "images/sweetheart.jpg"
-      ]
-    },
-    shortDescription: "A sweet, cheerful floral gesture designed for an ordinary day made bright and sunny.",
-    description: "Nothing spreads pure spontaneous happiness like fresh chamomile daisies, golden buttons, and seeded eucalyptus. Packed with playful textures, this petite arrangement is ideal for bedside tables, home offices, or a sweet 'thinking of you' surprise.",
-    stems: [
-      { name: "Chamomile Daisies", count: 15 },
-      { name: "Feverfew Stems", count: 8 },
-      { name: "Solidago Goldenrod", count: 4 },
-      { name: "Seeded Eucalyptus", count: 3 }
-    ],
-    careGuide: [
-      "Keep water fresh and clear; daisies drink quickly.",
-      "Pinch off spent blooms to allow smaller secondary buds to bloom."
-    ],
-    sizes: [
-      { id: "classic", name: "Petite", stems: "14-16 stems", price: 28, default: true },
-      { id: "deluxe", name: "Classic", stems: "22-24 stems", price: 42, default: false },
-      { id: "grand", name: "Full Bunch", stems: "32-34 stems", price: 58, default: false }
-    ],
-    vases: [
-      { id: "none", name: "Florist Craft Paper Wrap", price: 0 },
-      { id: "glass", name: "Fluted Clear Glass Vase", price: 14 },
-      { id: "ceramic", name: "Artisan Matte Ceramic Pot", price: 24 }
-    ],
-    checkoutUrls: {
-      classic: "https://petal-bloom.lemonsqueezy.com/checkout/buy/25914755-bf53-4d1c-86d2-28276b7600a5",
-      deluxe: "https://petal-bloom.lemonsqueezy.com/checkout/buy/25914755-bf53-4d1c-86d2-28276b7600a5",
-      grand: "https://petal-bloom.lemonsqueezy.com/checkout/buy/25914755-bf53-4d1c-86d2-28276b7600a5"
-    }
-  },
-  {
-    id: "sweetheart",
-    slug: "sweetheart",
-    name: "Sweetheart",
-    subtitle: "Modern Romantic Harmony",
+    id: "sweetheart-bouquet",
+    slug: "sweetheart-bouquet",
+    name: "Sweetheart Bouquet",
+    subtitle: "Ruffled Lisianthus, Ranunculus & Blush Roses",
     category: "bouquet",
     occasion: "Romantic",
-    tag: "Popular",
+    tag: "Romantic Favorite",
     rating: 4.9,
-    reviewCount: 39,
+    reviewCount: 94,
     images: {
-      primary: "images/sweetheart.jpg",
+      primary: "images/sweetheart.png",
       gallery: [
-        "images/sweetheart.jpg",
-        "images/roses.jpg",
-        "images/peonies.jpg"
+        "images/sweetheart.png",
+        "images/roses.png",
+        "images/peonies.png",
+        "images/tulips.png"
       ]
     },
-    shortDescription: "A romantic blend of blush spray roses, carnations, and dried botanicals crafted with love.",
-    description: "Created for those who adore soft blush hues and delicate petal movement. The Sweetheart pairs garden-fresh blooms with textured lavender sprigs and bunny tails for an ethereal keepsake aesthetic.",
+    shortDescription: "A romantic confection of ruffled white lisianthus, pale peach ranunculus, and pastel pink roses.",
+    description: "Soft, dreamy, and poetic. The Sweetheart Bouquet is crafted with fluttery multi-petaled lisianthus, delicate ranunculus, blush garden roses, and trailing asparagus ferns wrapped in frosted vellum paper.",
     stems: [
-      { name: "Blush Garden Carnations", count: 8 },
-      { name: "Pink Tea Roses", count: 8 },
-      { name: "Bleached Bunny Tails", count: 6 },
-      { name: "Baby’s Breath Cloud", count: 4 }
+      { name: "Ruffled White Lisianthus", count: 8 },
+      { name: "Pale Peach Ranunculus", count: 6 },
+      { name: "Pastel Pink Garden Roses", count: 6 },
+      { name: "Asparagus Fern & Eucalyptus", count: 4 }
     ],
     careGuide: [
-      "Snip 1 inch off the bottom stems before arranging.",
-      "Keep away from direct AC air vents."
+      "Trim 1 inch off bottom of stems on an angle.",
+      "Replace vase water every 48 hours to maintain clear freshness.",
+      "Keep away from intense heat sources."
     ],
     sizes: [
-      { id: "classic", name: "Classic", stems: "16 stems", price: 36, default: false },
-      { id: "deluxe", name: "Deluxe", stems: "24 stems", price: 52, default: true },
-      { id: "grand", name: "Grand Luxe", stems: "34 stems", price: 74, default: false }
+      { id: "standard", name: "Standard", stems: "18-20 stems", price: 50, default: true },
+      { id: "deluxe", name: "Deluxe", stems: "28-30 stems", price: 70, default: false },
+      { id: "premium", name: "Premium", stems: "40-42 stems", price: 96, default: false }
     ],
     vases: [
-      { id: "none", name: "Florist Craft Paper Wrap", price: 0 },
+      { id: "none", name: "Textured Vellum Wrap & Mauve Ribbon", price: 0 },
       { id: "glass", name: "Fluted Clear Glass Vase", price: 14 },
       { id: "ceramic", name: "Artisan Matte Ceramic Pot", price: 24 }
     ],
     checkoutUrls: {
-      classic: "https://petal-bloom.lemonsqueezy.com/checkout/buy/0474ced0-e00c-4205-b8cd-0094f3aa9bb7",
-      deluxe: "https://petal-bloom.lemonsqueezy.com/checkout/buy/0474ced0-e00c-4205-b8cd-0094f3aa9bb7",
-      grand: "https://petal-bloom.lemonsqueezy.com/checkout/buy/0474ced0-e00c-4205-b8cd-0094f3aa9bb7"
+      standard: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
+      deluxe: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
+      premium: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6"
     }
   },
   {
-    id: "wildflower-muse",
-    slug: "wildflower-muse",
-    name: "Wildflower Muse",
-    subtitle: "Meadow-Inspired Botanical Art",
-    category: "bouquet",
-    occasion: "Everyday",
-    tag: "Artisan Choice",
-    rating: 4.8,
-    reviewCount: 34,
+    id: "petite-wildflower-basket",
+    slug: "petite-wildflower-basket",
+    name: "Petite Wildflower Basket",
+    subtitle: "Chamomile Daisies & English Lavender",
+    category: "gift",
+    occasion: "Gratitude & Thinking of You",
+    tag: "Charming Gift",
+    rating: 4.9,
+    reviewCount: 57,
     images: {
-      primary: "images/wildflower.jpg",
+      primary: "images/wildflower.png",
       gallery: [
-        "images/wildflower.jpg",
-        "images/daisies.jpg",
-        "images/tulip.jpg"
+        "images/wildflower.png",
+        "images/daisies.png",
+        "images/spires.png",
+        "images/sunburst.png"
       ]
     },
-    shortDescription: "Loose, whimsical blooms and airy greenery inspired by a sunlit countryside meadow.",
-    description: "Organic, free-form, and bursting with botanical personality. Wildflower Muse captures the wild beauty of summer hillsides, blending cosmos, delphiniums, scabiosa, and wild grasses into a naturally poetic composition.",
+    shortDescription: "A rustic woven rattan basket filled with sunny chamomile daisies, English lavender, and sweet peas.",
+    description: "Charming, fragrant, and heartwarming. Hand-arranged in a natural hand-woven wicker basket with an internal water reservoir, this petite arrangement arrives ready to display on bedside tables, breakfast nooks, or work desks.",
     stems: [
-      { name: "Blue Bell Scabiosa", count: 6 },
-      { name: "Pink Cosmos", count: 8 },
-      { name: "Snapdragons", count: 5 },
-      { name: "Meadow Foxtail Grass", count: 6 }
+      { name: "Sunny Chamomile Daisies", count: 12 },
+      { name: "Fragrant English Lavender", count: 8 },
+      { name: "Peach Sweet Peas", count: 6 },
+      { name: "Trailing Ivy Foliage", count: 4 }
     ],
     careGuide: [
-      "Remove any lower leaves that submerge below the waterline.",
-      "Give stems a fresh diagonal cut every 2 days."
+      "Add 1/2 cup of cold water into the center of the basket foam daily.",
+      "Keep away from direct draft or strong sun to prolong lavender scent.",
+      "Deadhead spent chamomile blossoms to encourage continued freshness."
     ],
     sizes: [
-      { id: "classic", name: "Classic", stems: "18-20 stems", price: 34, default: false },
-      { id: "deluxe", name: "Deluxe", stems: "28-30 stems", price: 50, default: true },
-      { id: "grand", name: "Grand Luxe", stems: "38-40 stems", price: 72, default: false }
+      { id: "standard", name: "Standard", stems: "Petite 6-inch Basket", price: 40, default: true },
+      { id: "deluxe", name: "Deluxe", stems: "Classic 8-inch Basket", price: 55, default: false },
+      { id: "premium", name: "Grand Luxe Basket", stems: "Grand 10-inch Basket", price: 75, default: false }
     ],
     vases: [
-      { id: "none", name: "Florist Craft Paper Wrap", price: 0 },
-      { id: "glass", name: "Fluted Clear Glass Vase", price: 14 },
-      { id: "ceramic", name: "Artisan Matte Ceramic Pot", price: 24 }
+      { id: "basket", name: "Hand-Woven Natural Rattan Basket (Included)", price: 0 }
     ],
     checkoutUrls: {
-      classic: "https://petal-bloom.lemonsqueezy.com/checkout/buy/3de4c4ec-274d-42e1-9983-aa9c1fb29bc1",
-      deluxe: "https://petal-bloom.lemonsqueezy.com/checkout/buy/3de4c4ec-274d-42e1-9983-aa9c1fb29bc1",
-      grand: "https://petal-bloom.lemonsqueezy.com/checkout/buy/3de4c4ec-274d-42e1-9983-aa9c1fb29bc1"
+      standard: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
+      deluxe: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
+      premium: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6"
     }
   },
   {
     id: "birthday-bloom-box",
     slug: "birthday-bloom-box",
     name: "Birthday Bloom Box",
-    subtitle: "All-in-One Celebration Gift Set",
+    subtitle: "Pastel Hat-Box Arrangement & Letterpress Card",
     category: "celebration",
-    occasion: "Birthday",
-    tag: "Celebration Bundle",
+    occasion: "Milestones & Birthdays",
+    tag: "Celebration Package",
     rating: 5.0,
-    reviewCount: 48,
+    reviewCount: 120,
     images: {
-      primary: "images/birthday-bloom.jpg",
+      primary: "images/birthday.png",
       gallery: [
-        "images/birthday-bloom.jpg",
-        "images/peonies.jpg",
-        "images/flower-shop.jpg"
+        "images/birthday.png",
+        "images/sunburst.png",
+        "images/peonies.png",
+        "images/sweetheart.png"
       ]
     },
-    shortDescription: "Complete celebration set featuring a celebratory bouquet, letterpress birthday card, and treats.",
-    description: "Make their milestone unforgettable! The Birthday Bloom Box includes an artfully composed bouquet of pastel roses and lilies, an artisan gold-foil birthday card with your custom printed message, and a keepsake florist vase.",
+    shortDescription: "A luxury round keepsake hat box densely packed with pastel roses and mini hydrangeas, with a letterpress card.",
+    description: "The ultimate celebratory gift experience. Arrives in an elegant round matte cream hat box tied with violet silk ribbon. Freshly cut pastel roses, mini hydrangeas, and blush carnations are arranged in hydration foam, complete with a personalized gold-foil letterpress card.",
     stems: [
-      { name: "Celebration Roses", count: 10 },
-      { name: "Pink Asiatic Lilies", count: 4 },
-      { name: "Lisianthus Blossoms", count: 6 },
-      { name: "Eucalyptus Sprigs", count: 4 }
+      { name: "Pastel Garden Roses", count: 8 },
+      { name: "Mini White Hydrangeas", count: 3 },
+      { name: "Blush Carnations", count: 6 },
+      { name: "Gold-Dusted Hypericum Berries", count: 4 }
     ],
     careGuide: [
-      "Remove lily pollen anthers carefully to avoid staining petals or fabrics.",
-      "Keep in a cool spot away from sunlight."
+      "Add 1/4 cup of fresh cold water into the center of the bloom box every 2 days.",
+      "Keep arrangement in the decorative hat box for the full life of the blooms.",
+      "Display in a cool room away from direct heaters."
     ],
     sizes: [
-      { id: "classic", name: "Standard Box", stems: "Includes Card + Bouquet", price: 54, default: false },
-      { id: "deluxe", name: "Deluxe Box (with Vase)", stems: "Card + Bouquet + Glass Vase", price: 68, default: true },
-      { id: "grand", name: "VIP Luxe Box", stems: "Card + Grand Bouquet + Ceramic Vase", price: 95, default: false }
+      { id: "standard", name: "Standard", stems: "6-inch Hat Box", price: 54, default: true },
+      { id: "deluxe", name: "Deluxe", stems: "8-inch Hat Box", price: 74, default: false },
+      { id: "premium", name: "Grand Luxe Hat Box", stems: "10-inch Hat Box", price: 105, default: false }
     ],
     vases: [
-      { id: "included", name: "Celebration Packaging & Box (Included)", price: 0 }
+      { id: "hatbox", name: "Matte Cream Keepsake Hat Box (Included)", price: 0 }
     ],
     checkoutUrls: {
-      classic: "https://petal-bloom.lemonsqueezy.com/checkout/buy/f8f48919-b03b-42af-b8e7-e7a15b67fba8",
-      deluxe: "https://petal-bloom.lemonsqueezy.com/checkout/buy/f8f48919-b03b-42af-b8e7-e7a15b67fba8",
-      grand: "https://petal-bloom.lemonsqueezy.com/checkout/buy/f8f48919-b03b-42af-b8e7-e7a15b67fba8"
+      standard: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
+      deluxe: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
+      premium: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6"
     }
   }
 ];
 
 /**
- * Helper to get a single product by ID or slug
+ * Get product by slug identifier
  */
 export function getProductBySlug(slug) {
-  return PRODUCTS.find(p => p.slug === slug || p.id === slug) || null;
+  return PRODUCTS.find(p => p.slug === slug) || null;
 }
 
 /**
- * Helper to get related products (excluding current product)
+ * Filter catalog products by category
  */
-export function getRelatedProducts(currentSlug, limit = 3) {
-  const current = getProductBySlug(currentSlug);
-  if (!current) return PRODUCTS.slice(0, limit);
+export function getProductsByCategory(category = "all") {
+  if (!category || category === "all") return PRODUCTS;
+  return PRODUCTS.filter(p => p.category === category);
+}
 
-  const filtered = PRODUCTS.filter(p => p.slug !== current.slug);
-  const sameCategory = filtered.filter(p => p.category === current.category);
-  const others = filtered.filter(p => p.category !== current.category);
-
-  return [...sameCategory, ...others].slice(0, limit);
+/**
+ * Search products by keyword
+ */
+export function searchProducts(keyword = "") {
+  if (!keyword) return PRODUCTS;
+  const term = keyword.toLowerCase().trim();
+  return PRODUCTS.filter(p =>
+    p.name.toLowerCase().includes(term) ||
+    p.subtitle.toLowerCase().includes(term) ||
+    p.category.toLowerCase().includes(term) ||
+    p.occasion.toLowerCase().includes(term) ||
+    p.description.toLowerCase().includes(term) ||
+    p.stems.some(s => s.name.toLowerCase().includes(term))
+  );
 }

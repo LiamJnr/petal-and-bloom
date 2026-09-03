@@ -1,0 +1,209 @@
+/* ==========================================================================
+   ABOUT / STORY & PHILOSOPHY SECTION — PURPLE THEME
+   ========================================================================== */
+
+.about-section {
+  background-color: #ffffff;
+  padding: 100px 0;
+  border-top: 1px solid var(--border);
+  position: relative;
+}
+
+.about-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 64px;
+  align-items: center;
+}
+
+/* Left: Image Showcase with Floating Elements */
+.about-image-wrapper {
+  position: relative;
+}
+
+.about-main-image {
+  width: 100%;
+  height: 480px;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(94, 17, 115, 0.08);
+  border: 1px solid var(--border);
+  background-color: var(--bg-card);
+}
+
+.about-main-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.about-image-wrapper:hover .about-main-image img {
+  transform: scale(1.03);
+}
+
+/* Floating Badges */
+.about-floating-badge {
+  position: absolute;
+  bottom: 24px;
+  left: -20px;
+  background: #ffffff;
+  padding: 16px 22px;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: 260px;
+  animation: floatSlow 4s ease-in-out infinite;
+}
+
+.about-badge-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-full);
+  background-color: var(--primary-light);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.about-badge-text h5 {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+
+.about-badge-text span {
+  font-size: 0.74rem;
+  color: var(--muted);
+}
+
+.about-exp-stamp {
+  position: absolute;
+  top: -16px;
+  right: -16px;
+  background-color: var(--primary);
+  color: #ffffff;
+  padding: 10px 18px;
+  border-radius: var(--radius-full);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  box-shadow: 0 6px 18px rgba(94, 17, 115, 0.3);
+}
+
+/* Right: Copy & Value Pillars */
+.about-copy .eyebrow {
+  color: var(--primary);
+  background-color: var(--primary-light);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--primary-border);
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+.about-copy h2 {
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 20px;
+}
+
+.about-copy h2 em {
+  color: var(--primary);
+  font-style: normal;
+}
+
+.about-lead-text {
+  color: var(--ink-light);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+/* 3 Core Value Pillars */
+.about-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 32px;
+}
+
+.about-pillar-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 14px 18px;
+  background-color: var(--bg-subtle);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  transition: all var(--transition-fast);
+}
+
+.about-pillar-item:hover {
+  background-color: #ffffff;
+  border-color: var(--primary-border);
+  box-shadow: 0 4px 14px rgba(94, 17, 115, 0.06);
+  transform: translateX(4px);
+}
+
+.about-pillar-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background-color: var(--primary-light);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.about-pillar-content h4 {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 3px;
+}
+
+.about-pillar-content p {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .about-inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .about-floating-badge {
+    left: 12px;
+    bottom: 12px;
+  }
+
+  .about-main-image {
+    height: 360px;
+  }
+}

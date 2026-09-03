@@ -1,14 +1,15 @@
 /**
  * Petal & Bloom — Main Application Entrypoint
- * Coordinates modular architecture: Navigation, Router, Catalog, PDP, Reviews, Cart, Toast
+ * Coordinates modular architecture: Navigation, Router, Catalog, PDP, Reviews, Cart, Checkout, Toast
  */
 
 import { initNavigation } from "./modules/navigation.js";
-import { initRouter, navigateToProduct, navigateToHome } from "./modules/router.js";
+import { initRouter, navigateToProduct, navigateToHome, navigateToCheckout } from "./modules/router.js";
 import { initCatalog, setSearchQuery } from "./modules/catalog.js";
 import { initPDP, renderPDP } from "./modules/pdp.js";
 import { initReviews } from "./modules/reviews.js";
 import { initCart, addToCart, openCart } from "./modules/cart.js";
+import { renderCheckoutPage } from "./modules/checkout.js";
 import { showToast } from "./modules/toast.js";
 import { getProductBySlug } from "./data/products.js";
 
@@ -82,12 +83,19 @@ document.addEventListener("DOMContentLoaded", () => {
     onRouteHome: () => {
       const homeView = document.getElementById("home-view");
       const pdpView = document.getElementById("pdp-view");
+      const checkoutView = document.getElementById("checkout-view");
       if (homeView) homeView.style.display = "block";
       if (pdpView) pdpView.style.display = "none";
+      if (checkoutView) checkoutView.style.display = "none";
       document.title = "Petal & Bloom — Artisan Florist & Botanical Boutique";
     },
     onRouteProduct: (slug) => {
+      const checkoutView = document.getElementById("checkout-view");
+      if (checkoutView) checkoutView.style.display = "none";
       renderPDP(slug);
+    },
+    onRouteCheckout: () => {
+      renderCheckoutPage();
     }
   });
 
@@ -98,9 +106,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Birthday banner CTA
-  document.getElementById("btn-view-birthday-bundle")?.addEventListener("click", (e) => {
-    const slug = e.currentTarget.dataset.slug;
-    navigateToProduct(slug);
+  // Listen for custom Checkout navigation event
+  document.addEventListener("navigate-to-checkout", () => {
+    navigateToCheckout();
+  });
+
+  // Birthday banner CTA buttons
+  const birthdayTriggers = [
+    document.getElementById("btn-view-birthday-bundle"),
+    document.getElementById("event-showcase-trigger")
+  ];
+  birthdayTriggers.forEach(btn => {
+    btn?.addEventListener("click", (e) => {
+      const slug = e.currentTarget.dataset.slug || "birthday-bloom-box";
+      navigateToProduct(slug);
+    });
   });
 });

@@ -1,23 +1,58 @@
 /* ==========================================================================
-   HEADER & NAVIGATION COMPONENT
+   HEADER & NAVIGATION COMPONENT — PURPLE DESIGN
    ========================================================================== */
 
-/* Top Announcement Bar */
+/* Top Deep Purple Announcement Bar */
 .announcement-bar {
-  background-color: var(--ink-900);
-  color: var(--cream-100);
-  font-size: 0.76rem;
+  background-color: var(--primary);
+  color: #ffffff;
+  font-size: 0.78rem;
   font-weight: 500;
-  letter-spacing: 0.04em;
-  padding: 8px 16px;
-  text-align: center;
+  padding: 8px 0;
   position: relative;
   z-index: 30;
 }
 
-.announcement-bar strong {
-  color: var(--rose-200);
+.announcement-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.announcement-contact {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.announcement-promo {
+  text-align: center;
+  color: #ffffff;
+}
+
+.announcement-promo a {
+  color: #ffffff;
+  text-decoration: underline;
   font-weight: 600;
+  margin-left: 4px;
+}
+
+.announcement-socials {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.announcement-socials a {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.85rem;
+  transition: color var(--transition-fast);
+  display: flex;
+  align-items: center;
+}
+
+.announcement-socials a:hover {
+  color: #ffffff;
 }
 
 /* Site Header */
@@ -25,16 +60,14 @@
   position: sticky;
   top: 0;
   z-index: 25;
-  background-color: rgba(251, 247, 242, 0.94);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background-color: #ffffff;
   border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
   transition: all var(--transition-fast);
 }
 
 .site-header.scrolled {
   box-shadow: var(--shadow-sm);
-  background-color: rgba(251, 247, 242, 0.98);
 }
 
 .nav {
@@ -42,37 +75,43 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: 24px;
 }
 
 /* Logo */
 .logo {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 1.45rem;
   font-weight: 700;
   color: var(--ink);
-  letter-spacing: -0.01em;
   display: inline-flex;
-  align-items: baseline;
-  gap: 3px;
+  align-items: center;
+  gap: 8px;
   flex-shrink: 0;
 }
 
-.logo span {
-  color: var(--rose);
-  font-style: italic;
-  font-weight: 400;
-  font-size: 1.6rem;
+.logo-flower-icon {
+  width: 28px;
+  height: 28px;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-flower-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
 }
 
 /* Desktop Navigation Links */
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 28px;
-  font-size: 0.86rem;
-  font-weight: 600;
-  letter-spacing: 0.01em;
+  gap: 32px;
+  font-size: 0.92rem;
+  font-weight: 500;
 }
 
 .nav-link {
@@ -84,27 +123,10 @@
 
 .nav-link:hover,
 .nav-link.active {
-  color: var(--rose-dark);
+  color: var(--primary);
 }
 
-.nav-link::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0%;
-  height: 2px;
-  background-color: var(--rose);
-  transition: width var(--transition-fast);
-  border-radius: var(--radius-full);
-}
-
-.nav-link:hover::after,
-.nav-link.active::after {
-  width: 100%;
-}
-
-/* Header Action Controls (Search, Cart, Menu) */
+/* Header Action Controls (Search, Wishlist, Cart, Profile, Menu) */
 .header-actions {
   display: flex;
   align-items: center;
@@ -115,8 +137,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   border-radius: var(--radius-full);
   color: var(--ink);
   background: transparent;
@@ -125,8 +147,8 @@
 }
 
 .icon-btn:hover {
-  background-color: var(--cream-200);
-  color: var(--rose-dark);
+  background-color: var(--bg-subtle);
+  color: var(--primary);
 }
 
 .icon-btn svg {
@@ -141,10 +163,10 @@
 
 .cart-count-badge {
   position: absolute;
-  top: 4px;
-  right: 4px;
-  background-color: var(--rose);
-  color: var(--white);
+  top: 2px;
+  right: 2px;
+  background-color: var(--pink);
+  color: #ffffff;
   font-size: 0.65rem;
   font-weight: 700;
   width: 18px;
@@ -153,16 +175,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid var(--cream-100);
+  border: 2px solid #ffffff;
   transform: scale(0);
-  transition: transform 0.25s var(--ease-spring);
+  transition: transform 0.25s ease;
 }
 
 .cart-count-badge.has-items {
   transform: scale(1);
 }
 
-/* Search Dropdown / Bar in Header */
+/* Search Dropdown in Header */
 .search-container {
   position: relative;
 }
@@ -172,8 +194,8 @@
   top: calc(100% + 12px);
   right: 0;
   width: 320px;
-  background: var(--white);
-  padding: 8px 12px;
+  background: #ffffff;
+  padding: 10px 14px;
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-lg);
   border: 1px solid var(--border);
@@ -181,7 +203,7 @@
   align-items: center;
   gap: 8px;
   z-index: 50;
-  animation: fadeInDown 0.2s var(--ease-smooth);
+  animation: fadeInDown 0.2s ease;
 }
 
 .search-input-wrapper.open {
@@ -193,7 +215,6 @@
   background: transparent;
   width: 100%;
   font-size: 0.88rem;
-  padding: 6px 4px;
   outline: none;
   color: var(--ink);
 }
@@ -253,17 +274,26 @@
 }
 
 /* Responsive Navigation */
-@media (max-width: 860px) {
+@media (max-width: 900px) {
+  .announcement-inner {
+    justify-content: center;
+  }
+
+  .announcement-contact,
+  .announcement-socials {
+    display: none;
+  }
+
   .menu-toggle {
     display: flex;
   }
 
   .nav-links {
     position: fixed;
-    top: calc(var(--header-height) + 33px);
+    top: calc(var(--header-height) + 36px);
     left: 0;
     right: 0;
-    background-color: var(--cream-100);
+    background-color: #ffffff;
     flex-direction: column;
     align-items: flex-start;
     padding: 24px 32px 36px;
@@ -273,7 +303,7 @@
     transform: translateY(-120%);
     opacity: 0;
     pointer-events: none;
-    transition: transform 0.3s var(--ease-smooth), opacity 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease;
     z-index: 24;
   }
 
@@ -284,13 +314,8 @@
   }
 
   .nav-link {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     width: 100%;
-    padding: 8px 0;
-  }
-
-  .search-input-wrapper {
-    width: 260px;
-    right: -60px;
+    padding: 6px 0;
   }
 }

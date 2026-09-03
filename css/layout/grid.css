@@ -15,12 +15,12 @@
 
 .eyebrow {
   display: inline-block;
-  color: var(--rose-dark);
-  font-size: 0.72rem;
+  color: var(--primary);
+  font-size: 0.76rem;
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 /* Button Component Base */
@@ -30,31 +30,44 @@
   justify-content: center;
   gap: 8px;
   border-radius: var(--radius-full);
-  padding: 13px 26px;
-  font-size: 0.84rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
+  padding: 12px 26px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
   transition: all var(--transition-fast);
   text-align: center;
   border: 1px solid transparent;
+  cursor: pointer;
 }
 
 .button:hover {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 .button:active {
   transform: translateY(0);
 }
 
+.button-primary,
 .button-dark {
-  background-color: var(--ink);
+  background-color: var(--primary);
   color: var(--white);
 }
 
+.button-primary:hover,
 .button-dark:hover {
-  background-color: var(--ink-900);
-  box-shadow: 0 6px 18px rgba(45, 41, 39, 0.2);
+  background-color: var(--primary-hover);
+  box-shadow: 0 4px 14px rgba(94, 17, 115, 0.25);
+}
+
+.button-pink {
+  background-color: var(--pink);
+  color: var(--white);
+}
+
+.button-pink:hover {
+  background-color: var(--pink-hover);
+  box-shadow: 0 4px 14px rgba(240, 98, 146, 0.3);
 }
 
 .button-light {
@@ -64,43 +77,32 @@
 }
 
 .button-light:hover {
-  background-color: var(--cream-50);
-  border-color: var(--ink);
-}
-
-.button-rose {
-  background-color: var(--rose);
-  color: var(--white);
-}
-
-.button-rose:hover {
-  background-color: var(--rose-dark);
-  box-shadow: 0 6px 20px rgba(201, 143, 145, 0.35);
+  background-color: var(--bg-subtle);
+  border-color: var(--muted);
 }
 
 .button-outline {
   background-color: transparent;
-  border: 1.5px solid var(--ink);
-  color: var(--ink);
+  border: 1.5px solid var(--primary);
+  color: var(--primary);
 }
 
 .button-outline:hover {
-  background-color: var(--ink);
-  color: var(--white);
+  background-color: var(--primary-light);
 }
 
 /* Star Rating Visuals */
 .stars {
   display: inline-flex;
   align-items: center;
-  gap: 2px;
+  gap: 3px;
   color: var(--star-color);
-  font-size: 0.85rem;
+  font-size: 0.9rem;
 }
 
 .stars-count {
   margin-left: 6px;
-  font-size: 0.8rem;
+  font-size: 0.84rem;
   color: var(--muted);
   font-weight: 500;
 }
@@ -110,42 +112,41 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 5px 12px;
+  padding: 4px 12px;
   border-radius: var(--radius-full);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.badge-stock {
+  background-color: var(--success-bg);
+  color: var(--success);
+}
+
+.badge-purple {
+  background-color: var(--primary-light);
+  color: var(--primary);
+  border: 1px solid var(--primary-border);
 }
 
 .badge-cream {
-  background-color: var(--white);
+  background-color: var(--bg-subtle);
   color: var(--ink);
-  box-shadow: var(--shadow-sm);
 }
 
 .badge-rose {
-  background-color: var(--rose-100);
-  color: var(--rose-deep);
-}
-
-.badge-sage {
-  background-color: var(--sage-100);
-  color: var(--sage-dark);
-}
-
-.badge-gold {
-  background-color: #fef7e6;
-  color: #a0740b;
+  background-color: var(--pink-light);
+  color: var(--pink);
 }
 
 /* Common Section Spacing */
 .section-spacing {
-  padding-block: 100px;
+  padding-block: 80px;
 }
 
 @media (max-width: 768px) {
   .section-spacing {
-    padding-block: 64px;
+    padding-block: 48px;
   }
 }

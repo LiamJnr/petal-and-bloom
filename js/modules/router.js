@@ -1,14 +1,16 @@
 /**
  * Petal & Bloom — SPA View Router & History Manager
- * Supports URL search params (?product=slug), clean hash routing, and browser back/forward buttons.
+ * Supports URL search params (?product=slug, ?view=checkout), clean hash routing, and browser back/forward buttons.
  */
 
 let onRouteHomeCallback = null;
 let onRouteProductCallback = null;
+let onRouteCheckoutCallback = null;
 
-export function initRouter({ onRouteHome, onRouteProduct }) {
+export function initRouter({ onRouteHome, onRouteProduct, onRouteCheckout }) {
   onRouteHomeCallback = onRouteHome;
   onRouteProductCallback = onRouteProduct;
+  onRouteCheckoutCallback = onRouteCheckout;
 
   // Listen for browser Back/Forward navigation
   window.addEventListener("popstate", () => {
@@ -34,13 +36,21 @@ export function initRouter({ onRouteHome, onRouteProduct }) {
  */
 function handleCurrentLocation() {
   const params = new URLSearchParams(window.location.search);
+  const viewParam = params.get("view");
   const productParam = params.get("product");
 
-  // Also check hash #product/slug as fallback
+  // Also check hash fallbacks
   const hash = window.location.hash;
   let hashProduct = null;
   if (hash.startsWith("#product/")) {
     hashProduct = hash.replace("#product/", "").trim();
+  }
+
+  if (viewParam === "checkout" || hash === "#checkout") {
+    if (typeof onRouteCheckoutCallback === "function") {
+      onRouteCheckoutCallback();
+    }
+    return;
   }
 
   const slug = productParam || hashProduct;
@@ -61,6 +71,7 @@ function handleCurrentLocation() {
  */
 export function navigateToProduct(slug, replace = false) {
   const newUrl = new URL(window.location.href);
+  newUrl.searchParams.delete("view");
   newUrl.searchParams.set("product", slug);
   newUrl.hash = "";
 
@@ -78,11 +89,34 @@ export function navigateToProduct(slug, replace = false) {
 }
 
 /**
+ * Navigate to Order & Recipient Checkout Details Page
+ */
+export function navigateToCheckout(replace = false) {
+  const newUrl = new URL(window.location.href);
+  newUrl.searchParams.delete("product");
+  newUrl.searchParams.set("view", "checkout");
+  newUrl.hash = "";
+
+  if (replace) {
+    window.history.replaceState({ view: "checkout" }, "", newUrl.toString());
+  } else {
+    window.history.pushState({ view: "checkout" }, "", newUrl.toString());
+  }
+
+  if (typeof onRouteCheckoutCallback === "function") {
+    onRouteCheckoutCallback();
+  }
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+/**
  * Navigate back to Home Storefront
  */
 export function navigateToHome(replace = false) {
   const newUrl = new URL(window.location.href);
   newUrl.searchParams.delete("product");
+  newUrl.searchParams.delete("view");
 
   if (replace) {
     window.history.replaceState({}, "", newUrl.pathname);

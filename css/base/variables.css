@@ -1,71 +1,66 @@
 /* ==========================================================================
-   DESIGN TOKENS & CSS VARIABLES — PETAL & BLOOM
+   DESIGN TOKENS & CSS VARIABLES — FLOWER SHOP THEME
    ========================================================================== */
 
 :root {
-  /* Color Palette — Botanicals & Warm Neutrals */
-  --cream-50: #fefcf9;
-  --cream-100: #fbf7f2;
-  --cream-200: #f5ece2;
-  --cream-300: #eadccf;
-  --cream-dark: #f1e9df;
+  /* Primary Violet & Magenta Brand Colors */
+  --primary: #5e1173;
+  --primary-hover: #4c0d5e;
+  --primary-dark: #3b074a;
+  --primary-light: #fbf5fd;
+  --primary-border: #e9d5ff;
+  --primary-subtle: #f3e8ff;
 
-  --rose-50: #fdf6f5;
-  --rose-100: #f8e5e3;
-  --rose-200: #ead0ce;
-  --rose-300: #d8a7a8;
-  --rose: #c98f91;
-  --rose-dark: #a86c6e;
-  --rose-deep: #844c4e;
+  /* Accent Pink / Rose (Buy Now & Highlights) */
+  --pink: #f06292;
+  --pink-hover: #e91e63;
+  --pink-light: #fdf2f8;
+  --pink-gradient: linear-gradient(135deg, #f472b6, #ec4899);
 
-  --sage-50: #f4f6f4;
-  --sage-100: #e2e8e2;
-  --sage-200: #c5d3c5;
-  --sage: #879487;
-  --sage-dark: #637163;
-
-  --ink-900: #1f1b19;
-  --ink: #2d2927;
-  --ink-light: #46403c;
-  --muted: #756c67;
-  --muted-light: #9f9690;
+  /* Neutrals & Surfaces */
+  --bg-main: #ffffff;
+  --bg-subtle: #f8f9fa;
+  --bg-card: #f8f9fa;
+  --cream: #ffffff;
   --white: #ffffff;
 
-  --border: rgba(45, 41, 39, 0.1);
-  --border-strong: rgba(45, 41, 39, 0.2);
-  --border-focus: rgba(201, 143, 145, 0.6);
+  --ink: #1e1e24;
+  --ink-light: #4b5563;
+  --muted: #6b7280;
+  --muted-light: #9ca3af;
+  --border: #e5e7eb;
+  --border-subtle: #f3f4f6;
 
-  --birthday-pink: #9c5252;
-  --gold: #d4af37;
-  --star-color: #f5a623;
-  --success: #4e8253;
-  --success-bg: #eaf5ec;
+  /* Functional Accents */
+  --success: #10b981;
+  --success-bg: #e6f9f0;
+  --gold: #f59e0b;
+  --star-color: #f59e0b;
 
   /* Typography */
-  --serif: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-heading: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --serif: "Playfair Display", Georgia, serif;
   --sans: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
-  /* Shadows & Elevations */
-  --shadow-sm: 0 2px 8px rgba(45, 41, 39, 0.04);
-  --shadow-md: 0 8px 24px rgba(45, 41, 39, 0.06);
-  --shadow-lg: 0 18px 45px rgba(45, 41, 39, 0.09);
-  --shadow-hover: 0 22px 50px rgba(45, 41, 39, 0.13);
-  --shadow-drawer: -10px 0 40px rgba(0, 0, 0, 0.16);
-
   /* Radii */
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
   --radius-full: 9999px;
 
-  /* Transitions */
-  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-fast: 0.2s var(--ease-smooth);
-  --transition-normal: 0.35s var(--ease-smooth);
-  --transition-spring: 0.5s var(--ease-spring);
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 12px 32px rgba(94, 17, 115, 0.12);
+  --shadow-drawer: -8px 0 35px rgba(0, 0, 0, 0.15);
 
-  /* Layout Dimensions */
-  --header-height: 78px;
+  /* Transitions */
+  --transition-fast: 0.18s ease;
+  --transition-normal: 0.28s ease;
+
+  --header-height: 80px;
   --max-width: 1200px;
 }

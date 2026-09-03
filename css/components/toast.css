@@ -1,5 +1,5 @@
 /* ==========================================================================
-   TOAST NOTIFICATION COMPONENT
+   TOAST NOTIFICATION COMPONENT — PURPLE THEME
    ========================================================================== */
 
 .toast-container {
@@ -20,15 +20,16 @@
   color: var(--ink);
   border-radius: var(--radius-md);
   padding: 16px 20px;
-  box-shadow: var(--shadow-hover);
-  border-left: 4px solid var(--rose);
+  box-shadow: 0 10px 30px rgba(94, 17, 115, 0.15);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--primary);
   display: flex;
   align-items: flex-start;
   gap: 14px;
   pointer-events: auto;
   opacity: 0;
   transform: translateY(20px) scale(0.96);
-  transition: opacity 0.3s var(--ease-spring), transform 0.3s var(--ease-spring);
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .toast.show {
@@ -81,7 +82,7 @@
 }
 
 .toast.toast-error {
-  border-left-color: #d9534f;
+  border-left-color: #ef4444;
 }
 
 @media (max-width: 580px) {
