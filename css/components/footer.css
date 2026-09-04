@@ -18,9 +18,24 @@
 }
 
 .footer-brand .logo {
-  color: #ffffff;
-  font-size: 1.5rem;
+  display: inline-block;
   margin-bottom: 16px;
+  text-decoration: none;
+}
+
+.footer-brand .footer-logo-img {
+  height: 56px;
+  width: auto;
+  max-width: 170px;
+  object-fit: contain;
+  display: block;
+  filter: brightness(0) invert(1);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.footer-brand .logo:hover .footer-logo-img {
+  transform: scale(1.03);
+  opacity: 0.92;
 }
 
 .footer-brand p {

@@ -44,7 +44,7 @@ export function renderPDP(slug) {
   homeView.style.display = "none";
   if (checkoutView) checkoutView.style.display = "none";
   pdpContainer.style.display = "block";
-  document.title = `${product.name} — Flower Shop`;
+  document.title = `${product.name} — Petal & Bloom`;
 
   // Pricing calculations
   const basePrice = product.sizes[0].price;

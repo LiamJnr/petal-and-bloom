@@ -125,7 +125,7 @@ export function renderCheckoutPage() {
   if (homeView) homeView.style.display = "none";
   if (pdpView) pdpView.style.display = "none";
   checkoutView.style.display = "block";
-  document.title = "Order Details & Recipient Information — Flower Shop";
+  document.title = "Order Details & Recipient Information — Petal & Bloom";
 
   // Load items from local storage
   let cart = [];
