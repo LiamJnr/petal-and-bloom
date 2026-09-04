@@ -360,3 +360,33 @@
   box-shadow: 0 6px 20px rgba(94, 17, 115, 0.28);
   transform: translateY(-1px);
 }
+
+@media (max-width: 640px) {
+  .cart-header,
+  .cart-shipping-meter,
+  .cart-body,
+  .cart-footer {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .cart-item {
+    grid-template-columns: 68px minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .cart-item-img {
+    width: 68px;
+    height: 68px;
+  }
+
+  .cart-item-details,
+  .cart-item-title {
+    min-width: 0;
+  }
+
+  .cart-item-title,
+  .cart-item-note {
+    overflow-wrap: anywhere;
+  }
+}

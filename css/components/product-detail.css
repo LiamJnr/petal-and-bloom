@@ -848,10 +848,19 @@
   }
 
   .pdp-tabs-nav {
-    gap: 20px;
+    justify-content: flex-start;
+    gap: 16px;
+    overflow-x: auto;
+    padding-bottom: 6px;
   }
 
   .pdp-tab-btn {
     font-size: 0.95rem;
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  .btn-wishlist {
+    align-self: center;
   }
 }
