@@ -10,7 +10,6 @@ import { ICONS, renderStars } from "../lib/icons.js";
 
 let currentProduct = null;
 let selectedSizeIndex = 0;
-let selectedColor = "Blue";
 let quantity = 1;
 let giftMessage = "";
 let activeTab = "review"; // default to review or description
@@ -176,24 +175,6 @@ export function renderPDP(slug) {
                   <span class="pdp-size-addon">+ $${size.price.toFixed(2)}</span>
                 </div>
               `).join("")}
-            </div>
-          </div>
-
-          <!-- Flower Color Swatches -->
-          <div class="pdp-color-selector">
-            <div class="pdp-color-label">
-              Flower Color : <span id="pdp-selected-color-name">Blue</span>
-            </div>
-            <div class="pdp-color-swatches">
-              <div class="pdp-color-swatch active" data-color="Blue" title="Blue">
-                <div class="swatch-inner" style="background-color: #5e1173;"></div>
-              </div>
-              <div class="pdp-color-swatch" data-color="Lavender" title="Lavender">
-                <div class="swatch-inner" style="background-color: #9d4edd;"></div>
-              </div>
-              <div class="pdp-color-swatch" data-color="Pink White" title="Pink White">
-                <div class="swatch-inner" style="background-color: #f06292;"></div>
-              </div>
             </div>
           </div>
 
@@ -466,17 +447,6 @@ function bindPDPEvents(product) {
     });
   });
 
-  // Color swatches
-  pdpContainer.querySelectorAll(".pdp-color-swatch").forEach(swatch => {
-    swatch.addEventListener("click", () => {
-      pdpContainer.querySelectorAll(".pdp-color-swatch").forEach(s => s.classList.remove("active"));
-      swatch.classList.add("active");
-      selectedColor = swatch.dataset.color || "Blue";
-      const colorLabel = document.getElementById("pdp-selected-color-name");
-      if (colorLabel) colorLabel.textContent = selectedColor;
-    });
-  });
-
   // Quantity stepper
   const qtyVal = document.getElementById("pdp-qty-val");
   document.getElementById("pdp-qty-minus")?.addEventListener("click", () => {
@@ -500,10 +470,11 @@ function bindPDPEvents(product) {
   // Add To Cart
   document.getElementById("btn-pdp-add-to-cart")?.addEventListener("click", () => {
     const size = product.sizes[selectedSizeIndex] || product.sizes[0];
+    const defaultVase = product.vases?.[0] || { id: "none", name: "Signature Wrap", price: 0 };
     const itemData = {
       product,
       size,
-      vase: { id: "none", name: `${selectedColor} Wrap`, price: 0 },
+      vase: { id: defaultVase.id, name: defaultVase.name, price: 0 },
       giftMessage: giftMessage.trim(),
       deliveryDate: "",
       unitPrice: size.price,
@@ -518,10 +489,11 @@ function bindPDPEvents(product) {
   // Buy Now -> Direct add and route to checkout
   document.getElementById("btn-pdp-buy-now")?.addEventListener("click", () => {
     const size = product.sizes[selectedSizeIndex] || product.sizes[0];
+    const defaultVase = product.vases?.[0] || { id: "none", name: "Signature Wrap", price: 0 };
     const itemData = {
       product,
       size,
-      vase: { id: "none", name: `${selectedColor} Wrap`, price: 0 },
+      vase: { id: defaultVase.id, name: defaultVase.name, price: 0 },
       giftMessage: giftMessage.trim(),
       deliveryDate: "",
       unitPrice: size.price,

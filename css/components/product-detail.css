@@ -271,50 +271,6 @@
   color: var(--primary);
 }
 
-/* Flower Color Swatches */
-.pdp-color-selector {
-  margin-bottom: 22px;
-}
-
-.pdp-color-label {
-  font-size: 0.86rem;
-  font-weight: 700;
-  color: var(--ink);
-  margin-bottom: 10px;
-}
-
-.pdp-color-label span {
-  font-weight: 500;
-  color: var(--muted);
-}
-
-.pdp-color-swatches {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.pdp-color-swatch {
-  width: 26px;
-  height: 26px;
-  border-radius: var(--radius-full);
-  cursor: pointer;
-  border: 2px solid transparent;
-  padding: 2px;
-  transition: transform var(--transition-fast);
-}
-
-.pdp-color-swatch.active {
-  border-color: var(--primary);
-  transform: scale(1.1);
-}
-
-.swatch-inner {
-  width: 100%;
-  height: 100%;
-  border-radius: var(--radius-full);
-}
-
 /* Card Message */
 .pdp-card-message-group {
   margin-bottom: 26px;
