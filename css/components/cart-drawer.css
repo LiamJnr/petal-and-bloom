@@ -5,12 +5,11 @@
 .cart-backdrop {
   position: fixed;
   inset: 0;
-  background-color: rgba(30, 30, 36, 0.45);
-  backdrop-filter: blur(6px);
+  background-color: rgba(18, 16, 22, 0.55);
   z-index: 100;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.25s ease;
 }
 
 .cart-backdrop.open {
@@ -96,14 +95,33 @@
   padding: 14px 24px;
   background-color: var(--bg-subtle);
   border-bottom: 1px solid var(--border);
+  text-align: center;
 }
 
 .shipping-meter-text {
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   font-weight: 500;
   color: var(--ink);
   margin-bottom: 8px;
-  line-height: 1.4;
+  line-height: 1.45;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.shipping-meter-text strong {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.shipping-meter-text svg {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 1rem;
+  color: var(--gold);
 }
 
 .shipping-meter-track {

@@ -5,6 +5,8 @@ import { getProductBySlug } from "../data/products.js";
 import { getReviewsForProduct, getReviewMetrics } from "../data/reviews.js";
 import { navigateToHome } from "./router.js";
 import { showToast } from "./toast.js";
+import { isInWishlist, toggleWishlist } from "./wishlist.js";
+import { ICONS, renderStars } from "../lib/icons.js";
 
 let currentProduct = null;
 let selectedSizeIndex = 0;
@@ -17,6 +19,11 @@ let addToCartHandler = null;
 
 export function initPDP({ onAddToCart }) {
   addToCartHandler = onAddToCart;
+}
+
+export function getOriginalPrice(price) {
+  // Proportional original boutique value (~25% discount display)
+  return (price * 1.25).toFixed(2);
 }
 
 /**
@@ -47,8 +54,9 @@ export function renderPDP(slug) {
   document.title = `${product.name} — Petal & Bloom`;
 
   // Pricing calculations
-  const basePrice = product.sizes[0].price;
-  const oldPrice = (basePrice * 1.8).toFixed(2);
+  const initialSizePrice = product.sizes[selectedSizeIndex].price;
+  const oldPrice = getOriginalPrice(initialSizePrice);
+  const isProductWishlisted = isInWishlist(product.slug);
   const metrics = getReviewMetrics(product.slug);
   const reviews = getReviewsForProduct(product.slug);
 
@@ -60,10 +68,10 @@ export function renderPDP(slug) {
   const pct2 = Math.round((metrics.distribution[2] / (metrics.count || 1)) * 100) || 10;
   const pct1 = Math.round((metrics.distribution[1] / (metrics.count || 1)) * 100) || 4;
 
-  const galleryImages = [
+  const galleryImages = Array.from(new Set([
     product.images.primary,
     ...(product.images.gallery || [])
-  ].slice(0, 4);
+  ]));
 
   // Tier-specific size SVGs
   const standardSvg = `
@@ -138,14 +146,14 @@ export function renderPDP(slug) {
           </div>
 
           <div class="pdp-rating-row">
-            <span class="pdp-rating-stars">★★★★★</span>
+            <span class="pdp-rating-stars">${renderStars(5)}</span>
             <span class="pdp-rating-text">${product.rating || "4.9"}</span>
             <span class="pdp-rating-count">(${product.reviewCount || 245} Review)</span>
           </div>
 
           <div class="pdp-price-box">
-            <span class="pdp-price-current" id="pdp-current-price">$${product.sizes[selectedSizeIndex].price.toFixed(2)}</span>
-            <span class="pdp-price-old">$${oldPrice}</span>
+            <span class="pdp-price-current" id="pdp-current-price">$${initialSizePrice.toFixed(2)}</span>
+            <span class="pdp-price-old" id="pdp-old-price">$${oldPrice}</span>
           </div>
 
           <p class="pdp-desc-text">
@@ -215,9 +223,15 @@ export function renderPDP(slug) {
               Buy Now
             </button>
 
-            <button type="button" class="btn-wishlist" id="btn-pdp-wishlist" aria-label="Add to wishlist" title="Add to wishlist">
+            <button 
+              type="button" 
+              class="btn-wishlist ${isProductWishlisted ? "active" : ""}" 
+              id="btn-pdp-wishlist" 
+              aria-label="${isProductWishlisted ? "Remove from wishlist" : "Add to wishlist"}" 
+              title="${isProductWishlisted ? "Remove from wishlist" : "Add to wishlist"}"
+            >
               <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/>
+                <path fill="${isProductWishlisted ? "currentColor" : "none"}" stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/>
               </svg>
             </button>
           </div>
@@ -231,15 +245,6 @@ export function renderPDP(slug) {
             <div class="pdp-meta-row">
               <span class="pdp-meta-label">Tags :</span>
               <span class="pdp-meta-val">Bouquets, Flowers</span>
-            </div>
-            <div class="pdp-meta-row">
-              <span class="pdp-meta-label">Share :</span>
-              <div class="pdp-share-icons">
-                <a href="#" class="pdp-share-icon" aria-label="Share on Facebook">f</a>
-                <a href="#" class="pdp-share-icon" aria-label="Share on X">𝕏</a>
-                <a href="#" class="pdp-share-icon" aria-label="Share on Pinterest">p</a>
-                <a href="#" class="pdp-share-icon" aria-label="Share on Instagram">ig</a>
-              </div>
             </div>
           </div>
         </div>
@@ -301,7 +306,7 @@ export function renderPDP(slug) {
               <div class="pdp-review-big-num">
                 ${product.rating || "4.9"} <span>out of 5</span>
               </div>
-              <div class="pdp-review-score-stars">★★★★★</div>
+              <div class="pdp-review-score-stars">${renderStars(5)}</div>
               <div class="pdp-review-score-count">(${product.reviewCount || 245} Review)</div>
             </div>
 
@@ -366,9 +371,7 @@ export function renderPDP(slug) {
               <article class="pdp-review-item">
                 <div class="pdp-review-user-row">
                   <div class="pdp-review-user-info">
-                    <div class="pdp-review-avatar">
-                      <img src="images/sweetheart.webp" alt="Kristin Watson" />
-                    </div>
+                    <div class="pdp-review-avatar">K</div>
                     <div class="pdp-review-user-name">
                       Kristin Watson <span>(Verified)</span>
                     </div>
@@ -380,7 +383,7 @@ export function renderPDP(slug) {
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                 </p>
                 <div class="pdp-review-item-stars">
-                  ★★★★★ <span>5.0</span>
+                  ${renderStars(5)} <span>5.0</span>
                 </div>
                 <div class="pdp-review-photos">
                   <div class="pdp-review-photo"><img src="images/roses.webp" alt="Review photo 1" /></div>
@@ -393,9 +396,7 @@ export function renderPDP(slug) {
               <article class="pdp-review-item">
                 <div class="pdp-review-user-row">
                   <div class="pdp-review-user-info">
-                    <div class="pdp-review-avatar">
-                      <img src="images/daisies.webp" alt="Jenny Wilson" />
-                    </div>
+                    <div class="pdp-review-avatar">J</div>
                     <div class="pdp-review-user-name">
                       Jenny Wilson <span>(Verified)</span>
                     </div>
@@ -407,7 +408,7 @@ export function renderPDP(slug) {
                   The blooms arrived in perfect condition and lasted well over a week. The fragrance filled the whole room!
                 </p>
                 <div class="pdp-review-item-stars">
-                  ★★★★★ <span>5.0</span>
+                  ${renderStars(5)} <span>5.0</span>
                 </div>
               </article>
 
@@ -455,9 +456,12 @@ function bindPDPEvents(product) {
       pdpContainer.querySelectorAll(".pdp-size-box").forEach(b => b.classList.remove("active"));
       box.classList.add("active");
       selectedSizeIndex = parseInt(box.dataset.index, 10) || 0;
+      const selectedSize = product.sizes[selectedSizeIndex];
       const priceEl = document.getElementById("pdp-current-price");
-      if (priceEl && product.sizes[selectedSizeIndex]) {
-        priceEl.textContent = `$${product.sizes[selectedSizeIndex].price.toFixed(2)}`;
+      const oldPriceEl = document.getElementById("pdp-old-price");
+      if (selectedSize) {
+        if (priceEl) priceEl.textContent = `$${selectedSize.price.toFixed(2)}`;
+        if (oldPriceEl) oldPriceEl.textContent = `$${getOriginalPrice(selectedSize.price)}`;
       }
     });
   });
@@ -533,13 +537,8 @@ function bindPDPEvents(product) {
   });
 
   // Wishlist
-  document.getElementById("btn-pdp-wishlist")?.addEventListener("click", function() {
-    this.classList.toggle("active");
-    showToast({
-      title: "Saved to Wishlist! 💖",
-      message: `${product.name} has been added to your favorites.`,
-      icon: "❤️"
-    });
+  document.getElementById("btn-pdp-wishlist")?.addEventListener("click", () => {
+    toggleWishlist(product);
   });
 
   // Tabs switching (Description / Additional Information / Review)

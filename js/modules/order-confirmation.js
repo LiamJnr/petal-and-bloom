@@ -1,5 +1,6 @@
 import { clearCart } from './cart.js'
 import { navigateToHome } from './router.js'
+import { ICONS } from '../lib/icons.js'
 
 const POLL_INTERVAL_MS = 2000
 const MAX_POLLS = 15
@@ -95,7 +96,7 @@ function renderMessage(view, { eyebrow, title, message, action, loading = false,
   view.innerHTML = `
     <section class="order-confirmation">
       <div class="order-confirmation-card">
-        <div class="order-confirmation-mark${loading ? ' is-loading' : ''}" aria-hidden="true">${loading ? '✦' : '✓'}</div>
+        <div class="order-confirmation-mark${loading ? ' is-loading' : ''}" aria-hidden="true">${loading ? '✦' : ICONS.check}</div>
         <p class="order-confirmation-eyebrow">${eyebrow}</p>
         <h1>${title}</h1>
         <p class="order-confirmation-message">${message}</p>

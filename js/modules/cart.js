@@ -4,6 +4,7 @@
  */
 import { showToast } from "./toast.js";
 import { getProductBySlug } from "../data/products.js";
+import { ICONS } from "../lib/icons.js";
 
 const CART_STORAGE_KEY = "petal_bloom_cart";
 const FREE_SHIPPING_THRESHOLD = 75;
@@ -109,9 +110,9 @@ export function addToCart(itemData) {
   updateCartUI();
 
   showToast({
-    title: "Added to Flower Bag! 🌸",
+    title: "Added to Flower Bag!",
     message: `${product.name} (${size.name}) is ready in your bag.`,
-    icon: "🛍️"
+    icon: ICONS.bag
   });
 }
 
@@ -119,18 +120,9 @@ export function addToCart(itemData) {
  * Remove an item completely
  */
 export function removeFromCart(itemId) {
-  const item = cartItems.find(i => i.id === itemId);
   cartItems = cartItems.filter(i => i.id !== itemId);
   saveCartToStorage();
   updateCartUI();
-
-  if (item) {
-    showToast({
-      title: "Item Removed",
-      message: `${item.name} was removed from your bag.`,
-      icon: "🗑️"
-    });
-  }
 }
 
 /**
@@ -231,7 +223,7 @@ function renderCartDrawerMarkup() {
       <!-- Free Delivery Progress Meter -->
       <div class="cart-shipping-meter">
         <p class="shipping-meter-text" id="shipping-meter-text">
-          Add <strong>$75.00</strong> more for <strong>FREE Local Delivery</strong>
+          <span>Add <strong>$75.00</strong> more for <strong>FREE Local Delivery</strong></span>
         </p>
         <div class="shipping-meter-track">
           <div class="shipping-meter-fill" id="shipping-meter-fill" style="width: 0%"></div>
@@ -364,10 +356,10 @@ export function updateCartUI() {
     shippingFill.style.width = `${pct}%`;
 
     if (remaining <= 0 && subtotal > 0) {
-      shippingText.innerHTML = `🎉 <strong>Congratulations!</strong> You unlocked <strong>FREE Local Florist Delivery</strong>!`;
+      shippingText.innerHTML = `${ICONS.sparkles} <span><strong>Congratulations!</strong> You unlocked <strong>FREE Local Florist Delivery</strong>!</span>`;
       shippingFill.classList.add("unlocked");
     } else {
-      shippingText.innerHTML = `Add <strong>$${Math.max(0, remaining).toFixed(2)}</strong> more for <strong>FREE Local Delivery</strong>`;
+      shippingText.innerHTML = `<span>Add <strong>$${Math.max(0, remaining).toFixed(2)}</strong> more for <strong>FREE Local Delivery</strong></span>`;
       shippingFill.classList.remove("unlocked");
     }
   }
@@ -378,7 +370,7 @@ export function updateCartUI() {
   if (cartItems.length === 0) {
     container.innerHTML = `
       <div class="cart-empty">
-        <div class="cart-empty-icon">🌸</div>
+        <div class="cart-empty-icon">${ICONS.flower}</div>
         <h4>Your Shopping Bag is Empty</h4>
         <p>Explore our freshly cut bouquets and artisanal botanical gifts.</p>
         <button class="button button-dark" id="btn-start-shopping" type="button">
@@ -418,7 +410,7 @@ export function updateCartUI() {
           <div class="cart-item-meta">
             <span>Tier: <strong>${item.size.name}</strong></span>
             <span>Wrap: <strong>${item.vase.name}</strong></span>
-            ${item.giftMessage ? `<span class="cart-item-note">💌 Note: "${item.giftMessage.slice(0, 24)}${item.giftMessage.length > 24 ? "..." : ""}"</span>` : ""}
+            ${item.giftMessage ? `<span class="cart-item-note"><span style="display:inline-flex;align-items:center;gap:3px;vertical-align:middle;">${ICONS.envelope}</span> Note: "${item.giftMessage.slice(0, 24)}${item.giftMessage.length > 24 ? "..." : ""}"</span>` : ""}
           </div>
 
           <div class="cart-item-bottom">

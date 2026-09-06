@@ -89,7 +89,7 @@
 
 .pdp-thumbnails {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
   gap: 12px;
 }
 
@@ -162,8 +162,10 @@
 }
 
 .pdp-rating-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
   color: var(--gold);
-  letter-spacing: 2px;
   font-size: 0.95rem;
 }
 
@@ -608,9 +610,12 @@
 }
 
 .pdp-review-score-stars {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
   color: var(--gold);
   font-size: 1.1rem;
-  letter-spacing: 2px;
   margin-bottom: 6px;
 }
 
@@ -830,7 +835,8 @@
   }
 
   .pdp-thumbnails {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+    gap: 8px;
   }
 
   .pdp-thumb-btn {

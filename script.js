@@ -63,7 +63,7 @@ function setupLemonSqueezy() {
   window.LemonSqueezy.Setup({
     eventHandler: (event) => {
       if (event.event === "Checkout.Success") {
-        showCheckoutToast("Thank you! Your order is confirmed. 🌸");
+        showCheckoutToast("Thank you! Your order is confirmed.");
       }
     },
   });

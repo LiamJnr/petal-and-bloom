@@ -1,18 +1,35 @@
 /**
  * Petal & Bloom — SPA View Router & History Manager
- * Supports URL search params (?product=slug, ?view=checkout), clean hash routing, and browser back/forward buttons.
+ * Supports URL search params (?product=slug, ?view=shop, ?view=checkout), clean hash routing, and browser back/forward buttons.
  */
 
 let onRouteHomeCallback = null;
+let onRouteShopCallback = null;
 let onRouteProductCallback = null;
 let onRouteCheckoutCallback = null;
 let onRouteOrderConfirmationCallback = null;
+let onRouteFAQCallback = null;
+let onRouteContactCallback = null;
+let onRoutePolicyCallback = null;
 
-export function initRouter({ onRouteHome, onRouteProduct, onRouteCheckout, onRouteOrderConfirmation }) {
+export function initRouter({ 
+  onRouteHome, 
+  onRouteShop, 
+  onRouteProduct, 
+  onRouteCheckout, 
+  onRouteOrderConfirmation,
+  onRouteFAQ,
+  onRouteContact,
+  onRoutePolicy
+}) {
   onRouteHomeCallback = onRouteHome;
+  onRouteShopCallback = onRouteShop;
   onRouteProductCallback = onRouteProduct;
   onRouteCheckoutCallback = onRouteCheckout;
   onRouteOrderConfirmationCallback = onRouteOrderConfirmation;
+  onRouteFAQCallback = onRouteFAQ;
+  onRouteContactCallback = onRouteContact;
+  onRoutePolicyCallback = onRoutePolicy;
 
   // Listen for browser Back/Forward navigation
   window.addEventListener("popstate", () => {
@@ -48,6 +65,29 @@ function handleCurrentLocation() {
     hashProduct = hash.replace("#product/", "").trim();
   }
 
+  if (viewParam === "faq" || hash === "#faq" || hash === "#care" || hash === "#delivery") {
+    if (typeof onRouteFAQCallback === "function") {
+      const tab = params.get("tab") || (hash.replace("#", "") === "delivery" ? "delivery" : "care");
+      onRouteFAQCallback(tab);
+    }
+    return;
+  }
+
+  if (viewParam === "contact" || hash === "#contact") {
+    if (typeof onRouteContactCallback === "function") {
+      onRouteContactCallback();
+    }
+    return;
+  }
+
+  if (viewParam === "privacy" || viewParam === "terms" || viewParam === "shipping" || hash === "#privacy" || hash === "#terms" || hash === "#shipping") {
+    if (typeof onRoutePolicyCallback === "function") {
+      const policyType = viewParam || hash.replace("#", "");
+      onRoutePolicyCallback(policyType);
+    }
+    return;
+  }
+
   if (viewParam === "checkout" || hash === "#checkout") {
     if (typeof onRouteCheckoutCallback === "function") {
       onRouteCheckoutCallback();
@@ -58,6 +98,18 @@ function handleCurrentLocation() {
   if (viewParam === "order-confirmed" || window.location.pathname === "/order-confirmed") {
     if (typeof onRouteOrderConfirmationCallback === "function") {
       onRouteOrderConfirmationCallback();
+    }
+    return;
+  }
+
+  if (viewParam === "shop" || hash === "#shop" || hash.startsWith("#shop/")) {
+    if (typeof onRouteShopCallback === "function") {
+      onRouteShopCallback({
+        category: params.get("category") || "",
+        search: params.get("search") || "",
+        occasion: params.get("occasion") || "",
+        sort: params.get("sort") || ""
+      });
     }
     return;
   }
@@ -73,6 +125,42 @@ function handleCurrentLocation() {
       onRouteHomeCallback();
     }
   }
+}
+
+/**
+ * Navigate to Dedicated Shop Catalog Page
+ */
+export function navigateToShop(filters = {}, replace = false) {
+  const newUrl = new URL(window.location.href);
+  newUrl.searchParams.delete("product");
+  newUrl.searchParams.delete("order");
+  newUrl.searchParams.set("view", "shop");
+
+  if (filters.category) newUrl.searchParams.set("category", filters.category);
+  else newUrl.searchParams.delete("category");
+
+  if (filters.search) newUrl.searchParams.set("search", filters.search);
+  else newUrl.searchParams.delete("search");
+
+  if (filters.occasion) newUrl.searchParams.set("occasion", filters.occasion);
+  else newUrl.searchParams.delete("occasion");
+
+  if (filters.sort) newUrl.searchParams.set("sort", filters.sort);
+  else newUrl.searchParams.delete("sort");
+
+  newUrl.hash = "";
+
+  if (replace) {
+    window.history.replaceState({ view: "shop", filters }, "", newUrl.toString());
+  } else {
+    window.history.pushState({ view: "shop", filters }, "", newUrl.toString());
+  }
+
+  if (typeof onRouteShopCallback === "function") {
+    onRouteShopCallback(filters);
+  }
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 /**
@@ -130,6 +218,10 @@ export function navigateToHome(replace = false) {
   newUrl.searchParams.delete("product");
   newUrl.searchParams.delete("view");
   newUrl.searchParams.delete("order");
+  newUrl.searchParams.delete("category");
+  newUrl.searchParams.delete("search");
+  newUrl.searchParams.delete("occasion");
+  newUrl.searchParams.delete("sort");
 
   if (replace) {
     window.history.replaceState({}, "", newUrl.pathname);
@@ -143,3 +235,125 @@ export function navigateToHome(replace = false) {
 
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
+
+/**
+ * Navigate to Customer Care & FAQs Page
+ */
+export function navigateToFAQ(tab = "care", replace = false) {
+  const newUrl = new URL(window.location.href);
+  newUrl.searchParams.delete("product");
+  newUrl.searchParams.delete("order");
+  newUrl.searchParams.set("view", "faq");
+  if (tab) newUrl.searchParams.set("tab", tab);
+  else newUrl.searchParams.delete("tab");
+  newUrl.hash = "";
+
+  if (replace) {
+    window.history.replaceState({ view: "faq", tab }, "", newUrl.toString());
+  } else {
+    window.history.pushState({ view: "faq", tab }, "", newUrl.toString());
+  }
+
+  if (typeof onRouteFAQCallback === "function") {
+    onRouteFAQCallback(tab);
+  }
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+/**
+ * Navigate to Contact Page
+ */
+export function navigateToContact(replace = false) {
+  const newUrl = new URL(window.location.href);
+  newUrl.searchParams.delete("product");
+  newUrl.searchParams.delete("order");
+  newUrl.searchParams.delete("tab");
+  newUrl.searchParams.set("view", "contact");
+  newUrl.hash = "";
+
+  if (replace) {
+    window.history.replaceState({ view: "contact" }, "", newUrl.toString());
+  } else {
+    window.history.pushState({ view: "contact" }, "", newUrl.toString());
+  }
+
+  if (typeof onRouteContactCallback === "function") {
+    onRouteContactCallback();
+  }
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+/**
+ * Navigate to Privacy Policy Page
+ */
+export function navigateToPrivacy(replace = false) {
+  const newUrl = new URL(window.location.href);
+  newUrl.searchParams.delete("product");
+  newUrl.searchParams.delete("order");
+  newUrl.searchParams.delete("tab");
+  newUrl.searchParams.set("view", "privacy");
+  newUrl.hash = "";
+
+  if (replace) {
+    window.history.replaceState({ view: "privacy" }, "", newUrl.toString());
+  } else {
+    window.history.pushState({ view: "privacy" }, "", newUrl.toString());
+  }
+
+  if (typeof onRoutePolicyCallback === "function") {
+    onRoutePolicyCallback("privacy");
+  }
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+/**
+ * Navigate to Terms of Service Page
+ */
+export function navigateToTerms(replace = false) {
+  const newUrl = new URL(window.location.href);
+  newUrl.searchParams.delete("product");
+  newUrl.searchParams.delete("order");
+  newUrl.searchParams.delete("tab");
+  newUrl.searchParams.set("view", "terms");
+  newUrl.hash = "";
+
+  if (replace) {
+    window.history.replaceState({ view: "terms" }, "", newUrl.toString());
+  } else {
+    window.history.pushState({ view: "terms" }, "", newUrl.toString());
+  }
+
+  if (typeof onRoutePolicyCallback === "function") {
+    onRoutePolicyCallback("terms");
+  }
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+/**
+ * Navigate to Shipping & Returns Policy Page
+ */
+export function navigateToShipping(replace = false) {
+  const newUrl = new URL(window.location.href);
+  newUrl.searchParams.delete("product");
+  newUrl.searchParams.delete("order");
+  newUrl.searchParams.delete("tab");
+  newUrl.searchParams.set("view", "shipping");
+  newUrl.hash = "";
+
+  if (replace) {
+    window.history.replaceState({ view: "shipping" }, "", newUrl.toString());
+  } else {
+    window.history.pushState({ view: "shipping" }, "", newUrl.toString());
+  }
+
+  if (typeof onRoutePolicyCallback === "function") {
+    onRoutePolicyCallback("shipping");
+  }
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+

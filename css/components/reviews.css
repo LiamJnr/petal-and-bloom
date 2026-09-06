@@ -59,9 +59,12 @@
 }
 
 .reviews-score-stars {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
   font-size: 1.2rem;
   color: var(--star-color);
-  letter-spacing: 2px;
   margin-bottom: 6px;
 }
 
@@ -298,8 +301,10 @@
 }
 
 .review-card-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
   color: var(--star-color);
-  letter-spacing: 1px;
 }
 
 /* Modal Popup: Write a Review */

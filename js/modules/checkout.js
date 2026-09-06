@@ -8,6 +8,7 @@ import { navigateToHome } from "./router.js";
 import { showToast } from "./toast.js";
 import { getProductBySlug } from "../data/products.js";
 import { startCheckout } from "../lib/checkout.js";
+import { ICONS } from "../lib/icons.js";
 
 let selectedTimeWindow = "morning";
 let selectedLocationType = "residential";
@@ -156,7 +157,7 @@ export function renderCheckoutPage() {
 
       <div class="container text-center" style="padding: 60px 0 100px;">
         <div class="cart-empty" style="max-width: 480px; margin: 0 auto;">
-          <div class="cart-empty-icon" style="font-size: 3rem; margin-bottom: 16px;">🌸</div>
+          <div class="cart-empty-icon" style="font-size: 3rem; margin-bottom: 16px;">${ICONS.flower}</div>
           <h2 style="font-size: 1.8rem; margin-bottom: 10px;">Your Flower Bag is Empty</h2>
           <p style="color: var(--muted); margin-bottom: 24px;">Please select a floral bouquet or botanical gift before proceeding to recipient details.</p>
           <button class="button button-dark" id="btn-empty-checkout-home">Explore Flower Collection</button>
@@ -242,18 +243,18 @@ export function renderCheckoutPage() {
                   </div>
                   <div class="form-group">
                     <label for="rec-city">City *</label>
-                    <input type="text" id="rec-city" class="form-control" placeholder="e.g. New York" required />
+                    <input type="text" id="rec-city" class="form-control" placeholder="e.g. Edmonton" required />
                   </div>
                 </div>
 
                 <div class="form-row">
                   <div class="form-group">
                     <label for="rec-state">State / Province *</label>
-                    <input type="text" id="rec-state" class="form-control" placeholder="e.g. NY" required />
+                    <input type="text" id="rec-state" class="form-control" placeholder="e.g. AB" required />
                   </div>
                   <div class="form-group">
                     <label for="rec-zip">Postal / ZIP Code *</label>
-                    <input type="text" id="rec-zip" class="form-control" placeholder="e.g. 10001" required />
+                    <input type="text" id="rec-zip" class="form-control" placeholder="e.g. T5N 1R5" required />
                   </div>
                 </div>
 
@@ -554,7 +555,7 @@ function bindCheckoutEvents() {
       showToast({
         title: "Unable to start checkout",
         message: error.message || "Please try again in a moment.",
-        icon: "⚠️",
+        icon: ICONS.warning,
         duration: 6000
       });
     }

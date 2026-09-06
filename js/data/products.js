@@ -12,15 +12,15 @@ export const PRODUCTS = [
     category: "bouquet",
     occasion: "Birthday & Anniversaries",
     tag: "Bestseller",
+    featured: true,
     rating: 4.9,
     reviewCount: 245,
     images: {
       primary: "images/hyacinth.webp",
       gallery: [
         "images/hyacinth.webp",
-        "images/tulips.webp",
-        "images/roses.webp",
-        "images/sweetheart.webp"
+        "images/hyacinth-1.webp",
+        "images/hyacinth-2.webp"
       ]
     },
     shortDescription: "A serene harmony of fragrant royal blue hyacinths and crisp white Dutch tulips, tied with signature gingham ribbon.",
@@ -44,12 +44,7 @@ export const PRODUCTS = [
       { id: "none", name: "Gingham Check Wrap", price: 0 },
       { id: "glass", name: "Fluted Clear Glass Vase", price: 14 },
       { id: "ceramic", name: "Artisan Matte Ceramic Pot", price: 24 }
-    ],
-    checkoutUrls: {
-      standard: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
-      deluxe: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
-      premium: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6"
-    }
+    ]
   },
   {
     id: "rose-garden",
@@ -59,15 +54,15 @@ export const PRODUCTS = [
     category: "bouquet",
     occasion: "Romantic",
     tag: "Classic Romance",
+    featured: true,
     rating: 4.9,
     reviewCount: 88,
     images: {
       primary: "images/roses.webp",
       gallery: [
         "images/roses.webp",
-        "images/sweetheart.webp",
-        "images/peonies.webp",
-        "images/hyacinth.webp"
+        "images/roses-1.webp",
+        "images/roses-2.webp"
       ]
     },
     shortDescription: "A timeless arrangement of velvety Ecuadorian red roses and delicate blush garden spray roses.",
@@ -92,12 +87,7 @@ export const PRODUCTS = [
       { id: "none", name: "Luxury Matte Taupe Wrap", price: 0 },
       { id: "glass", name: "Fluted Clear Glass Vase", price: 14 },
       { id: "ceramic", name: "Artisan Matte Ceramic Pot", price: 24 }
-    ],
-    checkoutUrls: {
-      standard: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
-      deluxe: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
-      premium: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6"
-    }
+    ]
   },
   {
     id: "casablanca-lilies",
@@ -107,15 +97,15 @@ export const PRODUCTS = [
     category: "luxury",
     occasion: "Celebrations",
     tag: "Statement Scale",
+    featured: true,
     rating: 5.0,
     reviewCount: 64,
     images: {
       primary: "images/lilies.webp",
       gallery: [
         "images/lilies.webp",
-        "images/orchids.webp",
-        "images/spires.webp",
-        "images/hydrangea.webp"
+        "images/lilies-1.webp",
+        "images/lilies-2.webp"
       ]
     },
     shortDescription: "Dramatic, intoxicatingly fragrant pure white Oriental lilies paired with emerald Italian ruscus.",
@@ -139,12 +129,7 @@ export const PRODUCTS = [
       { id: "none", name: "Beige Kraft Wrap & Silk Ribbon", price: 0 },
       { id: "glass", name: "Fluted Clear Glass Vase", price: 14 },
       { id: "ceramic", name: "Artisan Matte Ceramic Pot", price: 24 }
-    ],
-    checkoutUrls: {
-      standard: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
-      deluxe: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
-      premium: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6"
-    }
+    ]
   },
   {
     id: "royal-orchid",
@@ -160,9 +145,8 @@ export const PRODUCTS = [
       primary: "images/orchids.webp",
       gallery: [
         "images/orchids.webp",
-        "images/lilies.webp",
-        "images/peonies.webp",
-        "images/spires.webp"
+        "images/orchids-1.webp",
+        "images/orchids-2.webp"
       ]
     },
     shortDescription: "A living sculptural masterpiece featuring two cascading stems of moth orchids in a fluted ceramic vessel.",
@@ -185,12 +169,7 @@ export const PRODUCTS = [
     vases: [
       { id: "ceramic", name: "Artisan Matte Cream Ceramic Pot (Included)", price: 0 },
       { id: "gold", name: "Hand-Hammered Brass Planter", price: 25 }
-    ],
-    checkoutUrls: {
-      standard: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
-      deluxe: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
-      premium: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6"
-    }
+    ]
   },
   {
     id: "hydrangea-cloud",
@@ -206,9 +185,8 @@ export const PRODUCTS = [
       primary: "images/hydrangea.webp",
       gallery: [
         "images/hydrangea.webp",
-        "images/hyacinth.webp",
-        "images/sweetheart.webp",
-        "images/tulips.webp"
+        "images/hydrangea-1.webp",
+        "images/hydrangea-2.webp"
       ]
     },
     shortDescription: "Lush, pillowy cloud-like hydrangeas in pastel blue and lavender nestled with blush spray roses.",
@@ -233,12 +211,7 @@ export const PRODUCTS = [
       { id: "none", name: "Vellum Wrap & Lavender Ribbon", price: 0 },
       { id: "glass", name: "Fluted Clear Glass Vase", price: 14 },
       { id: "ceramic", name: "Artisan Matte Ceramic Pot", price: 24 }
-    ],
-    checkoutUrls: {
-      standard: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
-      deluxe: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
-      premium: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6"
-    }
+    ]
   },
   {
     id: "golden-sunburst",
@@ -254,9 +227,8 @@ export const PRODUCTS = [
       primary: "images/sunburst.webp",
       gallery: [
         "images/sunburst.webp",
-        "images/birthday.webp",
-        "images/wildflower.webp",
-        "images/roses.webp"
+        "images/sunburst-1.webp",
+        "images/sunburst-2.webp"
       ]
     },
     shortDescription: "Joyful golden mini sunflowers, creamy Café au Lait dahlias, and vibrant red hypericum berries.",
@@ -281,12 +253,7 @@ export const PRODUCTS = [
       { id: "none", name: "Terracotta Linen Ribbon Wrap", price: 0 },
       { id: "glass", name: "Fluted Clear Glass Vase", price: 14 },
       { id: "ceramic", name: "Artisan Matte Ceramic Pot", price: 24 }
-    ],
-    checkoutUrls: {
-      standard: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
-      deluxe: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
-      premium: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6"
-    }
+    ]
   },
   {
     id: "meadow-spires",
@@ -302,9 +269,8 @@ export const PRODUCTS = [
       primary: "images/spires.webp",
       gallery: [
         "images/spires.webp",
-        "images/hyacinth.webp",
-        "images/tulips.webp",
-        "images/wildflower.webp"
+        "images/spires-1.webp",
+        "images/spires-2.webp"
       ]
     },
     shortDescription: "A tall, airy editorial arrangement of pastel snapdragons, sweet Matthiola stock, and layered eucalyptus.",
@@ -329,12 +295,7 @@ export const PRODUCTS = [
       { id: "none", name: "Sage Cotton Ribbon Wrap", price: 0 },
       { id: "glass", name: "Fluted Clear Glass Vase", price: 14 },
       { id: "ceramic", name: "Artisan Matte Ceramic Pot", price: 24 }
-    ],
-    checkoutUrls: {
-      standard: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
-      deluxe: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
-      premium: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6"
-    }
+    ]
   },
   {
     id: "pastel-peonies",
@@ -344,15 +305,15 @@ export const PRODUCTS = [
     category: "luxury",
     occasion: "Romantic",
     tag: "Coveted Luxury",
+    featured: true,
     rating: 5.0,
     reviewCount: 156,
     images: {
       primary: "images/peonies.webp",
       gallery: [
         "images/peonies.webp",
-        "images/sweetheart.webp",
-        "images/roses.webp",
-        "images/orchids.webp"
+        "images/peonies-1.webp",
+        "images/peonies-2.webp"
       ]
     },
     shortDescription: "Sumptuous Sarah Bernhardt blush and cream peonies hand-tied with velvet champagne ribbon.",
@@ -377,12 +338,7 @@ export const PRODUCTS = [
       { id: "none", name: "Heavy Cream Wrap & Velvet Ribbon", price: 0 },
       { id: "glass", name: "Fluted Clear Glass Vase", price: 14 },
       { id: "ceramic", name: "Artisan Matte Ceramic Pot", price: 24 }
-    ],
-    checkoutUrls: {
-      standard: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
-      deluxe: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
-      premium: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6"
-    }
+    ]
   },
   {
     id: "sunday-tulips",
@@ -392,15 +348,15 @@ export const PRODUCTS = [
     category: "bouquet",
     occasion: "Everyday",
     tag: "Spring Fresh",
+    featured: true,
     rating: 4.8,
     reviewCount: 68,
     images: {
       primary: "images/tulips.webp",
       gallery: [
         "images/tulips.webp",
-        "images/hyacinth.webp",
-        "images/sweetheart.webp",
-        "images/spires.webp"
+        "images/tulips-1.webp",
+        "images/tulips-2.webp"
       ]
     },
     shortDescription: "A modern monochrome bouquet of fresh Dutch tulips in soft blush, peach, and ivory.",
@@ -424,12 +380,7 @@ export const PRODUCTS = [
       { id: "none", name: "Parchment Craft Wrap", price: 0 },
       { id: "glass", name: "Fluted Clear Glass Vase", price: 14 },
       { id: "ceramic", name: "Artisan Matte Ceramic Pot", price: 24 }
-    ],
-    checkoutUrls: {
-      standard: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
-      deluxe: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
-      premium: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6"
-    }
+    ]
   },
   {
     id: "sweetheart-bouquet",
@@ -445,9 +396,8 @@ export const PRODUCTS = [
       primary: "images/sweetheart.webp",
       gallery: [
         "images/sweetheart.webp",
-        "images/roses.webp",
-        "images/peonies.webp",
-        "images/tulips.webp"
+        "images/sweetheart-1.webp",
+        "images/sweetheart-2.webp"
       ]
     },
     shortDescription: "A romantic confection of ruffled white lisianthus, pale peach ranunculus, and pastel pink roses.",
@@ -472,12 +422,7 @@ export const PRODUCTS = [
       { id: "none", name: "Textured Vellum Wrap & Mauve Ribbon", price: 0 },
       { id: "glass", name: "Fluted Clear Glass Vase", price: 14 },
       { id: "ceramic", name: "Artisan Matte Ceramic Pot", price: 24 }
-    ],
-    checkoutUrls: {
-      standard: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
-      deluxe: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
-      premium: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6"
-    }
+    ]
   },
   {
     id: "petite-wildflower-basket",
@@ -493,9 +438,8 @@ export const PRODUCTS = [
       primary: "images/wildflower.webp",
       gallery: [
         "images/wildflower.webp",
-        "images/daisies.webp",
-        "images/spires.webp",
-        "images/sunburst.webp"
+        "images/wildflower-1.webp",
+        "images/wildflower-2.webp"
       ]
     },
     shortDescription: "A rustic woven rattan basket filled with sunny chamomile daisies, English lavender, and sweet peas.",
@@ -518,12 +462,7 @@ export const PRODUCTS = [
     ],
     vases: [
       { id: "basket", name: "Hand-Woven Natural Rattan Basket (Included)", price: 0 }
-    ],
-    checkoutUrls: {
-      standard: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
-      deluxe: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
-      premium: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6"
-    }
+    ]
   },
   {
     id: "birthday-bloom-box",
@@ -533,15 +472,14 @@ export const PRODUCTS = [
     category: "celebration",
     occasion: "Milestones & Birthdays",
     tag: "Celebration Package",
+    featured: true,
     rating: 5.0,
     reviewCount: 120,
     images: {
       primary: "images/birthday.webp",
       gallery: [
         "images/birthday.webp",
-        "images/sunburst.webp",
-        "images/peonies.webp",
-        "images/sweetheart.webp"
+        "images/birthday-1.webp"
       ]
     },
     shortDescription: "A luxury round keepsake hat box densely packed with pastel roses and mini hydrangeas, with a letterpress card.",
@@ -564,12 +502,49 @@ export const PRODUCTS = [
     ],
     vases: [
       { id: "hatbox", name: "Matte Cream Keepsake Hat Box (Included)", price: 0 }
+    ]
+  },
+  {
+    id: "english-daisies",
+    slug: "english-daisies",
+    name: "English Countryside Daisies",
+    subtitle: "Pure White Shasta Daisies & Sunny Chamomile",
+    category: "bouquet",
+    occasion: "Everyday",
+    tag: "Cheerful Meadow",
+    rating: 4.9,
+    reviewCount: 62,
+    images: {
+      primary: "images/daisies.webp",
+      gallery: [
+        "images/daisies.webp",
+        "images/daisies-1.webp",
+        "images/daisies-2.webp"
+      ]
+    },
+    shortDescription: "A cheerful, sun-drenched gathering of pure white Shasta daisies, sunny yellow chamomile, and fresh field greens.",
+    description: "Bring the unpretentious joy and crisp breeze of the English countryside into your home. Hand-tied with abundant white Shasta daisies, aromatic chamomile blossoms, golden feverfew, and wisps of trailing greenery, this radiant bouquet brings effortless warmth and cheerful energy to any room.",
+    stems: [
+      { name: "Pure White Shasta Daisies", count: 14 },
+      { name: "Sunny Chamomile Blossoms", count: 10 },
+      { name: "Golden Feverfew Sprigs", count: 6 },
+      { name: "Fresh Meadow Greens & Eucalyptus", count: 5 }
     ],
-    checkoutUrls: {
-      standard: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
-      deluxe: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6",
-      premium: "https://petal-bloom.lemonsqueezy.com/checkout/buy/ca127936-83ba-44fe-a8f2-e9df98b47ed6"
-    }
+    careGuide: [
+      "Trim stems at a 45-degree angle under cool running water before placing in clean water.",
+      "Daisies love fresh, cold water; change water and rinse stems every 2 days.",
+      "Keep away from direct heat and air drafts to maximize petal longevity."
+    ],
+    sizes: [
+      { id: "standard", name: "Standard", stems: "20-22 stems", price: 38, default: true },
+      { id: "deluxe", name: "Deluxe", stems: "30-32 stems", price: 54, default: false },
+      { id: "premium", name: "Premium", stems: "42-44 stems", price: 76, default: false }
+    ],
+    vases: [
+      { id: "none", name: "Classic Kraft Wrap & Yellow Linen Ribbon", price: 0 },
+      { id: "glass", name: "Fluted Clear Glass Vase", price: 14 },
+      { id: "ceramic", name: "Artisan Matte Ceramic Pot", price: 24 }
+    ]
   }
 ];
 
@@ -581,11 +556,33 @@ export function getProductBySlug(slug) {
 }
 
 /**
+ * Get only Featured & Best-Selling arrangements for homepage curation
+ */
+export function getFeaturedProducts() {
+  return PRODUCTS.filter(p => p.featured || p.tag === "Bestseller" || p.rating >= 4.9).slice(0, 6);
+}
+
+/**
  * Filter catalog products by category
  */
 export function getProductsByCategory(category = "all") {
   if (!category || category === "all") return PRODUCTS;
   return PRODUCTS.filter(p => p.category === category);
+}
+
+/**
+ * Get all unique categories
+ */
+export function getAllCategories() {
+  return ["all", "bouquet", "luxury", "gift", "celebration"];
+}
+
+/**
+ * Get all unique occasions
+ */
+export function getAllOccasions() {
+  const occasions = new Set(PRODUCTS.map(p => p.occasion));
+  return ["all", ...Array.from(occasions)];
 }
 
 /**

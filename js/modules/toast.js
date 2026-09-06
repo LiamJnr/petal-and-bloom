@@ -1,8 +1,6 @@
-/**
- * Toast Notification Alert Module
- */
+import { ICONS } from "../lib/icons.js";
 
-export function showToast({ title, message, icon = "🌸", type = "success", duration = 4500 }) {
+export function showToast({ title, message, icon = ICONS.flower, type = "success", duration = 4500 }) {
   let container = document.getElementById("toast-container");
   if (!container) {
     container = document.createElement("div");

@@ -2,6 +2,7 @@
  * Client Reviews & Testimonials Module
  */
 import { getReviewsForProduct, getReviewMetrics } from "../data/reviews.js";
+import { ICONS, renderStars } from "../lib/icons.js";
 
 let onReviewAddedCallback = null;
 
@@ -36,7 +37,7 @@ export function renderReviews() {
       <!-- 1. Score Card -->
       <div class="reviews-score-card">
         <div class="reviews-big-score">${avg}</div>
-        <div class="reviews-score-stars">★ ★ ★ ★ ★</div>
+        <div class="reviews-score-stars">${renderStars(5)}</div>
         <div class="reviews-total-count">Based on ${totalReviews} verified reviews</div>
       </div>
 
@@ -99,10 +100,10 @@ export function renderReviews() {
               <div class="reviewer-avatar">${rev.author.charAt(0)}</div>
               <div>
                 <div class="reviewer-name">${rev.author}</div>
-                <div class="reviewer-verified">✓ Verified Recipient</div>
+                <div class="reviewer-verified">${ICONS.check} Verified Recipient</div>
               </div>
             </div>
-            <div class="review-card-stars">${"★".repeat(rev.rating)}</div>
+            <div class="review-card-stars">${renderStars(rev.rating)}</div>
           </div>
 
           <div class="review-product-tag">${rev.productName || "Bouquet"}</div>

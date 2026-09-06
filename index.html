@@ -27,7 +27,7 @@
         Call Us : +123-456-789
       </div> -->
       <div class="announcement-promo">
-        Sign up and GET 20% OFF for your first order. <a href="#">Sign up now</a>
+        Free delivery on all orders over $75 — Shop local, bloom beautiful.
       </div>
       <!-- <div class="announcement-socials">
         <a href="#" aria-label="Facebook">ⓕ</a>
@@ -47,12 +47,11 @@
       </a>
 
       <div class="nav-links">
-        <a href="#" class="nav-link active">Home</a>
-        <a href="#collection" class="nav-link">Shop</a>
-        <a href="#events" class="nav-link">Occasions</a>
-        <a href="#about" class="nav-link">About Us</a>
-        <a href="#about" class="nav-link">Contact Us</a>
-        <a href="#reviews" class="nav-link">Blogs</a>
+        <a href="#" class="nav-link active" id="nav-home-link">Home</a>
+        <a href="#shop" class="nav-link" id="nav-shop-link">Shop</a>
+        <a href="#faq" class="nav-link" id="nav-faq-link">Care &amp; FAQs</a>
+        <a href="#about" class="nav-link" id="nav-about-link">About Us</a>
+        <a href="#contact" class="nav-link" id="nav-contact-link">Contact</a>
       </div>
 
       <!-- Action Controls -->
@@ -72,10 +71,11 @@
         </div>
 
         <!-- Wishlist Button -->
-        <button class="icon-btn" aria-label="View Wishlist" title="Wishlist">
+        <button class="icon-btn" id="wishlist-trigger" aria-label="View Wishlist" title="Wishlist">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/>
           </svg>
+          <span class="wishlist-count-badge" id="wishlist-badge">0</span>
         </button>
 
         <!-- Cart Bag Trigger -->
@@ -118,7 +118,7 @@
             Discover thoughtfully hand-crafted arrangements for anniversaries, birthdays, heartfelt gestures, and everyday living spaces.
           </p>
           <div class="hero-actions">
-            <a href="#collection" class="button button-dark">Explore the Collection</a>
+            <a href="#shop" class="button button-dark btn-hero-explore-shop" id="btn-hero-shop">Explore the Collection</a>
             <a href="#events" class="button button-light">Celebration Gift Sets</a>
           </div>
         </div>
@@ -168,44 +168,49 @@
         </div>
       </section>
 
-      <!-- Products Catalog Section -->
+      <!-- Products Catalog Section (Featured & Bestsellers Showcase) -->
       <section id="collection" class="products-section container">
-        <div class="catalog-header">
+        <div class="catalog-header home-featured-header">
           <div class="catalog-header-top">
             <div>
-              <span class="eyebrow">THE SPRING COLLECTION</span>
-              <h2>Freshly Picked Favorites</h2>
+              <span class="eyebrow">CURATED BOTANICAL SHOWCASE</span>
+              <h2>Featured &amp; Bestselling Blooms</h2>
             </div>
-            <span id="catalog-count" class="badge badge-rose">Loading flowers...</span>
+            <span id="catalog-count" class="badge badge-rose">Curated Highlights</span>
           </div>
 
-          <!-- Filter Pills & Sorting -->
+          <!-- Filter Pills for Featured Highlights -->
           <div class="catalog-toolbar">
-            <div class="filter-pills" role="tablist" aria-label="Filter products by category">
-              <button class="filter-pill active" data-filter="all">All Blooms</button>
-              <button class="filter-pill" data-filter="bouquet">Bouquets</button>
-              <button class="filter-pill" data-filter="luxury">Luxury Stems</button>
-              <button class="filter-pill" data-filter="gift">Gifts & Petite</button>
-              <button class="filter-pill" data-filter="celebration">Celebrations</button>
+            <div class="filter-pills" role="tablist" aria-label="Filter featured products">
+              <button class="filter-pill featured-filter-pill active" data-filter="all">All Highlights</button>
+              <button class="filter-pill featured-filter-pill" data-filter="bouquet">Bouquets</button>
+              <button class="filter-pill featured-filter-pill" data-filter="luxury">Luxury Stems</button>
+              <button class="filter-pill featured-filter-pill" data-filter="celebration">Celebrations</button>
             </div>
 
             <div class="catalog-sort">
-              <label for="catalog-sort" class="sort-label">Sort By:</label>
-              <select id="catalog-sort" class="sort-select">
-                <option value="bestseller">Featured & Bestselling</option>
-                <option value="price-low">Price: Low to High</option>
-                <option value="price-high">Price: High to Low</option>
-                <option value="rating">Highest Customer Rating</option>
-              </select>
+              <a href="#shop" class="btn-explore-full-shop btn-explore-header" id="btn-header-go-shop" style="padding: 8px 20px; font-size: 0.82rem;">
+                Browse Full Catalog (12+) &rarr;
+              </a>
             </div>
           </div>
-
-          <div id="filter-status" class="filter-status"></div>
         </div>
 
-        <!-- Dynamic Product Grid -->
-        <div class="product-grid" id="product-grid">
-          <!-- Populated dynamically via catalog.js -->
+        <!-- Curated Featured Product Grid -->
+        <div class="product-grid" id="featured-product-grid">
+          <!-- Populated dynamically via catalog.js with getFeaturedProducts() -->
+        </div>
+
+        <!-- Home Shop CTA Promotional Banner -->
+        <div class="home-shop-cta-banner">
+          <div class="home-shop-cta-copy">
+            <span class="eyebrow">LOOKING FOR SOMETHING SPECIFIC?</span>
+            <h3>Explore our complete <em>botanical collection</em></h3>
+            <p>Browse all artisanal bouquets, cascading potted orchids, petite baskets, and celebration gift boxes with custom multi-filters.</p>
+          </div>
+          <button class="btn-explore-full-shop" id="btn-home-view-all-shop" type="button">
+            Explore All Flowers &rarr;
+          </button>
         </div>
       </section>
 
@@ -223,19 +228,19 @@
             
             <div class="event-features-list">
               <div class="event-feature-item">
-                <span class="event-feature-icon">✓</span>
+                <span class="event-feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none" /><path fill="currentColor" fill-rule="evenodd" d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11s11-4.925 11-11S18.075 1 12 1m4.768 9.14a1 1 0 1 0-1.536-1.28l-4.3 5.159l-2.225-2.226a1 1 0 0 0-1.414 1.414l3 3a1 1 0 0 0 1.475-.067z" clip-rule="evenodd" /></svg></span>
                 <span>Pastel garden roses & mini hydrangeas in round keepsake hat box</span>
               </div>
               <div class="event-feature-item">
-                <span class="event-feature-icon">✓</span>
+                <span class="event-feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none" /><path fill="currentColor" fill-rule="evenodd" d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11s11-4.925 11-11S18.075 1 12 1m4.768 9.14a1 1 0 1 0-1.536-1.28l-4.3 5.159l-2.225-2.226a1 1 0 0 0-1.414 1.414l3 3a1 1 0 0 0 1.475-.067z" clip-rule="evenodd" /></svg></span>
                 <span>Complimentary personalized gold-foil letterpress greeting card</span>
               </div>
               <div class="event-feature-item">
-                <span class="event-feature-icon">✓</span>
+                <span class="event-feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none" /><path fill="currentColor" fill-rule="evenodd" d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11s11-4.925 11-11S18.075 1 12 1m4.768 9.14a1 1 0 1 0-1.536-1.28l-4.3 5.159l-2.225-2.226a1 1 0 0 0-1.414 1.414l3 3a1 1 0 0 0 1.475-.067z" clip-rule="evenodd" /></svg></span>
                 <span>Protective hydration foam reservoir for 7+ days of peak freshness</span>
               </div>
               <div class="event-feature-item">
-                <span class="event-feature-icon">✓</span>
+                <span class="event-feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none" /><path fill="currentColor" fill-rule="evenodd" d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11s11-4.925 11-11S18.075 1 12 1m4.768 9.14a1 1 0 1 0-1.536-1.28l-4.3 5.159l-2.225-2.226a1 1 0 0 0-1.414 1.414l3 3a1 1 0 0 0 1.475-.067z" clip-rule="evenodd" /></svg></span>
                 <span>Hand-tied silk ribbon with guaranteed milestone delivery timing</span>
               </div>
             </div>
@@ -267,10 +272,10 @@
             <div class="event-card-image-wrap">
               <img src="images/birthday.webp" alt="Birthday Bloom Box Keepsake Hat Box" loading="lazy" />
               <div class="event-floating-badge">
-                <span>⭐ 5.0 (120 Reviews)</span>
+                <span style="display:inline-flex;align-items:center;gap:4px;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 1024 1024"><path d="M0 0h1024v1024H0z" fill="none" /><path fill="currentColor" d="m908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5c-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 0 0 .6 45.3l183.7 179.1l-43.4 252.9a31.95 31.95 0 0 0 46.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2c17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9l183.7-179.1c5-4.9 8.3-11.3 9.3-18.3c2.7-17.5-9.5-33.7-27-36.3" /></svg> 5.0 (120 Reviews)</span>
               </div>
               <div class="event-floating-badge-bottom">
-                <span>✨ Gold-Foil Note Card Included</span>
+                <span style="display:inline-flex;align-items:center;gap:4px;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none" /><path fill="currentColor" d="M16.41 10.41a.998.998 0 0 0 0-1.82l-4.15-1.84l-1.84-4.15a.99.99 0 0 0-.91-.59c-.39 0-.74.23-.91.58L6.75 6.6L2.57 8.61c-.35.17-.57.53-.57.92s.24.74.59.9l4.15 1.84l1.84 4.15a.998.998 0 0 0 1.82 0l1.84-4.15l4.15-1.84Zm5.19 5.98l-2.77-1.23l-1.23-2.77a.68.68 0 0 0-.6-.4c-.27-.02-.5.15-.61.39l-1.23 2.67l-2.78 1.34c-.23.11-.38.35-.38.61s.16.49.4.6l2.77 1.23l1.23 2.77a.663.663 0 0 0 1.22 0l1.23-2.77l2.77-1.23c.24-.11.4-.35.4-.61s-.16-.5-.4-.61ZM7.76 18.63l-1.66-.74l-.74-1.66a.41.41 0 0 0-.36-.24c-.16-.01-.3.09-.37.23l-.74 1.6l-1.67.8c-.14.07-.23.21-.23.37s.1.3.24.36l1.66.74l.74 1.66a.404.404 0 0 0 .74 0l.74-1.66l1.66-.74a.404.404 0 0 0 0-.74Z" /></svg> Gold-Foil Note Card Included</span>
               </div>
             </div>
 
@@ -315,7 +320,7 @@
             </div>
 
             <div class="about-floating-badge">
-              <div class="about-badge-icon">🌿</div>
+              <div class="about-badge-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512"><path d="M0 0h512v512H0z" fill="none" /><path fill="currentColor" d="M427.313 26.188c-4.8.012-9.63 1.264-14.032 3.406c9.05 78.836 5.48 143.09-43.217 231.844c63.85-73.5 80.035-178.61 74.75-228.344c-5.21-4.886-11.33-6.922-17.5-6.907zm-91.032 48.75c-98.73 2.416-95.504 294.125-310.155 346.812C229.537 547.755 623.41 365.046 450.03 152.812c-.923 2.79-1.863 5.586-2.81 8.407c10.803 52.818 6.81 110.217-20.44 172.874c3.956-40.244 3.315-78.758-2.905-115.656c-7.34 14.28-16.703 28.132-26.28 42.062c1.357 40.016-6.12 82.247-25.72 127.313c3.143-32.007 2.588-62.875-.563-92.875c-12.835 14.593-27.163 28.624-43.218 41.468c-3.802 25.377-10.96 51.658-22.78 78.844c2.12-21.604 2.46-42.944 1.748-63.656C271.472 375.8 229.21 395.157 178 405.906c43.122-24.2 77.516-49.167 105.688-74.75c-18.532-3.86-37.607-6.38-56.657-8.156a271.4 271.4 0 0 1 74.19-8.188c17.226-17.617 31.62-35.325 43.217-53.718c-32.133-5.78-64.654-7.476-97.53-5.28c37.746-18.268 75.352-24.643 112.718-22.19c9.655-19.872 16.26-40.42 21.03-61.31c-28.417-2.687-59.37 4.05-94.624 12.842c31.834-29.16 66.23-41.838 100.44-45.562c1.778-14.472 2.736-28.956 2.905-43.906c-19.706-14.02-36.318-20.438-50.75-20.75c-.79-.018-1.566-.02-2.344 0z" /></svg></div>
               <div class="about-badge-text">
                 <h5>7-Day Bloom Guarantee</h5>
                 <span>Freshness verified on arrival</span>
@@ -333,7 +338,7 @@
 
             <div class="about-pillars">
               <div class="about-pillar-item">
-                <div class="about-pillar-icon">🌱</div>
+                <div class="about-pillar-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 64 64"><path d="M0 0h64v64H0z" fill="none" /><path fill="currentColor" d="M60.352 30.213c-.867-.744-8.626-7.27-14.026-7.27c-6.732 0-9.982 5.871-10.762 8.976l-.118.475a16.8 16.8 0 0 0-2.812 2.015a15.5 15.5 0 0 0-2.447 2.772c-.056-.267-.111-.534-.179-.792c-.794-2.901-2.068-5.467-3.441-7.961c-1.11-1.971-2.336-3.856-3.62-5.695l.063-.127c1.344-2.712 2.531-9.261-2.588-14.628C16.253 3.605 5.39 2.354 4.166 2.228L2 2l.213 2.236c.122 1.284 1.311 12.653 5.473 17.015c2.317 2.429 5.215 3.714 8.382 3.714c2.602 0 4.747-.862 5.703-1.32a69 69 0 0 1 3.157 5.697c1.19 2.469 2.271 5.043 2.816 7.614c.131.639-.77 25.044-.77 25.044h4.454s-.696-20.141-.573-20.625c.52-2.013 1.652-3.906 3.144-5.448a14.7 14.7 0 0 1 2.094-1.774c1.303 2.616 4.515 6.158 10.233 6.158c5.4 0 13.159-6.525 14.026-7.269L62 31.627z" /></svg></div>
                 <div class="about-pillar-content">
                   <h4>Direct Ethical Sourcing</h4>
                   <p>We partner directly with sustainable growers who harvest stems at peak bud for maximum vase longevity.</p>
@@ -341,7 +346,7 @@
               </div>
 
               <div class="about-pillar-item">
-                <div class="about-pillar-icon">✂️</div>
+                <div class="about-pillar-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 36 36"><path d="M0 0h36v36H0z" fill="none" /><path fill="currentColor" d="m33.81 8.13l-2.18-1.65a1.92 1.92 0 0 0-2.36 0L10 22.06a5.46 5.46 0 1 0 2 1.81l3.9-3.12l13.37 10.77a1.92 1.92 0 0 0 2.36 0l2.18-1.64L20.94 19ZM7.45 29.75a2.86 2.86 0 1 1 2.86-2.86a2.87 2.87 0 0 1-2.86 2.86" class="clr-i-solid clr-i-solid-path-1" /><path fill="currentColor" d="M14.3 15.24L12 13.38a5.46 5.46 0 1 0-2 1.81L12.16 17Zm-6.85-2a2.86 2.86 0 1 1 2.86-2.86a2.86 2.86 0 0 1-2.86 2.85Z" class="clr-i-solid clr-i-solid-path-2" /><path fill="none" d="M0 0h36v36H0z" /></svg></div>
                 <div class="about-pillar-content">
                   <h4>Master Florist Artistry</h4>
                   <p>Every arrangement is individually conditioned, pruned, and hand-tied by seasoned floral designers in our studio.</p>
@@ -349,7 +354,7 @@
               </div>
 
               <div class="about-pillar-item">
-                <div class="about-pillar-icon">🚚</div>
+                <div class="about-pillar-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1.23em" height="1em" viewBox="0 0 1728 1408"><path d="M0 0h1728v1408H0z" fill="none" /><path fill="currentColor" d="M576 1152q0-52-38-90t-90-38t-90 38t-38 90t38 90t90 38t90-38t38-90M192 640h384V384H418q-13 0-22 9L201 588q-9 9-9 22zm1280 512q0-52-38-90t-90-38t-90 38t-38 90t38 90t90 38t90-38t38-90M1728 64v1024q0 15-4 26.5t-13.5 18.5t-16.5 11.5t-23.5 6t-22.5 2t-25.5 0t-22.5-.5q0 106-75 181t-181 75t-181-75t-75-181H704q0 106-75 181t-181 75t-181-75t-75-181h-64q-3 0-22.5.5t-25.5 0t-22.5-2t-23.5-6t-16.5-11.5T4 1114.5T0 1088q0-26 19-45t45-19V704q0-8-.5-35t0-38t2.5-34.5t6.5-37t14-30.5t22.5-30l198-198q19-19 50.5-32t58.5-13h160V64q0-26 19-45t45-19h1024q26 0 45 19t19 45" /></svg></div>
                 <div class="about-pillar-content">
                   <h4>Protective Hydration Delivery</h4>
                   <p>Dispatched in temperature-safe custom packaging with continuous hydration packs to ensure instant blooming upon arrival.</p>
@@ -358,6 +363,99 @@
             </div>
           </div>
 
+        </div>
+      </section>
+    </div>
+
+    <!-- Dedicated Dynamic Shop Catalog View Container -->
+    <div id="shop-view" style="display: none;">
+      <!-- Shop Hero Banner -->
+      <section class="shop-hero">
+        <div class="container shop-hero-inner">
+          <div class="shop-breadcrumb">
+            <a href="#" id="shop-breadcrumb-home">Home</a>
+            <span>/</span>
+            <span>All Flowers &amp; Arrangements</span>
+          </div>
+          <span class="eyebrow">THE COMPLETE COLLECTION</span>
+          <h1>Artisanal blooms for<br><em>every celebration &amp; space.</em></h1>
+          <p>
+            Explore our curated floral offerings. Filter by arrangement category, occasion, price tier, or search for your favorite stems.
+          </p>
+        </div>
+      </section>
+
+      <!-- Shop Section with Filter Toolbar & Product Grid -->
+      <section class="shop-section container">
+        <!-- Filter & Search Toolbar Card -->
+        <div class="shop-toolbar-card">
+          <!-- Row 1: Instant Search & Sorting & Occasion -->
+          <div class="shop-toolbar-top">
+            <div class="shop-search-box">
+              <svg class="shop-search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+              </svg>
+              <input type="search" class="shop-search-input" placeholder="Search roses, lilies, orchids, hydrangeas..." aria-label="Search all flowers" />
+              <button type="button" class="shop-search-clear-btn" aria-label="Clear search">&times;</button>
+            </div>
+
+            <div class="shop-toolbar-controls">
+              <div class="shop-control-group">
+                <label for="shop-occasion-select" class="shop-control-label">Occasion:</label>
+                <select id="shop-occasion-select" class="shop-select">
+                  <option value="all">All Occasions</option>
+                  <option value="Romantic">Romance &amp; Anniversaries</option>
+                  <option value="Birthday">Birthdays</option>
+                  <option value="Celebrations">Celebrations &amp; Milestones</option>
+                  <option value="Everyday">Everyday &amp; Home</option>
+                  <option value="Gratitude">Gratitude &amp; Gifts</option>
+                </select>
+              </div>
+
+              <div class="shop-control-group">
+                <label for="shop-sort-select" class="shop-control-label">Sort By:</label>
+                <select id="shop-sort-select" class="shop-select">
+                  <option value="bestseller">Featured &amp; Bestsellers</option>
+                  <option value="price-low">Price: Low to High</option>
+                  <option value="price-high">Price: High to Low</option>
+                  <option value="rating">Highest Customer Rating</option>
+                  <option value="name-asc">Alphabetical (A-Z)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 2: Category Pills & Price Filter Pills -->
+          <div class="shop-toolbar-filters">
+            <div class="shop-filter-pills-row" role="tablist" aria-label="Filter by category">
+              <button class="shop-category-pill active" data-category="all">All Blooms</button>
+              <button class="shop-category-pill" data-category="bouquet">Bouquets</button>
+              <button class="shop-category-pill" data-category="luxury">Luxury Stems</button>
+              <button class="shop-category-pill" data-category="gift">Gifts &amp; Petite</button>
+              <button class="shop-category-pill" data-category="celebration">Celebrations</button>
+            </div>
+
+            <div class="shop-filter-pills-row" role="tablist" aria-label="Filter by price">
+              <button class="shop-price-pill active" data-price="all">All Prices</button>
+              <button class="shop-price-pill" data-price="under-50">Under $50</button>
+              <button class="shop-price-pill" data-price="50-75">$50 – $75</button>
+              <button class="shop-price-pill" data-price="75-100">$75 – $100</button>
+              <button class="shop-price-pill" data-price="over-100">$100+</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Active Filter Chips Tag Bar -->
+        <div id="shop-active-chips"></div>
+
+        <!-- Results Status Strip -->
+        <div class="shop-results-strip">
+          <span id="shop-catalog-count" class="shop-results-count">Loading arrangements...</span>
+        </div>
+
+        <!-- Shop Product Grid -->
+        <div class="product-grid" id="shop-product-grid">
+          <!-- Populated dynamically via shop.js -->
         </div>
       </section>
     </div>
@@ -373,6 +471,10 @@
     </div>
 
     <div id="order-confirmation-view" style="display: none;"></div>
+
+    <div id="info-view" style="display: none;">
+      <!-- Populated dynamically via info-pages.js (FAQs, Care Guide, Contact, Privacy, Terms, Shipping) -->
+    </div>
 
   </main>
 
@@ -395,9 +497,9 @@
       <div class="footer-col">
         <h4>Explore</h4>
         <ul>
-          <li><a href="#collection">Seasonal Bouquets</a></li>
-          <li><a href="#collection">Luxury Vases</a></li>
-          <li><a href="#events">Birthday Bloom Boxes</a></li>
+          <li><a href="#shop" class="footer-shop-link" data-category="bouquet">Seasonal Bouquets</a></li>
+          <li><a href="#shop" class="footer-shop-link" data-category="luxury">Luxury Stems &amp; Vases</a></li>
+          <li><a href="#shop" class="footer-shop-link" data-category="celebration">Birthday &amp; Milestone Boxes</a></li>
           <li><a href="#reviews">Customer Reviews</a></li>
         </ul>
       </div>
@@ -405,16 +507,16 @@
       <div class="footer-col">
         <h4>Customer Care</h4>
         <ul>
-          <li><a href="#about">Flower Care Guide</a></li>
-          <li><a href="#about">Freshness Guarantee</a></li>
-          <li><a href="#about">Delivery FAQs</a></li>
-          <li><a href="#about">Contact Our Florists</a></li>
+          <li><a href="#faq" class="footer-faq-link" data-tab="care">Flower Care Guide</a></li>
+          <li><a href="#faq" class="footer-faq-link" data-tab="guarantee">Freshness Guarantee</a></li>
+          <li><a href="#faq" class="footer-faq-link" data-tab="delivery">Delivery FAQs</a></li>
+          <li><a href="#contact" class="footer-contact-link">Contact Our Florists</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
         <h4>Stay in Bloom</h4>
-        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing! 🌸');">
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing to Petal & Bloom!');">
           <p>Get 10% off your first arrangement and seasonal flower care tips.</p>
           <div class="newsletter-input-group">
             <input type="email" class="newsletter-input" placeholder="Enter your email" required />
@@ -427,9 +529,9 @@
     <div class="container footer-bottom">
       <p>© <span id="year"></span> Petal & Bloom Studio. All rights reserved.</p>
       <div class="footer-bottom-links">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
-        <a href="#">Shipping & Returns</a>
+        <a href="#privacy" class="footer-privacy-link">Privacy Policy</a>
+        <a href="#terms" class="footer-terms-link">Terms of Service</a>
+        <a href="#shipping" class="footer-shipping-link">Shipping &amp; Returns</a>
       </div>
     </div>
   </footer>
