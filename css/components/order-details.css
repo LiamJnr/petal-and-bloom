@@ -31,9 +31,14 @@
   margin-bottom: 6px;
 }
 
-.checkout-subtitle {
+.checkout-subtitle,
+.checkout-data-notice {
   color: var(--muted);
   font-size: 0.92rem;
+}
+
+.checkout-data-notice {
+  margin-top: 4px;
 }
 
 /* Fieldsets with Numbered Badges */
