@@ -50,8 +50,8 @@ async function pollOrderStatus(view, orderId) {
         clearCart()
         renderMessage(view, {
           eyebrow: 'Payment confirmed',
-          title: 'Your blooms are being prepared',
-          message: 'Thank you for your order. Our studio team has received your delivery details and will prepare your arrangement with care.',
+          title: 'Your digital order is confirmed',
+          message: 'Thank you for your order. Check your Lemon Squeezy receipt for digital access and order details.',
           action: 'Continue shopping',
           reference: orderId,
         })

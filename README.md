@@ -14,6 +14,8 @@ continue to deploy the storefront as they do today.
 - The confirmation route (`?view=order-confirmed&order=…`) polls a minimal
   order-status endpoint and clears the flower bag only after that paid status
   is recorded.
+- Delivery-preview fields remain on the checkout screen for presentation only;
+  they are never read, persisted, or sent to Cloudflare or Lemon Squeezy.
 
 The local foundation is in place: `wrangler.toml`, `schema.sql`, and
 `.env.example`. No payment code or secrets have been added yet.
@@ -62,6 +64,20 @@ npx wrangler pages dev . --port=8788
 Do not add `--d1=DB` to the Pages command: the D1 binding is read from
 `wrangler.toml`, which makes Pages use the same local database initialized by
 the preceding command.
+
+### Database migration: remove previously stored delivery data
+
+Before deploying the buyer-only checkout endpoint, run this once against each
+environment's D1 database:
+
+```bash
+npx wrangler d1 execute petal-and-bloom-db --remote --file=./migrations/0001_replace_delivery_data.sql
+```
+
+The migration keeps existing order rows, deliberately erases their old delivery
+payloads, and adds buyer-only metadata. It is safe to run before deployment:
+the currently deployed checkout remains compatible until GitHub deploys the
+new buyer-only endpoint.
 
 ## Setup
 

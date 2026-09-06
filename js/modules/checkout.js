@@ -201,6 +201,7 @@ export function renderCheckoutPage() {
             <div class="checkout-header-intro">
               <h2>Recipient &amp; Delivery Logistics</h2>
               <p class="checkout-subtitle">Please provide the delivery destination and flower recipient details below.</p>
+              <p class="checkout-data-notice">Preview fields remain in this browser only. They are not saved or submitted; secure checkout uses the name and email entered above.</p>
             </div>
 
             <form id="recipient-order-form">
@@ -497,38 +498,12 @@ function bindCheckoutEvents() {
   form?.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const recipientName = document.getElementById("rec-name").value.trim();
-    const recipientEmail = document.getElementById("rec-email").value.trim();
-    const streetAddress = document.getElementById("rec-address").value.trim();
-    const suite = document.getElementById("rec-suite").value.trim();
-    const city = document.getElementById("rec-city").value.trim();
-    const state = document.getElementById("rec-state").value.trim();
-    const zipCode = document.getElementById("rec-zip").value.trim();
-    const deliveryDate = document.getElementById("rec-delivery-date").value;
-    const deliveryNotes = document.getElementById("rec-notes").value.trim();
-    const cardMessage = document.getElementById("rec-card-msg").value.trim();
-
-    // Store order payload
-    const delivery = {
-      recipient_name: recipientName,
-      recipient_email: recipientEmail,
-      line1: streetAddress,
-      line2: suite,
-      city,
-      state,
-      zip: zipCode,
-      location_type: selectedLocationType,
-      delivery_date: deliveryDate,
-      time_window: selectedTimeWindow,
-      courier_notes: deliveryNotes,
-      gift_message: cardMessage
+    // Only the buyer contact details are used for digital checkout. The visual
+    // delivery-preference fields are deliberately never read, stored, or sent.
+    const buyer = {
+      name: document.getElementById("rec-name").value.trim(),
+      email: document.getElementById("rec-email").value.trim()
     };
-
-    try {
-      sessionStorage.setItem("petal_bloom_order_details", JSON.stringify(delivery));
-    } catch {
-      // Ignored if storage full
-    }
 
     const submitButton = document.getElementById("btn-submit-order-details");
     const originalLabel = submitButton?.innerHTML;
@@ -545,7 +520,7 @@ function bindCheckoutEvents() {
           vase_id: item.vase.id,
           quantity: item.quantity
         })),
-        delivery
+        buyer
       });
     } catch (error) {
       if (submitButton) {

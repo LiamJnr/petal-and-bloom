@@ -3,7 +3,9 @@ CREATE TABLE IF NOT EXISTS orders (
   status TEXT NOT NULL DEFAULT 'pending',
   purchaser_email TEXT NOT NULL,
   cart_json TEXT NOT NULL,
-  delivery_json TEXT NOT NULL,
+  buyer_json TEXT NOT NULL,
+  -- Retained empty only for compatibility with existing deployments; no data is written here.
+  delivery_json TEXT NOT NULL DEFAULT '{}',
   total_cents INTEGER NOT NULL,
   ls_order_id TEXT,
   created_at TEXT NOT NULL DEFAULT (datetime('now')),

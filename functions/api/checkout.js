@@ -2,7 +2,6 @@ import { PRODUCTS } from '../../js/data/products.js'
 
 const MAX_LINE_ITEMS = 25
 const MAX_QUANTITY_PER_LINE = 20
-const MAX_GIFT_NOTE_LENGTH = 250
 const productBySlug = new Map(PRODUCTS.map((product) => [product.slug, product]))
 
 export async function onRequestPost(context) {
@@ -31,29 +30,29 @@ async function createCheckout({ request, env }) {
   }
 
   let items
-  let delivery
+  let buyer
   try {
     items = validateItems(body.items)
-    delivery = validateDelivery(body.delivery)
+    buyer = validateBuyer(body.buyer)
   } catch (error) {
     return json({ error: error.message }, 400)
   }
 
   const subtotalCents = items.reduce((sum, item) => sum + item.unit_price_cents * item.quantity, 0)
-  const totalCents = subtotalCents // Local florist delivery and the card note are currently complimentary.
+  const totalCents = subtotalCents
   const orderId = crypto.randomUUID()
   const itemCount = items.reduce((sum, item) => sum + item.quantity, 0)
   const siteUrl = new URL(request.url).origin
   const redirectUrl = `${siteUrl}/?view=order-confirmed&order=${encodeURIComponent(orderId)}`
 
   await env.DB.prepare(
-    `INSERT INTO orders (id, status, purchaser_email, cart_json, delivery_json, total_cents)
-     VALUES (?, 'pending', ?, ?, ?, ?)`
+    `INSERT INTO orders (id, status, purchaser_email, cart_json, buyer_json, delivery_json, total_cents)
+     VALUES (?, 'pending', ?, ?, ?, '{}', ?)`
   ).bind(
     orderId,
-    delivery.recipient_email,
+    buyer.email,
     JSON.stringify(items),
-    JSON.stringify(delivery),
+    JSON.stringify(buyer),
     totalCents,
   ).run()
 
@@ -67,15 +66,15 @@ async function createCheckout({ request, env }) {
         test_mode: testMode,
         product_options: {
           name: `Petal & Bloom order — ${itemCount} item${itemCount === 1 ? '' : 's'}`,
-          description: checkoutDescription(items, delivery),
+          description: checkoutDescription(items),
           enabled_variants: [variantId],
           redirect_url: redirectUrl,
           receipt_button_text: 'Return to Petal & Bloom',
           receipt_link_url: siteUrl,
         },
         checkout_data: {
-          email: delivery.recipient_email,
-          name: delivery.recipient_name,
+          email: buyer.email,
+          name: buyer.name,
           custom: { order_ref: orderId },
         },
       },
@@ -140,49 +139,19 @@ function validateItems(items) {
   })
 }
 
-function validateDelivery(value) {
+function validateBuyer(value) {
   const clean = (field, max) => String(value?.[field] || '').trim().slice(0, max)
-  const recipient_email = clean('recipient_email', 254).toLowerCase()
-  const delivery_date = clean('delivery_date', 10)
-  const result = {
-    recipient_name: clean('recipient_name', 100),
-    recipient_email,
-    line1: clean('line1', 160),
-    line2: clean('line2', 160),
-    city: clean('city', 100),
-    state: clean('state', 100),
-    zip: clean('zip', 30),
-    location_type: clean('location_type', 20),
-    courier_notes: clean('courier_notes', 500),
-    delivery_date,
-    time_window: clean('time_window', 20),
-    gift_message: clean('gift_message', MAX_GIFT_NOTE_LENGTH),
-  }
-
-  const required = ['recipient_name', 'recipient_email', 'line1', 'city', 'state', 'zip', 'delivery_date']
-  if (required.some((field) => !result[field])) throw new Error('Please complete all required recipient and delivery details.')
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(result.recipient_email)) throw new Error('Please enter a valid recipient email address.')
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(result.delivery_date) || result.delivery_date < todayInUtc()) {
-    throw new Error('Please choose a valid future delivery date.')
-  }
-  if (!['residential', 'business', 'hospital', 'venue'].includes(result.location_type)) {
-    throw new Error('Please choose a valid delivery location type.')
-  }
-  if (!['morning', 'afternoon', 'evening'].includes(result.time_window)) {
-    throw new Error('Please choose a valid delivery time window.')
-  }
-  return result
+  const buyer = { name: clean('name', 100), email: clean('email', 254).toLowerCase() }
+  if (!buyer.name || !buyer.email) throw new Error('Please enter your name and email address.')
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(buyer.email)) throw new Error('Please enter a valid email address.')
+  return buyer
 }
 
-function checkoutDescription(items, delivery) {
+function checkoutDescription(items) {
   const itemText = items
     .map((item) => `${item.name} — ${item.size.name}, ${item.vase.name} × ${item.quantity}`)
     .join('; ')
-  return `${itemText}. Deliver ${delivery.delivery_date} (${delivery.time_window}).`.slice(0, 1000)
-}
-
-function todayInUtc() {
-  return new Date().toISOString().slice(0, 10)
+  return `Digital order: ${itemText}`.slice(0, 1000)
 }
 
 function json(data, status = 200) {
