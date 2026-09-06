@@ -3,10 +3,11 @@
  * Gathers recipient delivery logistics, address, date/time window, and gift note.
  * Styled to conform with the Product Detail Page (PDP) design system.
  */
-import { getCartSubtotal, getTotalItemCount, openCart } from "./cart.js";
+import { getCartItems, getCartSubtotal, getTotalItemCount, openCart } from "./cart.js";
 import { navigateToHome } from "./router.js";
 import { showToast } from "./toast.js";
 import { getProductBySlug } from "../data/products.js";
+import { startCheckout } from "../lib/checkout.js";
 
 let selectedTimeWindow = "morning";
 let selectedLocationType = "residential";
@@ -118,12 +119,14 @@ export function renderCheckoutPage() {
   const checkoutView = document.getElementById("checkout-view");
   const homeView = document.getElementById("home-view");
   const pdpView = document.getElementById("pdp-view");
+  const confirmationView = document.getElementById("order-confirmation-view");
 
   if (!checkoutView) return;
 
   // View visibility
   if (homeView) homeView.style.display = "none";
   if (pdpView) pdpView.style.display = "none";
+  if (confirmationView) confirmationView.style.display = "none";
   checkoutView.style.display = "block";
   document.title = "Order Details & Recipient Information — Petal & Bloom";
 
@@ -171,9 +174,6 @@ export function renderCheckoutPage() {
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
   const minDateStr = tomorrow.toISOString().split("T")[0];
-
-  // Primary checkout URL for Lemon Squeezy
-  const primaryCheckoutUrl = cart[0]?.checkoutUrl || "https://petal-bloom.lemonsqueezy.com";
 
   checkoutView.innerHTML = `
     <!-- Top PDP-Style Page Header & Breadcrumbs Banner -->
@@ -437,13 +437,13 @@ export function renderCheckoutPage() {
     </div>
   `;
 
-  bindCheckoutEvents(primaryCheckoutUrl);
+  bindCheckoutEvents();
 }
 
 /**
  * Bind form interactions, time pills, location types, and submit flow
  */
-function bindCheckoutEvents(primaryCheckoutUrl) {
+function bindCheckoutEvents() {
   // Breadcrumb home
   document.querySelectorAll(".btn-checkout-home").forEach(btn => {
     btn.addEventListener("click", (e) => {
@@ -493,7 +493,7 @@ function bindCheckoutEvents(primaryCheckoutUrl) {
 
   // Form submit handler
   const form = document.getElementById("recipient-order-form");
-  form?.addEventListener("submit", (e) => {
+  form?.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const recipientName = document.getElementById("rec-name").value.trim();
@@ -508,57 +508,55 @@ function bindCheckoutEvents(primaryCheckoutUrl) {
     const cardMessage = document.getElementById("rec-card-msg").value.trim();
 
     // Store order payload
-    const orderDetails = {
-      recipientName,
-      recipientEmail,
-      streetAddress,
-      suite,
+    const delivery = {
+      recipient_name: recipientName,
+      recipient_email: recipientEmail,
+      line1: streetAddress,
+      line2: suite,
       city,
       state,
-      zipCode,
-      locationType: selectedLocationType,
-      deliveryDate,
-      timeWindow: selectedTimeWindow,
-      deliveryNotes,
-      cardMessage,
-      timestamp: new Date().toISOString()
+      zip: zipCode,
+      location_type: selectedLocationType,
+      delivery_date: deliveryDate,
+      time_window: selectedTimeWindow,
+      courier_notes: deliveryNotes,
+      gift_message: cardMessage
     };
 
     try {
-      sessionStorage.setItem("petal_bloom_order_details", JSON.stringify(orderDetails));
+      sessionStorage.setItem("petal_bloom_order_details", JSON.stringify(delivery));
     } catch {
       // Ignored if storage full
     }
 
-    showToast({
-      title: "Details Confirmed! 🌸",
-      message: `Connecting to Lemon Squeezy secure checkout for ${recipientName}...`,
-      icon: "✨",
-      duration: 4000
-    });
-
-    // Build checkout url with recipient email pre-fill if supported
-    let finalCheckoutUrl = primaryCheckoutUrl;
-    try {
-      const url = new URL(primaryCheckoutUrl);
-      if (recipientEmail) {
-        url.searchParams.set("checkout[email]", recipientEmail);
-      }
-      if (recipientName) {
-        url.searchParams.set("checkout[name]", recipientName);
-      }
-      finalCheckoutUrl = url.toString();
-    } catch {
-      finalCheckoutUrl = primaryCheckoutUrl;
+    const submitButton = document.getElementById("btn-submit-order-details");
+    const originalLabel = submitButton?.innerHTML;
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = "Preparing secure checkout…";
     }
 
-    // Open Lemon Squeezy Checkout (or overlay if available)
-    setTimeout(() => {
-      if (window.LemonSqueezy?.Url?.Open) {
-        window.LemonSqueezy.Url.Open(finalCheckoutUrl);
-      } else {
-        window.location.href = finalCheckoutUrl;
+    try {
+      await startCheckout({
+        items: getCartItems().map(item => ({
+          slug: item.slug,
+          size_id: item.size.id,
+          vase_id: item.vase.id,
+          quantity: item.quantity
+        })),
+        delivery
+      });
+    } catch (error) {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.innerHTML = originalLabel;
       }
-    }, 800);
+      showToast({
+        title: "Unable to start checkout",
+        message: error.message || "Please try again in a moment.",
+        icon: "⚠️",
+        duration: 6000
+      });
+    }
   });
 }

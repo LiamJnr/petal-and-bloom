@@ -10,6 +10,7 @@ import { initPDP, renderPDP } from "./modules/pdp.js";
 import { initReviews } from "./modules/reviews.js";
 import { initCart, addToCart, openCart } from "./modules/cart.js";
 import { renderCheckoutPage } from "./modules/checkout.js";
+import { renderOrderConfirmationPage } from "./modules/order-confirmation.js";
 import { showToast } from "./modules/toast.js";
 import { getProductBySlug } from "./data/products.js";
 
@@ -84,18 +85,25 @@ document.addEventListener("DOMContentLoaded", () => {
       const homeView = document.getElementById("home-view");
       const pdpView = document.getElementById("pdp-view");
       const checkoutView = document.getElementById("checkout-view");
+      const confirmationView = document.getElementById("order-confirmation-view");
       if (homeView) homeView.style.display = "block";
       if (pdpView) pdpView.style.display = "none";
       if (checkoutView) checkoutView.style.display = "none";
+      if (confirmationView) confirmationView.style.display = "none";
       document.title = "Petal & Bloom — Artisan Florist & Botanical Boutique";
     },
     onRouteProduct: (slug) => {
       const checkoutView = document.getElementById("checkout-view");
+      const confirmationView = document.getElementById("order-confirmation-view");
       if (checkoutView) checkoutView.style.display = "none";
+      if (confirmationView) confirmationView.style.display = "none";
       renderPDP(slug);
     },
     onRouteCheckout: () => {
       renderCheckoutPage();
+    },
+    onRouteOrderConfirmation: () => {
+      renderOrderConfirmationPage();
     }
   });
 

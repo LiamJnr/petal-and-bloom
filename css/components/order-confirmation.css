@@ -1,0 +1,62 @@
+.order-confirmation {
+  min-height: 62vh;
+  display: grid;
+  place-items: center;
+  padding: 72px 20px 112px;
+  background: linear-gradient(135deg, rgba(242, 226, 216, 0.72), rgba(255, 252, 247, 0.9));
+}
+
+.order-confirmation-card {
+  width: min(100%, 620px);
+  padding: clamp(36px, 7vw, 72px);
+  text-align: center;
+  background: var(--surface, #fffdfa);
+  border: 1px solid rgba(74, 53, 47, 0.14);
+  box-shadow: 0 20px 55px rgba(68, 43, 33, 0.12);
+}
+
+.order-confirmation-mark {
+  width: 62px;
+  height: 62px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--primary, #754c3d);
+  font-size: 1.9rem;
+}
+
+.order-confirmation-mark.is-loading {
+  animation: confirmation-pulse 1.3s ease-in-out infinite;
+}
+
+.order-confirmation-eyebrow,
+.order-confirmation-reference {
+  margin: 0;
+  color: var(--muted, #70655e);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.order-confirmation h1 {
+  margin: 12px 0 16px;
+  font-size: clamp(2rem, 5vw, 3.25rem);
+}
+
+.order-confirmation-message {
+  max-width: 470px;
+  margin: 0 auto 22px;
+  color: var(--muted, #70655e);
+  line-height: 1.7;
+}
+
+.order-confirmation-reference {
+  margin-bottom: 28px;
+}
+
+@keyframes confirmation-pulse {
+  50% { transform: scale(0.88); opacity: 0.62; }
+}

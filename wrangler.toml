@@ -1,0 +1,11 @@
+name = "petal-and-bloom"
+compatibility_date = "2026-09-06"
+pages_build_output_dir = "."
+
+# The existing Cloudflare Pages project must also bind this database as `DB` in
+# the Cloudflare dashboard.
+[[d1_databases]]
+binding = "DB"
+database_name = "petal-and-bloom-db"
+database_id = "0ac9d555-d4f7-4587-a8c3-c03d2b443571"
+preview_database_id = "DB"

@@ -1,0 +1,7 @@
+# Local Cloudflare and payment credentials
+.env
+.env.*
+!.env.example
+.dev.vars
+.wrangler/
+node_modules/

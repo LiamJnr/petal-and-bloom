@@ -6,11 +6,13 @@
 let onRouteHomeCallback = null;
 let onRouteProductCallback = null;
 let onRouteCheckoutCallback = null;
+let onRouteOrderConfirmationCallback = null;
 
-export function initRouter({ onRouteHome, onRouteProduct, onRouteCheckout }) {
+export function initRouter({ onRouteHome, onRouteProduct, onRouteCheckout, onRouteOrderConfirmation }) {
   onRouteHomeCallback = onRouteHome;
   onRouteProductCallback = onRouteProduct;
   onRouteCheckoutCallback = onRouteCheckout;
+  onRouteOrderConfirmationCallback = onRouteOrderConfirmation;
 
   // Listen for browser Back/Forward navigation
   window.addEventListener("popstate", () => {
@@ -53,6 +55,13 @@ function handleCurrentLocation() {
     return;
   }
 
+  if (viewParam === "order-confirmed" || window.location.pathname === "/order-confirmed") {
+    if (typeof onRouteOrderConfirmationCallback === "function") {
+      onRouteOrderConfirmationCallback();
+    }
+    return;
+  }
+
   const slug = productParam || hashProduct;
 
   if (slug) {
@@ -72,6 +81,7 @@ function handleCurrentLocation() {
 export function navigateToProduct(slug, replace = false) {
   const newUrl = new URL(window.location.href);
   newUrl.searchParams.delete("view");
+  newUrl.searchParams.delete("order");
   newUrl.searchParams.set("product", slug);
   newUrl.hash = "";
 
@@ -94,6 +104,7 @@ export function navigateToProduct(slug, replace = false) {
 export function navigateToCheckout(replace = false) {
   const newUrl = new URL(window.location.href);
   newUrl.searchParams.delete("product");
+  newUrl.searchParams.delete("order");
   newUrl.searchParams.set("view", "checkout");
   newUrl.hash = "";
 
@@ -115,8 +126,10 @@ export function navigateToCheckout(replace = false) {
  */
 export function navigateToHome(replace = false) {
   const newUrl = new URL(window.location.href);
+  newUrl.pathname = "/";
   newUrl.searchParams.delete("product");
   newUrl.searchParams.delete("view");
+  newUrl.searchParams.delete("order");
 
   if (replace) {
     window.history.replaceState({}, "", newUrl.pathname);

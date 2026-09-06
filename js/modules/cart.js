@@ -1,6 +1,6 @@
 /**
  * Cart State Management & Slide-over Drawer Module
- * Includes persistent localStorage, free shipping meter, auto-syncing images, and Lemon Squeezy integration.
+ * Includes persistent localStorage, free shipping meter, and auto-syncing catalog data.
  */
 import { showToast } from "./toast.js";
 import { getProductBySlug } from "../data/products.js";
@@ -18,7 +18,6 @@ export function initCart() {
   renderCartDrawerMarkup();
   bindCartEvents();
   updateCartUI();
-  setupLemonSqueezyOverlay();
 }
 
 /**
@@ -29,18 +28,31 @@ function loadCartFromStorage() {
     const data = localStorage.getItem(CART_STORAGE_KEY);
     cartItems = data ? JSON.parse(data) : [];
 
-    // Automatically heal/sync images and names with live catalog
+    // Automatically heal/sync items and prices with the live catalog.
     let hasChanges = false;
     cartItems = cartItems.map(item => {
       const liveProduct = getProductBySlug(item.slug);
       if (liveProduct) {
-        if (item.image !== liveProduct.images.primary || item.name !== liveProduct.name) {
+        const size = liveProduct.sizes.find(option => option.id === item.size?.id);
+        const vase = liveProduct.vases.find(option => option.id === item.vase?.id);
+        if (!size || !vase) return item;
+
+        const unitPrice = size.price + vase.price;
+        if (
+          item.image !== liveProduct.images.primary ||
+          item.name !== liveProduct.name ||
+          item.unitPrice !== unitPrice ||
+          item.checkoutUrl
+        ) {
           hasChanges = true;
+          const { checkoutUrl, ...savedItem } = item;
           return {
-            ...item,
+            ...savedItem,
             name: liveProduct.name,
             image: liveProduct.images.primary,
-            checkoutUrl: liveProduct.checkoutUrls?.[item.size?.id] || liveProduct.checkoutUrls?.standard || item.checkoutUrl
+            size: { ...size },
+            vase: { ...vase },
+            unitPrice
           };
         }
       }
@@ -70,7 +82,7 @@ function saveCartToStorage() {
  * Add an item or increment quantity
  */
 export function addToCart(itemData) {
-  const { product, size, vase, giftMessage = "", deliveryDate = "", unitPrice, quantity = 1 } = itemData;
+  const { product, size, vase, giftMessage = "", deliveryDate = "", quantity = 1 } = itemData;
 
   const itemId = `${product.slug}_${size.id}_${vase.id}_${encodeURIComponent(giftMessage.slice(0, 10))}`;
 
@@ -88,8 +100,7 @@ export function addToCart(itemData) {
       vase: { ...vase },
       giftMessage,
       deliveryDate,
-      unitPrice,
-      checkoutUrl: product.checkoutUrls?.[size.id] || product.checkoutUrls?.standard || Object.values(product.checkoutUrls || {})[0],
+      unitPrice: size.price + vase.price,
       quantity
     });
   }
@@ -175,11 +186,26 @@ export function closeCart() {
  * Calculate Subtotal & Total
  */
 export function getCartSubtotal() {
-  return cartItems.reduce((acc, item) => acc + item.unitPrice * item.quantity, 0);
+  return cartItems.reduce((acc, item) => acc + getItemUnitPrice(item) * item.quantity, 0);
 }
 
 export function getTotalItemCount() {
   return cartItems.reduce((acc, item) => acc + item.quantity, 0);
+}
+
+export function getCartItems() {
+  return cartItems.map(item => ({ ...item, size: { ...item.size }, vase: { ...item.vase } }));
+}
+
+export function clearCart() {
+  cartItems = [];
+  saveCartToStorage();
+  updateCartUI();
+  closeCart();
+}
+
+function getItemUnitPrice(item) {
+  return Number(item.size?.price || 0) + Number(item.vase?.price || 0);
 }
 
 /**
@@ -403,7 +429,7 @@ export function updateCartUI() {
             </div>
 
             <div class="cart-item-price">
-              $${(item.unitPrice * item.quantity).toFixed(2)}
+              $${(getItemUnitPrice(item) * item.quantity).toFixed(2)}
             </div>
           </div>
         </div>
@@ -414,34 +440,4 @@ export function updateCartUI() {
   // 5. Update Totals
   if (subtotalEl) subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
   if (totalEl) totalEl.textContent = `$${subtotal.toFixed(2)}`;
-}
-
-/**
- * Lemon Squeezy Overlay event listener
- */
-function setupLemonSqueezyOverlay() {
-  if (typeof window.LemonSqueezy === "undefined") return;
-
-  try {
-    window.LemonSqueezy.Setup({
-      eventHandler: (event) => {
-        if (event.event === "Checkout.Success") {
-          // Clear cart on successful purchase
-          cartItems = [];
-          saveCartToStorage();
-          updateCartUI();
-          closeCart();
-
-          showToast({
-            title: "Order Confirmed! 🌸",
-            message: "Thank you for your order! Your blooms are being prepared with love.",
-            icon: "🎉",
-            duration: 8000
-          });
-        }
-      }
-    });
-  } catch (err) {
-    console.warn("Lemon Squeezy overlay setup deferred:", err);
-  }
 }
